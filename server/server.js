@@ -1,27 +1,26 @@
 var express = require("express");
 var mongoose = require('mongoose');
+var Q = require('q');
 var uriUtil = require('mongodb-uri');
 var aws = require('aws-sdk');
 
-var app = express();
+var User = require('./users/userModel.js');
 
+var app = express();
 
 var port = process.env.PORT || 3000;
 var nodemailer = require("nodemailer");
 
 
-
-
-
 //---------------------------------------------------------------------
-//mongoLab credentials - i have these from the last project
-var dbuser = 'admin';
-var dbpassword = 'admin';
+//mongoLab credentials
+var dbuser = 'ryan';
+var dbpassword = 'gaaame';
 
 //set up URI connection to mongolab
 var uristring = process.env.MONGOLAB_URI || 
 process.env.MOGOHQ_URL ||
-'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';
+'mongodb://' + dbuser + ':' + dbpassword + '@ds049104.mongolab.com:49104/gaaame_db';
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
@@ -66,8 +65,6 @@ app.get('/sign_s3', function(req, res){
     });
 });
 
-
-
 app.listen(port);
 console.log('Server now listening on port ' + port);
 
@@ -105,3 +102,10 @@ app.get('/send', function(req, res) {
   });
 });
 
+
+// var userCreate = Q.nbind(User.create, User);
+//   var newUser = {
+//    'username' : 'bob dobalina',
+//    'password' : '12345'
+//   };
+//   userCreate(newUser);
