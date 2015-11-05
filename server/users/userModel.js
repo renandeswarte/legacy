@@ -5,11 +5,11 @@ var mongoose = require('mongoose'),
 
 
  //define schema - mealsSchema - to be nested
-  var mealsSchema = new mongoose.Schema({
+  var stylesSchema = new mongoose.Schema({
      title: String,
      price: Number,
      description: String,
-     ingredients: {type: [String]},
+     // ingredients: {type: [String]},
      url: String
   });
 
@@ -19,7 +19,7 @@ var mongoose = require('mongoose'),
   	username: {
     type: String,
     location: {type: [Number]}, // [Long, Lat]
-    type: String, //this will either be CUSTOMER or VENDOR
+    // type: String, //this will either be CUSTOMER or VENDOR
     required: true,
     unique: true
   }, 
@@ -29,8 +29,8 @@ var mongoose = require('mongoose'),
     required: true
   },
   salt: String,
-  meals: [mealsSchema],
-  orders: [mealsSchema]
+  meals: [stylesSchema],
+  orders: [stylesSchema]
   });
 
 //index the schema in 2dsphere format (for running a proximity search)
