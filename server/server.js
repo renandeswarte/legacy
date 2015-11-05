@@ -13,14 +13,24 @@ var nodemailer = require("nodemailer");
 
 
 //---------------------------------------------------------------------
-//mongoLab credentials
-var dbuser = 'ryan';
-var dbpassword = 'gaaame';
+// ***** Previous mongoLab credentials *****
+var dbuser = 'admin';
+var dbpassword = 'admin';
 
 //set up URI connection to mongolab
 var uristring = process.env.MONGOLAB_URI || 
 process.env.MOGOHQ_URL ||
-'mongodb://' + dbuser + ':' + dbpassword + '@ds049104.mongolab.com:49104/gaaame_db';
+'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';
+
+
+// ***** ShortCut mongoLab credentials ******
+// var dbuser = 'ryan';
+// var dbpassword = 'gaaame';
+
+// //set up URI connection to mongolab
+// var uristring = process.env.MONGOLAB_URI || 
+// process.env.MOGOHQ_URL ||
+// 'mongodb://' + dbuser + ':' + dbpassword + '@ds049104.mongolab.com:49104/gaaame_db';
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
