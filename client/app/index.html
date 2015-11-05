@@ -7,15 +7,19 @@
     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href='http://jadedalloul.com/wp-content/uploads/2014/06/Thumbnail_Foodly.jpg'/>
 
-    <link rel="stylesheet" href="styles/styles.css" />
-    <!-- jQuery (for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="dist/css/app.css" />
+    <!-- jQuery (for Bootstrap's JavaScript plugins)
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+
     <!-- Bootstrap compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Optional bootstrap theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/underscore-min.js"></script>
+
 </head>
 
 <body>
@@ -90,13 +94,17 @@
     </div>
 
     <!-- Main content that changes based on route -->
-    <div ng-view class='container'></div>
+    <div ng-view class='main-container container'></div>
+
+
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Order Confirmed!</h4>
+                    <h4 class="modal-title" id="myModalLabel">
+                    Order Confirmed!
+                    </h4>
                 </div>
                 <div class="modal-body">
                     Thank you for your purchase
@@ -106,19 +114,17 @@
     </div>
     </div>
 
-    <div id="container">
-    <div></div>
+   <!--  <div id="container">
+    </div> -->
 
+   
 
-
-    <!-- Angular JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
-    <script src="app/app.js"></script>
-    <script src="app/auth/auth.js"></script>
-    <script src="app/services/services.js"></script>
-    <script src="app/meals/meals.js"></script>
-    <script src="app/order/order.js"></script>
+    <footer>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="assets/js/app.extra.js"></script>
+        <script src="dist/js/app.concat.js"></script>
+    </footer>
 </body>
 
 </html>

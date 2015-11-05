@@ -13,7 +13,7 @@ var morgan      = require('morgan'), // used for logging incoming request
   	app.use(morgan('dev'));
   	app.use(bodyParser.urlencoded({extended: true}));
   	app.use(bodyParser.json());
-  	app.use(express.static(__dirname + '/../../client'));
+  	app.use(express.static(__dirname + '/../../client/app'));
 
     app.use('/api/users', userRouter);
     //app.use('/api/users/customer', orderRouter)
