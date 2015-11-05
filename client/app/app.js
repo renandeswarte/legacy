@@ -3,25 +3,25 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
 .config(function($routeProvider, $httpProvider) {
 	$routeProvider
     .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
+      templateUrl: 'auth/signin.html',
       controller: 'AuthController'
     })
     .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
+      templateUrl: 'auth/signup.html',
       controller: 'AuthController'
     })
     .when('/', {
-      templateUrl: 'app/meals/meals.html',
+      templateUrl: 'meals/meals.html',
       controller: 'MealController'
     })
     .when('/order', {
       authenticate: true,
-      templateUrl: 'app/order/order.html', 
+      templateUrl: 'order/order.html', 
       controller: 'OrderController'
     })
       .when('/addmeal', {
       authenticate: true,
-      templateUrl: 'app/addMeal/addMeal.html',
+      templateUrl: 'addMeal/addMeal.html',
       controller: 'MealController'
     })
     .otherwise({
@@ -46,7 +46,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
 .run(function ($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if(next.$$route && next.$$route.templateUrl === "app/meals/meals.html"){
+    if(next.$$route && next.$$route.templateUrl === "meals/meals.html"){
       $rootScope.SearchBar = true;
     }else{
        $rootScope.SearchBar = false;     
