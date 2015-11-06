@@ -79,11 +79,11 @@ module.exports = app;
 
 // -------------------------------------------------
 // ******** TWILIO *********
-var ryansTwilioNumber = process.env.twilioNumber || APIKeys.ryansTwilioNumber;
-var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || APIKeys.TWILIO_ACCOUNT_SID;
-var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || APIKeys.TWILIO_AUTH_TOKEN;
-// var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-// Test credentials only - DO NOT PUSH THIS!
+// var ryansTwilioNumber = process.env.twilioNumber || APIKeys.ryansTwilioNumber;
+// var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || APIKeys.TWILIO_ACCOUNT_SID;
+// var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || APIKeys.TWILIO_AUTH_TOKEN;
+// // var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+// // Test credentials only - DO NOT PUSH THIS!
 // var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
