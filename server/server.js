@@ -82,19 +82,20 @@ var ryansTwilioNumber = process.env.twilioNumber || APIKeys.ryansTwilioNumber;
 var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || APIKeys.TWILIO_ACCOUNT_SID;
 var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || APIKeys.TWILIO_AUTH_TOKEN;
 // var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
-var twilioClient = require('twilio')('AC9efa71efc9cec3c7c969a3208bb9e746', '68c2ef433dab8cd4d927044c1772f587');  // DO NOT PUSH THIS!
+// Test credentials only - DO NOT PUSH THIS!
+var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
-twilioClient.messages.create({ 
-  to: '+6782960196',  // make this a variable for the users phone number
-  from: '+15005550006', //ryansTwilioNumber,   // make this a variable from the API keys file
-  body: 'Testing, testing...', 
-  // mediaUrl: "We can also send media.",  // this should be a URL to send media
-}, function(err, message) { 
-  console.log('err: ', err, 'message: ', message); 
-});
+// twilioClient.messages.create({ 
+//   to: '+6782960196',  // make this a variable for the users phone number
+//   from: '+15005550006', // <- this is the testing number. use when not testing -> ryansTwilioNumber,   // make this a variable from the API keys file
+//   body: 'Testing, testing...', 
+//   // mediaUrl: "We can also send media.",  // this should be a URL to send media
+// }, function(err, message) { 
+//   console.log('err: ', err, 'message: ', message); 
+// });
 
-app.post('/2010-04-01/Accounts/' + TWILIO_ACCOUNT_SID + '/Messages');
+// app.post('/2010-04-01/Accounts/' + TWILIO_ACCOUNT_SID + '/Messages');
 
 
 // ----------------------------------------------------
