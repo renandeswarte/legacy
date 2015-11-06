@@ -1,5 +1,31 @@
 angular.module('foodly.services', [])
 
+.factory('idTool', function() {
+  var barberId = "";
+	var styleId = "";
+
+	// Barber and Style Id setters
+  var setBarberId = function(id) {
+    barberId = id;
+  };
+  var setStyleId = function(id) {
+    styleId = id;
+  };
+
+	// Barber and Style Id getters
+  var getBarberId = function() {
+    return barberId;
+  };
+  var getStyleId = function() {
+    return styleId;
+  };
+
+  return {
+    barberId: barberId,
+    styleId: styleId
+  };
+})
+
 .factory('Auth', function($http, $location, $window) {
 	var loginorout = "Sign in";
 	var signup = function(user) {
