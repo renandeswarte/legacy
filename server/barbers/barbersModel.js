@@ -13,7 +13,7 @@ var BarbersSchema = new mongoose.Schema({
   reviews: Array,
   styles: Array,
   portrait: String,
-  availability: String
+  availability: String,
 });
 
 module.exports = mongoose.model('Barbers', BarbersSchema);
