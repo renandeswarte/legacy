@@ -4,9 +4,11 @@
 azure.err
 iisnode.yml
 
+# API Keys
+server/config/APIKeys.js
+
 # Icon must ends with two \r.
 Icon
-
 
 # Thumbnails
 ._*

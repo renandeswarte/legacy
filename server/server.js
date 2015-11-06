@@ -3,15 +3,16 @@ var mongoose = require('mongoose');
 var Q = require('q');
 var uriUtil = require('mongodb-uri');
 var aws = require('aws-sdk');
+var nodemailer = require("nodemailer");
 
 var User = require('./users/userModel.js');
 var Styles = require('./styles/stylesModel.js');
 var Barbers = require('./barbers/barbersModel.js');
+var APIKeys = require('./config/APIKeys.js');
 
 var app = express();
 
 var port = process.env.PORT || 3000;
-var nodemailer = require("nodemailer");
 
 
 //---------------------------------------------------------------------
@@ -40,9 +41,9 @@ db.once('open',function(){
 
 require('./config/middleware.js')(app, express);
 
-var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY;
-var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY;
-var S3_BUCKET = process.env.S3_BUCKET
+var AWS_ACCESS_KEY = APIKeys.AWS_ACCESS_KEY;
+var AWS_SECRET_KEY = APIKeys.AWS_SECRET_KEY;
+var S3_BUCKET = APIKeys.S3_BUCKET;
 
 app.get('/sign_s3', function(req, res){
     aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
