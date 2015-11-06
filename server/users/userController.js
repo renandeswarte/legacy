@@ -1,12 +1,12 @@
-var User = require('./userModel.js'),
-    Q    = require('q'),
-    jwt  = require('jwt-simple');
+var User = require('./userModel.js');
+var Q = require('q');
+var jwt = require('jwt-simple');
 
 module.exports = {
 
   signin: function (req, res, next) {
-    var username = req.body.username,
-        password = req.body.password;
+    var username = req.body.username;
+    var password = req.body.password;
 
     var findUser = Q.nbind(User.findOne, User);
     findUser({username: username})
@@ -31,10 +31,10 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    var username  = req.body.username,
-        password  = req.body.password,
-        create,
-        newUser;
+    var username  = req.body.username;
+    var password  = req.body.password;
+    var create;
+    var newUser;
 
     var findOne = Q.nbind(User.findOne, User);
 
@@ -86,7 +86,6 @@ module.exports = {
     }
   },
   meals: function(req,res,next){
-
     //getting all meals using aggregation pipeline
     var aggr = Q.nbind(User.aggregate,User);
 
@@ -175,41 +174,4 @@ module.exports = {
     
   }
 
-
-
- 
-
-  // getVendorLatLong = function(req,res,next){
-  //   //expect request to be a meal object with _id field which is used as a matching param
-  //   //we will return an array with lat long of the user who owns that meal [Lat,Long]
-  //   /*   {
-  //           "title": "Pad Thai",
-  //           "price": 12.99,
-  //           "_id": {
-  //               "$oid": "56299289108f9b181d2bf218"
-  //           } */
-
-  //   //we will match the meal based on the id, so collect this from the request
-  //   var oId = req.body._id["$oid"]        
-  //   var aggr = Q.nbind(User.aggregate,User);
-
-  //   //use aggregation pipeline to get the parent docuement for that meal
-  //   aggr.([{$project{orders:1,location:1}},
-  //           {$unwind:"$orders"},
-  //           {$match:{"orders._id":ObjectId('"'+oId+'"')}
-  //         }])
-  //   .then(function(data){
-  //     //setup the response array Lat, Long
-  //     var resp = [data.location[0],data.location[1]];
-  //     res.send(resp)
-  //   })
-
-  // .fail(function(err){
-  //   next(err)
-  // });
-
-
-  // }
-
-
-}
+};

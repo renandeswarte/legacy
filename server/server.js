@@ -5,6 +5,8 @@ var uriUtil = require('mongodb-uri');
 var aws = require('aws-sdk');
 
 var User = require('./users/userModel.js');
+var Styles = require('./styles/stylesModel.js');
+var Barbers = require('./barbers/barbersModel.js');
 
 var app = express();
 
@@ -13,24 +15,16 @@ var nodemailer = require("nodemailer");
 
 
 //---------------------------------------------------------------------
-// ***** Previous mongoLab credentials *****
+// ***** mongoLab credentials *****
 var dbuser = 'admin';
 var dbpassword = 'admin';
 
 //set up URI connection to mongolab
 var uristring = process.env.MONGOLAB_URI || 
 process.env.MOGOHQ_URL ||
-'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';
+'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
+// 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
-
-// ***** ShortCut mongoLab credentials ******
-// var dbuser = 'ryan';
-// var dbpassword = 'gaaame';
-
-// //set up URI connection to mongolab
-// var uristring = process.env.MONGOLAB_URI || 
-// process.env.MOGOHQ_URL ||
-// 'mongodb://' + dbuser + ':' + dbpassword + '@ds049104.mongolab.com:49104/gaaame_db';
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
@@ -113,9 +107,33 @@ app.get('/send', function(req, res) {
 });
 
 
+// // KEEP THIS: dummy entries for each schema to test DB connection, uncomment when needed
 // var userCreate = Q.nbind(User.create, User);
 //   var newUser = {
-//    'username' : 'bob dobalina',
-//    'password' : '12345'
+//    'username': 'bob dobalina',
+//    'password': '12345'
 //   };
 //   userCreate(newUser);
+
+// var stylesCreate = Q.nbind(Styles.create, Styles);
+//   var newStyle = {
+//    'title': 'McSqueeb',
+//    'price': 30,
+//    'description': 'The Tony Hawk special'
+//   };
+//   stylesCreate(newStyle);
+
+// var barbersCreate = Q.nbind(Barbers.create, Barbers);
+//   var newBarber = {
+//    'name': 'Bob the Barber',
+//    'gender': 'male',
+//    'location': 'San Francisco',
+//    'rating': 4.5,
+//    'bio': 'he\'s the man',
+//    'languages': ['English', 'Swahili'],
+//    'reviews': ['he\s totally the man'],
+//    'styles': ['McSqueeb'],
+//    'portrait': 'some URL',
+//    'availability': '11-7'
+//   };
+//   barbersCreate(newBarber);

@@ -1,40 +1,31 @@
-var mongoose = require('mongoose'),
-    bcrypt   = require('bcrypt-nodejs'),
-    Q        = require('q'),
-    SALT_WORK_FACTOR  = 10;
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt-nodejs');
+var Q = require('q');
+var SALT_WORK_FACTOR = 10;
 
 
- //define schema - mealsSchema - to be nested
-  var stylesSchema = new mongoose.Schema({
-     title: String,
-     price: Number,
-     description: String,
-     // ingredients: {type: [String]},
-     url: String
-  });
-
-  //define schema - userSchema, with nested meals
-  var UserSchema = new mongoose.Schema({
-
-  	username: {
+var UserSchema = new mongoose.Schema({
+	username: {
     type: String,
-    location: {type: [Number]}, // [Long, Lat]
-    // type: String, //this will either be CUSTOMER or VENDOR
+    // location: {type: [Number]}, // [Long, Lat]
     required: true,
     unique: true
   }, 
-
   password: {
     type: String,
     required: true
   },
   salt: String,
-  meals: [stylesSchema],
-  orders: [stylesSchema]
-  });
+  street_address: String,
+  city: String,
+  state: String,
+  zip_code: Number,
+  email: String,
+  phone: Number
+});
 
 //index the schema in 2dsphere format (for running a proximity search)
-UserSchema.index({location:'2dsphere'})
+// UserSchema.index({location:'2dsphere'})
 
 UserSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();
@@ -77,9 +68,4 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-module.exports = mongoose.model('User',UserSchema)
-
-// {User:
-//   mongoose.model('User', UserSchema),
-//   mealsSchema: mongoose.model('Meals',mealsSchema)
-// }
+module.exports = mongoose.model('User', UserSchema)
