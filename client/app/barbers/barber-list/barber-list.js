@@ -1,6 +1,6 @@
 angular.module('foodly.barbers', [])
 
-.controller('barberListController', function($scope, $location, $window,Meals, Order, Auth, Counter) {
+.controller('barberListController', function($scope, $location, $window, Meals, Order, Auth, Counter) {
 
 
 	$scope.data = []; //meals available for purchase
