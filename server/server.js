@@ -14,7 +14,6 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
-require('./config/middleware.js')(app, express);
 
 //---------------------------------------------------------------------
 // ***** MONGOLABS *****
@@ -38,6 +37,8 @@ var db = mongoose.connection;
 db.once('open',function() {
   console.log('connected to: ', mongooseUri);
 });
+
+require('./config/middleware.js')(app, express);
 
 // --------------------------------------------------
 // ***** AWS *******
