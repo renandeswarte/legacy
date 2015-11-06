@@ -1,0 +1,19 @@
+header {
+  nav {
+    .navbar-header {
+      height: 50px;
+      .navbar-brand {
+        &.icon {  
+          margin-top: 20px;
+          margin-right: 20px;
+          width: 100px;
+          height: 100px;
+          background-color: #EF6447;
+          img {
+            width: 70px;
+          }
+        }
+      }
+    }
+  }
+}
