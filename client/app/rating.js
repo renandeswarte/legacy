@@ -4,9 +4,10 @@ var rating = angular.module('rating', []);
 
 rating.controller('ratingController', ['$scope', function ($scope) {
     $scope.starRating1 = 0;
-
+    $scope.avgRating=0;
     $scope.click1 = function (param) {
         console.log('Click(' + param + ')');
+        $scope.avgRating=param;
     };
 }]);
 
@@ -74,3 +75,10 @@ rating.directive('starRating', function () {
         }
     };
 });
+
+ // <div class="container" ng-controller="ratingController">
+ //  <div star-rating rating="starRating1" read-only="false" max-rating="5" click="click1(param)"></div>
+ //    <div> <span class="label label-primary">Rate This Barber {{starRating1}}</span>
+ //    <div> <span> Avg Rating: {{avgRating}}/5</span></div>
+ //   </div>
+ // </div>
