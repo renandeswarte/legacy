@@ -4,50 +4,9 @@ var rating = angular.module('rating', []);
 
 rating.controller('ratingController', ['$scope', function ($scope) {
     $scope.starRating1 = 0;
-    $scope.starRating2 = 5;
-    $scope.starRating3 = 2;
-    $scope.hoverRating1 = $scope.hoverRating2 = $scope.hoverRating3 = 0;
 
     $scope.click1 = function (param) {
         console.log('Click(' + param + ')');
-    };
-
-    $scope.mouseHover1 = function (param) {
-        console.log('mouseHover(' + param + ')');
-        $scope.hoverRating1 = param;
-    };
-
-    $scope.mouseLeave1 = function (param) {
-        console.log('mouseLeave(' + param + ')');
-        $scope.hoverRating1 = param + '*';
-    };
-
-    $scope.click2 = function (param) {
-        console.log('Click');
-    };
-
-    $scope.mouseHover2 = function (param) {
-        console.log('mouseHover(' + param + ')');
-        $scope.hoverRating1 = param;
-    };
-
-    $scope.mouseLeave2 = function (param) {
-        console.log('mouseLeave(' + param + ')');
-        $scope.hoverRating2 = param + '*';
-    };
-
-    $scope.click3 = function (param) {
-        console.log('Click');
-    };
-
-    $scope.mouseHover3 = function (param) {
-        console.log('mouseHover(' + param + ')');
-        $scope.hoverRating3 = param;
-    };
-
-    $scope.mouseLeave3 = function (param) {
-        console.log('mouseLeave(' + param + ')');
-        $scope.hoverRating3 = param + '*';
     };
 }]);
 
