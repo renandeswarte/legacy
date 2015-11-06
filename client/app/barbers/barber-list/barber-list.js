@@ -1,13 +1,13 @@
-angular.module('foodly.meals', [])
+angular.module('foodly.barbers', [])
 
-.controller('MealController', function($scope, $location, $window,Meals, Order, Auth, Counter) {
+.controller('barberListController', function($scope, $location, $window,Meals, Order, Auth, Counter) {
 
 
 	$scope.data = []; //meals available for purchase
 	$scope.meal = {}; //meal to add
 	$scope.order = {orders: []};
 	$scope.count = Counter;
-	
+
 	//this code block is used to generate random reviews for our product demo -
 	//unfortunately, more intuitive implementations will cause a digest overflow.
 	$scope.randReviews = [];
