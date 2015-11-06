@@ -1,4 +1,4 @@
-angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.barbers', 'foodly.homepage', 'foodly.barberProfile', 'ngRoute'])
+angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.barbers', 'foodly.hairstyles', 'foodly.homepage', 'foodly.barberProfile', 'foodly.hairstyleProfile', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -17,6 +17,14 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     .when('/barbers/profile', {
       templateUrl: 'barbers/barber-profile.html',
       controller: 'barberProfileController'
+    })
+    .when('/hairstyles', {
+      templateUrl: 'hairstyles/hairstyle-list/hairstyle-list.html',
+      controller: 'hairstyleListController'
+    })
+    .when('/hairstyles/profile', {
+      templateUrl: 'hairstyles/hairstyle-profile.html',
+      controller: 'hairstyleProfileController'
     })
     .when('/order', {
       authenticate: true,
