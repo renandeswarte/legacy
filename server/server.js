@@ -35,9 +35,9 @@ replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
 mongoose.connect(mongooseUri, options);
 var db = mongoose.connection;
 
-db.once('open',function(){
-  console.log('connected to : ', mongooseUri);
-})
+db.once('open',function() {
+  console.log('connected to: ', mongooseUri);
+});
 
 require('./config/middleware.js')(app, express);
 
@@ -45,29 +45,29 @@ var AWS_ACCESS_KEY = APIKeys.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = APIKeys.AWS_SECRET_KEY;
 var S3_BUCKET = APIKeys.S3_BUCKET;
 
-app.get('/sign_s3', function(req, res){
-    aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
-    var s3 = new aws.S3();
-    var s3_params = {
-        Bucket: S3_BUCKET,
-        Key: req.query.file_name,
-        Expires: 60,
-        ContentType: req.query.file_type,
-        ACL: 'public-read'
-    };
-    s3.getSignedUrl('putObject', s3_params, function(err, data){
-        if(err){
-            console.log(err);
-        }
-        else{
-            var return_data = {
-                signed_request: data,
-                url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
-            };
-            res.write(JSON.stringify(return_data));
-            res.end();
-        }
-    });
+app.get('/sign_s3', function(req, res) {
+  aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
+  var s3 = new aws.S3();
+  var s3_params = {
+    Bucket: S3_BUCKET,
+    Key: req.query.file_name,
+    Expires: 60,
+    ContentType: req.query.file_type,
+    ACL: 'public-read'
+  };
+  
+  s3.getSignedUrl('putObject', s3_params, function(err, data) {
+    if(err) {
+      console.log(err);
+    } else {
+      var return_data = {
+        signed_request: data,
+        url: 'https://'+S3_BUCKET+'.s3.amazonaws.com/'+req.query.file_name
+      };
+      res.write(JSON.stringify(return_data));
+      res.end();
+    }
+  });
 });
 
 app.listen(port);
@@ -111,30 +111,30 @@ app.get('/send', function(req, res) {
 // // KEEP THIS: dummy entries for each schema to test DB connection, uncomment when needed
 // var userCreate = Q.nbind(User.create, User);
 //   var newUser = {
-//    'username': 'bob dobalina',
-//    'password': '12345'
+//    username: 'bob dobalina',
+//    password: '12345'
 //   };
 //   userCreate(newUser);
 
 // var stylesCreate = Q.nbind(Styles.create, Styles);
 //   var newStyle = {
-//    'title': 'McSqueeb',
-//    'price': 30,
-//    'description': 'The Tony Hawk special'
+//    title: 'McSqueeb',
+//    price: 30,
+//    description: 'The Tony Hawk special'
 //   };
 //   stylesCreate(newStyle);
 
 // var barbersCreate = Q.nbind(Barbers.create, Barbers);
 //   var newBarber = {
-//    'name': 'Bob the Barber',
-//    'gender': 'male',
-//    'location': 'San Francisco',
-//    'rating': 4.5,
-//    'bio': 'he\'s the man',
-//    'languages': ['English', 'Swahili'],
-//    'reviews': ['he\s totally the man'],
-//    'styles': ['McSqueeb'],
-//    'portrait': 'some URL',
-//    'availability': '11-7'
+//    name: 'Bob the Barber',
+//    gender: 'male',
+//    location: 'San Francisco',
+//    rating: 4.5,
+//    bio: 'he\'s the man',
+//    languages: ['English', 'Swahili'],
+//    reviews: ['he\s totally the man'],
+//    styles: ['McSqueeb'],
+//    portrait: 'some URL',
+//    availability: '11-7'
 //   };
 //   barbersCreate(newBarber);
