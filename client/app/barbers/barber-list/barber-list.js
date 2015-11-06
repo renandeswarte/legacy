@@ -69,3 +69,4 @@ angular.module('foodly.barbers', [])
 	};
 
 })
+
