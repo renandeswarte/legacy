@@ -12,9 +12,51 @@ header {
           background-color: #EF6447;
           text-align: center;
           .icon-mustache {
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
             font-size: 70px;
             color: #000000;
+          }
+        }
+        &:hover {
+          .icon-mustache {
+            animation-duration: 0.5s;
+            animation-name: mustacheFx;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-name: mustacheFx;
+          }
+          @-webkit-keyframes mustacheFx {
+            0% {
+              transform: scale(1);
+            }
+            25% {
+              transform: scale(1.5);
+            }
+            50% {
+              transform: scale(1);
+            }
+            75% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          @keyframes mustacheFx {
+            0% {
+              transform: scale(1);
+            }
+            25% {
+              transform: scale(1.5);
+            }
+            50% {
+              transform: scale(1);
+            }
+            75% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(1);
+            }
           }
         }
       }
