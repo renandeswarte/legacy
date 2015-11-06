@@ -1,7 +1,7 @@
 angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.meals', 'foodly.homepage', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
-	$routeProvider
+  $routeProvider
     .when('/signin', {
       templateUrl: 'auth/signin.html',
       controller: 'AuthController'
@@ -33,17 +33,17 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     });
 
 //     //additional routes here
-	$httpProvider.interceptors.push(function($window) {
-		return {
-			request: function (config) {
-	      		var jwt = $window.localStorage.getItem('com.semicolon');
-	      		if (jwt) {
-	        		config.headers['x-access-token'] = jwt;
-	      		}
-	      		config.headers['Allow-Control-Allow-Origin'] = '*';
-	      		return config;
-	      	}
-      	};
+  $httpProvider.interceptors.push(function($window) {
+    return {
+      request: function (config) {
+            var jwt = $window.localStorage.getItem('com.semicolon');
+            if (jwt) {
+              config.headers['x-access-token'] = jwt;
+            }
+            config.headers['Allow-Control-Allow-Origin'] = '*';
+            return config;
+          }
+        };
     });
 })
 
