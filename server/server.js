@@ -21,15 +21,15 @@ var dbuser = 'admin';
 var dbpassword = 'admin';
 
 //set up URI connection to mongolab
-var uristring = process.env.MONGOLAB_URI || 
+var uristring = process.env.MONGOLAB_URI ||
 process.env.MOGOHQ_URL ||
 'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
 // 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } }; 
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };
 
 mongoose.connect(mongooseUri, options);
 var db = mongoose.connection;
@@ -56,7 +56,7 @@ app.get('/sign_s3', function(req, res) {
     ContentType: req.query.file_type,
     ACL: 'public-read'
   };
-  
+
   s3.getSignedUrl('putObject', s3_params, function(err, data) {
     if(err) {
       console.log(err);
@@ -84,16 +84,16 @@ var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || APIKeys.TWILIO_ACCOUN
 var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || APIKeys.TWILIO_AUTH_TOKEN;
 // var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 // Test credentials only - DO NOT PUSH THIS!
-var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+// var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
-// twilioClient.messages.create({ 
+// twilioClient.messages.create({
 //   to: '+6782960196',  // make this a variable for the users phone number
 //   from: '+15005550006', // <- this is the testing number. use when not testing -> ryansTwilioNumber,   // make this a variable from the API keys file
-//   body: 'Testing, testing...', 
+//   body: 'Testing, testing...',
 //   // mediaUrl: "We can also send media.",  // this should be a URL to send media
-// }, function(err, message) { 
-//   console.log('err: ', err, 'message: ', message); 
+// }, function(err, message) {
+//   console.log('err: ', err, 'message: ', message);
 // });
 
 // app.post('/2010-04-01/Accounts/' + TWILIO_ACCOUNT_SID + '/Messages');

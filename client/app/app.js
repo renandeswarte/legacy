@@ -1,4 +1,4 @@
-angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.meals', 'foodly.homepage', 'ngRoute'])
+angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.barbers', 'foodly.homepage', 'foodly.barberProfile', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -10,20 +10,24 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
       templateUrl: 'auth/signup.html',
       controller: 'AuthController'
     })
-    // .when('/', {
-    //   templateUrl: 'meals/meals.html',
-    //   controller: 'MealController'
-    // })
+    .when('/barbers', {
+      templateUrl: 'barbers/barber-list/barber-list.html',
+      controller: 'barberListController'
+    })
+    .when('/barbers/profile', {
+      templateUrl: 'barbers/barber-profile.html',
+      controller: 'barberProfileController'
+    })
     .when('/order', {
       authenticate: true,
-      templateUrl: 'order/order.html', 
+      templateUrl: 'order/order.html',
       controller: 'OrderController'
     })
-    .when('/addmeal', {
-      authenticate: true,
-      templateUrl: 'addMeal/addMeal.html',
-      controller: 'MealController'
-    })
+      // .when('/addmeal', {
+      //   authenticate: true,
+      //   templateUrl: 'addMeal/addMeal.html',
+      //   controller: 'MealController'
+      // })
     .when('/', {
       templateUrl: 'homepage/homepage.html',
       controller: 'HomepageController'
@@ -53,7 +57,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     if(next.$$route && next.$$route.templateUrl === "meals/meals.html"){
       $rootScope.SearchBar = true;
     }else{
-       $rootScope.SearchBar = false;     
+       $rootScope.SearchBar = false;
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
@@ -61,7 +65,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     if(Auth.isAuth()){
       Auth.loginorout="Logout"
     }else{
-       Auth.loginorout = "Sign in";     
+       Auth.loginorout = "Sign in";
     }
   });
 });

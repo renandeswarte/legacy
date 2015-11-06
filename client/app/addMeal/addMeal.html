@@ -1,5 +1,5 @@
 <div class="container" ng-app="foodly">
-    <div class="row" ng-controller="MealController">
+    <div class="row">
         <form class="form-horizontal">
             <fieldset required>
                 <!-- Address form -->
@@ -348,12 +348,12 @@ function upload_file(file, signed_request, url){
     xhr.setRequestHeader('x-amz-acl', 'public-read');
     xhr.onload = function() {
         if (xhr.status === 200) {
-            document.getElementById("preview").src = url;            
+            document.getElementById("preview").src = url;
             document.getElementById("avatar_url").value = url;
         }
     };
     xhr.onerror = function() {
-        alert("Could not upload file."); 
+        alert("Could not upload file.");
     };
     xhr.send(file);
 }
