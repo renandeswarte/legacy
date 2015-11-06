@@ -14,9 +14,10 @@ var app = express();
 
 var port = process.env.PORT || 3000;
 
+require('./config/middleware.js')(app, express);
 
 //---------------------------------------------------------------------
-// ***** mongoLab credentials *****
+// ***** MONGOLABS *****
 var dbuser = 'admin';
 var dbpassword = 'admin';
 
@@ -25,7 +26,6 @@ var uristring = process.env.MONGOLAB_URI ||
 process.env.MOGOHQ_URL ||
 'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
 // 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
-
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
@@ -39,8 +39,8 @@ db.once('open',function() {
   console.log('connected to: ', mongooseUri);
 });
 
-require('./config/middleware.js')(app, express);
-
+// --------------------------------------------------
+// ***** AWS *******
 var AWS_ACCESS_KEY = APIKeys.AWS_ACCESS_KEY;
 var AWS_SECRET_KEY = APIKeys.AWS_SECRET_KEY;
 var S3_BUCKET = APIKeys.S3_BUCKET;
@@ -75,9 +75,32 @@ console.log('Server now listening on port ' + port);
 
 module.exports = app;
 
-// var Schema = mongoose.Schema;
 
-// nodemailer code (sends email notification from foodlymailer@gmail to vendor whenever customer places an order)
+// -------------------------------------------------
+// ******** TWILIO *********
+var ryansTwilioNumber = process.env.twilioNumber || APIKeys.ryansTwilioNumber;
+var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || APIKeys.TWILIO_ACCOUNT_SID;
+var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || APIKeys.TWILIO_AUTH_TOKEN;
+// var twilioClient = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+var twilioClient = require('twilio')('AC9efa71efc9cec3c7c969a3208bb9e746', '68c2ef433dab8cd4d927044c1772f587');  // DO NOT PUSH THIS!
+
+
+twilioClient.messages.create({ 
+  to: '+6782960196',  // make this a variable for the users phone number
+  from: '+15005550006', //ryansTwilioNumber,   // make this a variable from the API keys file
+  body: 'Testing, testing...', 
+  // mediaUrl: "We can also send media.",  // this should be a URL to send media
+}, function(err, message) { 
+  console.log('err: ', err, 'message: ', message); 
+});
+
+app.post('/2010-04-01/Accounts/' + TWILIO_ACCOUNT_SID + '/Messages');
+
+
+// ----------------------------------------------------
+// ********* NODEMAILER ***********
+
+// sends email notification from foodlymailer@gmail to vendor whenever customer places an order
 var smtpTransport = nodemailer.createTransport("SMTP", {
   service: "Gmail",
   auth: {
@@ -85,9 +108,10 @@ var smtpTransport = nodemailer.createTransport("SMTP", {
     pass: "foodly123"
   }
 });
-/*------------------SMTP Over-----------------------------*/
 
-/*------------------Routing Started ------------------------*/
+
+// --------------------------------------------
+// ROUTING
 
 app.get('/send', function(req, res) {
   var mailOptions = {
