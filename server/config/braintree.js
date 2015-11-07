@@ -6,12 +6,17 @@ module.exports = function(app) {
   // -------------------------------------------------
   // ******** BRAINTREE *********
 
+  // API keys
+  var merchantId = process.env.merchantId || APIKeys.merchantId;
+  var publicKey = process.env.publicKey || APIKeys.publicKey;
+  var privateKey = process.env.privateKey || APIKeys.privateKey;
+
   // initial server setup
   var gateway = braintree.connect({
     environment: braintree.Environment.Sandbox,
-    merchantId: APIKeys.merchantId,
-    publicKey: APIKeys.publicKey,
-    privateKey: APIKeys.privateKey
+    merchantId: merchantId,
+    publicKey: publicKey,
+    privateKey: privateKey
   });
 
 
