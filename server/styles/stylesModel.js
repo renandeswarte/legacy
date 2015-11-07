@@ -5,7 +5,8 @@ var Q = require('q');
 var StylesSchema = new mongoose.Schema({
   title: String,
   price: Number,
-  description: String
+  description: String,
+  image: String
 });
 
 module.exports = mongoose.model('Styles', StylesSchema);
