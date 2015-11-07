@@ -8,8 +8,9 @@ module.exports = function(app, express){
 
   var userRouter = express.Router();
   var braintreeRouter = express.Router();
-  var barbersRouter = express.Router();
-  //var orderRouter = express.Router();    
+  var barbersRouter = express.Router();  
+  var AWSrouter = express.Router();
+  var nodemailerRouter = express.Router(); 
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +20,8 @@ module.exports = function(app, express){
   app.use('/api/users', userRouter);
   app.use('/payment', braintreeRouter);
   app.use('/barbers', barbersRouter);
-  //app.use('/api/users/customer', orderRouter)
+  app.use('/sign_s3', AWSrouter);
+  app.use('/send', nodemailerRouter);
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
@@ -27,5 +29,6 @@ module.exports = function(app, express){
   require('../users/userRoutes.js')(userRouter);
   require('./braintree.js')(braintreeRouter);
   require('../barbers/barbersRoutes.js')(barbersRouter);
-  //require('../orders/orderRoutes.js')(orderRouter);
+  require('./aws.js')(AWSrouter);
+  require('./nodemailer.js')(nodemailerRouter);
 };
