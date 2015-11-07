@@ -1,22 +1,22 @@
 {
-  "name": "DudeWheresMySemiColon",
+  "name": "todo",
   "version": "0.0.0",
   "description": "",
   "main": "server/server.js",
   "scripts": {
     "postinstall": "bower install && ./node_modules/grunt-cli/bin/grunt build",
-    "start": "node server/index.js"
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon.git"
+    "url": "https://github.com/todo.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon/issues"
+    "url": "https://github.com/Dtodo/issues"
   },
-  "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
+  "homepage": "https://github.com/todo",
   "dependencies": {
     "angular-route": "^1.4.7",
     "aws-sdk": "^2.2.12",
