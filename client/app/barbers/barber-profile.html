@@ -1,43 +1,66 @@
+<!-- Page Content -->
+<div class="profile-page barber-page">
+<div class="row top-block barber-top-block">
 
-    <!-- Page Content -->
-    <div class="row">
-      <div class="col-md-8">
-
-      <div class="row">
-        <div class="col-xs-6">
-          <div class="barber-portrait">
-            <img src="http://lorempixel.com/300/300">
-          </div>
-        </div>
-
-        <div class="col-xs-6">
-          <div class="barber-stats">
-          Barber Stats
-          </div>
-        </div>
+  <div class="col-md-8 info-container info-barber">
+    <div class="row main-info-block main-info-barber ">
+      <div class="col-xs-6 portrait-block portrait-barber">
+        <div class="portrait" style="background-image:url({{ barberInfos.portrait }})"></div>
       </div>
 
-      <div class="row">
-        <div class="barber-description">
+      <div class="col-xs-6 stats-block stats-barber">
+        <div class="stats">
+          <p class="name">Name : {{ barberInfos.name }}</p>
+          <p class="name">Bio : {{ barberInfos.bio }}</p>
+          <p class="name">Location : {{ barberInfos.location }}</p>
+          <p class="name">Gender : {{ barberInfos.gender }}</p>
+          <p class="name">Availability : {{ barberInfos.availability }}</p>
+          <ul class="languages">
+            <li ng-repeat="language in barberInfos.languages">
+              {{ language }}
+            </li>
+          </ul>
+          <ul class="reviews">
+            <li ng-repeat="review in barberInfos.reviews">
+              {{ review }}
+            </li>
+          </ul>
+          <ul class="styles">
+            <li ng-repeat="style in barberInfos.styles">
+              {{ style }}
+            </li>
+          </ul>
+
+
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row description-block description-barber">
+      <div class="description">
         unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae
-        </div>
-      </div>
-      </div>
-      <div class="col-md-4">
-
-        <div class="barber-gallery">
-        Barber Gallery
-        </div>
       </div>
     </div>
+  </div>
 
-    <div class="row barber-styles">
-
-      <h2>THIS BARBER'S STYLES</h2>
-
-      <img src="http://lorempixel.com/g/300/300">
-      <img src="http://lorempixel.com/g/300/300">
-      <img src="http://lorempixel.com/g/300/300">
-      <img src="http://lorempixel.com/g/300/300">
-
+  <div class="col-md-4 gallery-container gallery-barber">
+    <div class="gallery">
+      Barber Gallery
     </div>
+  </div>
+</div>
+
+<div class="row profile-list-container barber-styles-list">
+
+  <h2>THIS BARBER'S STYLES</h2>
+
+  <img src="http://lorempixel.com/g/300/300">
+  <img src="http://lorempixel.com/g/300/300">
+  <img src="http://lorempixel.com/g/300/300">
+  <img src="http://lorempixel.com/g/300/300">
+
+</div>
+
+</div>

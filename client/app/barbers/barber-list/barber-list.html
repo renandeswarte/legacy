@@ -8,7 +8,7 @@
         <div class="thumbnail">
           <img id="meal_images" ng-src="{{meal.profile || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}">
           <div class="caption">
-            <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal.name}}</a></h4>
+            <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal._id}}</a></h4>
             <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
             <p>{{meal.meals.description}}</p>
           </div>

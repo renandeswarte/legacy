@@ -36,7 +36,6 @@ angular.module('foodly.barbers', [])
 	$scope.getMeals(); // must be called for initial page load
 
 	$scope.setId = function(id) {
-		console.log('insetid');
 		idTool.setBarberId(id);
 		console.log('getBarberId', idTool.getBarberId());
 	}
