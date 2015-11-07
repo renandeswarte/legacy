@@ -41,7 +41,6 @@ var options = {
   }
 };
 
-
 mongoose.connect(mongooseUri, options);
 var db = mongoose.connection;
 
