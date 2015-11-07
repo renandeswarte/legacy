@@ -43,7 +43,7 @@ angular.module('foodly.barbers', [])
 
 
 	$scope.addMeal = function() {
-		// $scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
+		$scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
 		Meals.addMeal({meals: [$scope.meal]})
 			.then(function() {
 				console.log($scope.meal.description, 'sent to server.');
