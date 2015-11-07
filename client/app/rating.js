@@ -2,13 +2,40 @@
 
 var rating = angular.module('rating', []);
 
-rating.controller('ratingController', ['$scope', function ($scope) {
+rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Meals) {
     $scope.starRating1 = 0;
-    $scope.avgRating=0;
+    Meals.getMeals()
+    .then(function(data) {
+        console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
+        $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
+        $scope.data = data;
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+
+
+
     $scope.click1 = function (param) {
+
         console.log('Click(' + param + ')');
-        $scope.avgRating=param;
+        // Meals.addMeal(param)
+        // .then(function(data){
+        //     console.log(data);
+        // })
+
+        Meals.getMeals()
+        .then(function(data) {
+            console.log('DATA from mongo', data[0].rating, data[0].ratingCount);
+            $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
+            $scope.data = data;
+        })
+        .catch(function(err) {
+            console.log(err);
+        })
+
     };
+
 }]);
 
 rating.directive('starRating', function () {
@@ -23,12 +50,12 @@ rating.directive('starRating', function () {
         },
         restrict: 'EA',
         template:
-            "<div style='display: inline-block; margin: 0px; padding: 0px; cursor:pointer;' ng-repeat='idx in maxRatings track by $index'> \
-                    <img ng-src='{{((hoverValue + _rating) <= $index) && \"http://www.codeproject.com/script/ratings/images/star-empty-lg.png\" || \"http://www.codeproject.com/script/ratings/images/star-fill-lg.png\"}}' \
-                    ng-Click='isolatedClick($index + 1)' \
-                    ng-mouseenter='isolatedMouseHover($index + 1)' \
-                    ng-mouseleave='isolatedMouseLeave($index + 1)'></img> \
-            </div>",
+        "<div style='display: inline-block; margin: 0px; padding: 0px; cursor:pointer;' ng-repeat='idx in maxRatings track by $index'> \
+        <img ng-src='{{((hoverValue + _rating) <= $index) && \"http://www.codeproject.com/script/ratings/images/star-empty-lg.png\" || \"http://www.codeproject.com/script/ratings/images/star-fill-lg.png\"}}' \
+        ng-Click='isolatedClick($index + 1)' \
+        ng-mouseenter='isolatedMouseHover($index + 1)' \
+        ng-mouseleave='isolatedMouseLeave($index + 1)'></img> \
+        </div>",
         compile: function (element, attrs) {
             if (!attrs.maxRating || (Number(attrs.maxRating) <= 0)) {
                 attrs.maxRating = '5';

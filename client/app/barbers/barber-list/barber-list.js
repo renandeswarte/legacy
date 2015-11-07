@@ -23,10 +23,10 @@ angular.module('foodly.barbers', [])
 	var order = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
 	$window.localStorage.setItem('order', order);
 	$scope.count =  Counter;
+	
 	$scope.getMeals = function() {
 		Meals.getMeals()
 			.then(function(data) {
-				console.log('DATA from mongo', data);
 				$scope.data = data;
 			})
 			.catch(function(err) {
@@ -43,8 +43,8 @@ angular.module('foodly.barbers', [])
 
 
 	$scope.addMeal = function() {
-		$scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
-		Meals.addMeal({meals: [$scope.meal], username: Auth.getUsername()})
+		// $scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
+		Meals.addMeal({meals: [$scope.meal]})
 			.then(function() {
 				console.log($scope.meal.description, 'sent to server.');
 				$location.path('/'); //added successfully

@@ -76,28 +76,18 @@ module.exports = app;
 //   stylesCreate(newStyle);
 
 // var barbersCreate = Q.nbind(Barbers.create, Barbers);
-  // var newBarber = {
-  //  name: 'Bob the Barber',
-  //  gender: 'male',
-  //  location: 'San Francisco',
-  //  rating: 4.5,
-  //  bio: 'he\'s the man',
-  //  languages: ['English', 'Swahili'],
-  //  reviews: ['he\s totally the man'],
-  //  styles: ['McSqueeb'],
-  //  portrait: 'https://s3-us-west-1.amazonaws.com/haircut-on-demand/royce.jpg',
-  //  availability: '11-7'
-  // };
-  // var newBarber = {
-  //  name: 'Jia',
-  //  gender: 'female',
-  //  location: 'San Francisco',
-  //  rating: 4,
-  //  bio: "she's great!",
-  //  languages: ['English', 'Mandarin'],
-  //  reviews: ["she is a fantastic stylist"],
-  //  styles: ['Wavy'],
-  //  portrait: 'https://s3-us-west-1.amazonaws.com/haircut-on-demand/jia.jpg',
-  //  availability: '11-7'
-  // };
-  // barbersCreate(newBarber);
+
+//   var newBarber = {
+//    name: 'Jia',
+//    gender: 'female',
+//    location: 'San Francisco',
+//    rating: 12,
+//    ratingCount: 3,
+//    bio: "she's great!",
+//    languages: ['English', 'Mandarin'],
+//    reviews: ["she is a fantastic stylist"],
+//    styles: ['Wavy'],
+//    portrait: 'https://s3-us-west-1.amazonaws.com/haircut-on-demand/jia.jpg',
+//    availability: '11-7'
+//   };
+//   barbersCreate(newBarber);
