@@ -21,8 +21,8 @@ angular.module('foodly.services', [])
   };
 
   return {
-    barberId: barberId,
-    styleId: styleId
+    setBarberId: setBarberId,
+    getBarberId: getBarberId
   };
 })
 
