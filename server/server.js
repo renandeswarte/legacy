@@ -21,10 +21,7 @@ var port = process.env.PORT || 3000;
 //---------------------------------------------------------------------
 
 //set up URI connection to mongolab
-var uristring = process.env.MONGOLAB_URI ||
-process.env.MOGOHQ_URL ||
-'mongodb://' + APIKeys.dbuser + ':' + APIKeys.dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
-// 'mongodb://' + APIKeys.dbuser + ':' + APIKeys.dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
+var uristring = process.env.MONGOLAB_URI || 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
@@ -34,14 +31,14 @@ var options = {
       keepAlive: 1,
       connectTimeoutMS: 30000
     }
-  }, 
+  },
   replset: {
     socketOptions: {
       keepAlive: 1,
       connectTimeoutMS: 30000
     }
   }
-}; 
+};
 
 
 mongoose.connect(mongooseUri, options);
@@ -145,16 +142,28 @@ app.get('/send', function(req, res) {
 //   stylesCreate(newStyle);
 
 // var barbersCreate = Q.nbind(Barbers.create, Barbers);
-//   var newBarber = {
-//    name: 'Bob the Barber',
-//    gender: 'male',
-//    location: 'San Francisco',
-//    rating: 4.5,
-//    bio: 'he\'s the man',
-//    languages: ['English', 'Swahili'],
-//    reviews: ['he\s totally the man'],
-//    styles: ['McSqueeb'],
-//    portrait: 'some URL',
-//    availability: '11-7'
-//   };
-//   barbersCreate(newBarber);
+  // var newBarber = {
+  //  name: 'Bob the Barber',
+  //  gender: 'male',
+  //  location: 'San Francisco',
+  //  rating: 4.5,
+  //  bio: 'he\'s the man',
+  //  languages: ['English', 'Swahili'],
+  //  reviews: ['he\s totally the man'],
+  //  styles: ['McSqueeb'],
+  //  portrait: 'https://s3-us-west-1.amazonaws.com/haircut-on-demand/royce.jpg',
+  //  availability: '11-7'
+  // };
+  // var newBarber = {
+  //  name: 'Jia',
+  //  gender: 'female',
+  //  location: 'San Francisco',
+  //  rating: 4,
+  //  bio: "she's great!",
+  //  languages: ['English', 'Mandarin'],
+  //  reviews: ["she is a fantastic stylist"],
+  //  styles: ['Wavy'],
+  //  portrait: 'https://s3-us-west-1.amazonaws.com/haircut-on-demand/jia.jpg',
+  //  availability: '11-7'
+  // };
+  // barbersCreate(newBarber);
