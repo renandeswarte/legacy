@@ -104,7 +104,7 @@ angular.module('foodly.services', [])
 	var addMeal = function(meal) {
 		return $http({
 			method: 'POST',
-			url: '/api/users/vendors/post/meal',
+			url: '/api/users/customer/post/meals',
 			data: meal
 		});
 	};
