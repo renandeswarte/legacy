@@ -1,7 +1,7 @@
 angular.module('foodly', [
-  'foodly.order',
+  'instacutz.order',
   'foodly.services',
-  'foodly.auth',
+  'instacutz.auth',
   'foodly.barbers',
   'foodly.hairstyles',
   'foodly.homepage',
@@ -11,7 +11,6 @@ angular.module('foodly', [
   'rating',
   'ngRoute'
   ])
-
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -40,7 +39,7 @@ angular.module('foodly', [
       controller: 'hairstyleProfileController'
     })
     .when('/order', {
-      authenticate: true,
+      // authenticate: false,
       templateUrl: 'order/order.html',
       controller: 'OrderController'
     })

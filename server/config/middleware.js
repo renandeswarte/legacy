@@ -7,7 +7,7 @@ var aws = require('aws-sdk');
 module.exports = function(app, express){
 
   var userRouter = express.Router();
-  var braintreeRouter = express.Router();
+  var paymentRouter = express.Router();
   var barbersRouter = express.Router();  
   var stylesRouter = express.Router();  
   var AWSrouter = express.Router();
@@ -19,7 +19,7 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../../client/app'));
 
   app.use('/api/users', userRouter);
-  app.use('/payment', braintreeRouter);
+  app.use('/payment', paymentRouter);
   app.use('/barbers', barbersRouter);
   app.use('/hairstyles', stylesRouter);
   app.use('/sign_s3', AWSrouter);
@@ -29,7 +29,8 @@ module.exports = function(app, express){
   app.use(helpers.errorHandler);
 
   require('../users/userRoutes.js')(userRouter);
-  require('./braintree.js')(braintreeRouter);
+  // require('./braintree.js')(paymentRouter);
+  require('./stripe.js')(paymentRouter);
   require('../barbers/barbersRoutes.js')(barbersRouter);
   require('../styles/stylesRoutes.js')(stylesRouter);
   require('./aws.js')(AWSrouter);
