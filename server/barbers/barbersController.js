@@ -8,7 +8,7 @@ module.exports = {
     var barberFind = Q.nbind(Barber.findOne, Barber);
 
     barberFind({
-      '_id.$oid': req.query.barberId
+      '_id': req.query.barberid
     },'', function(err, results) {
       if (err) {
         res.send('Barber Lookup Error', err);

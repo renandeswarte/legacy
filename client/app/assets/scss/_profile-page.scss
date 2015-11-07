@@ -1,0 +1,59 @@
+.profile-page {
+  .top-block {
+    .info-container{
+      .main-info-block {
+        .portrait-block{
+          .portrait {
+            height: 300px;
+          }
+        }
+        .stats-block {
+          .stats {
+            border: 1px dashed black;
+            height: 300px;
+            .languages {
+              list-style-type: none;
+              padding-left: 0px;
+              li {
+                display: inline-block;
+                padding-right: 10px;
+                padding-left:10px;
+                border-right: 1px solid #CCC;
+                &:first-child {
+                  padding-left: 0px;
+                }
+                &:last-child {
+                  border: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .description-block {
+        .description {
+          height: 200px;
+          padding: 1em;
+          width: 100%;
+        }
+      }
+    }
+    .gallery-container {
+      .gallery {
+        border: 1px dashed black;
+        height: 400px;
+      }
+    }
+  }
+  .profile-list-container {
+    img {
+      margin: 0 1%;
+      max-width: 22%;
+    }
+  }
+}
+
+
+
+
+

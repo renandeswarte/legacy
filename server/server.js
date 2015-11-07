@@ -22,8 +22,8 @@ var dbpassword = process.env.dbpassword || APIKeys.dbpassword;
 
 var uristring = process.env.MONGOLAB_URI ||
 process.env.MOGOHQ_URL ||
-'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
-// 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
+//'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
+'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
