@@ -1,0 +1,80 @@
+header {
+  nav.header-navbar {
+    .navbar-header {
+      height: 50px;
+      .navbar-brand {
+        &.icon {  
+          transition: all 0.3s ease;
+          margin-top: 20px;
+          margin-right: 20px;
+          width: 100px;
+          height: 100px;
+          background-color: #EF6447;
+          text-align: center;
+          .icon-mustache {
+            transition: color 0.3s ease;
+            font-size: 70px;
+            color: #000000;
+          }
+        }
+        &:hover {
+          .icon-mustache {
+            animation-duration: 0.5s;
+            animation-name: mustacheFx;
+            -webkit-animation-duration: 0.5s;
+            -webkit-animation-name: mustacheFx;
+          }
+          @-webkit-keyframes mustacheFx {
+            0% {
+              transform: scale(1);
+            }
+            25% {
+              transform: scale(1.5);
+            }
+            50% {
+              transform: scale(1);
+            }
+            75% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          @keyframes mustacheFx {
+            0% {
+              transform: scale(1);
+            }
+            25% {
+              transform: scale(1.5);
+            }
+            50% {
+              transform: scale(1);
+            }
+            75% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+        }
+      }
+    }
+    &.scrolled {
+      .navbar-brand {
+        &.icon {  
+          padding-top: 0;
+          margin-top:0;
+          width: 100px;
+          height: 50px;
+          background: none;
+          .icon-mustache {
+            color: #FFFFFF;
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+}
