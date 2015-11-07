@@ -16,15 +16,12 @@ var port = process.env.PORT || 3000;
 
 
 //---------------------------------------------------------------------
-// ***** MONGOLABS *****
-var dbuser = 'admin';
-var dbpassword = 'admin';
 
 //set up URI connection to mongolab
 var uristring = process.env.MONGOLAB_URI ||
 process.env.MOGOHQ_URL ||
-'mongodb://' + dbuser + ':' + dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
-// 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
+'mongodb://' + APIKeys.dbuser + ':' + APIKeys.dbpassword + '@ds043714.mongolab.com:43714/foodly';  // previous URI
+// 'mongodb://' + APIKeys.dbuser + ':' + APIKeys.dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
 var mongooseUri = uriUtil.formatMongoose(uristring);
 
