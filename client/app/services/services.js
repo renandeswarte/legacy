@@ -101,6 +101,14 @@ angular.module('foodly.services', [])
 		});
 	};
 
+	var updateRating = function(ratingPair) {
+		return $http({
+			method : 'POST',
+			url : '/api/users/customer/post/ratings',
+			data : ratingPair
+		});
+	}
+
 	var addMeal = function(meal) {
 		return $http({
 			method: 'POST',
@@ -119,7 +127,8 @@ angular.module('foodly.services', [])
 
 	return {
 		getMeals: getMeals,
-		addMeal: addMeal
+		addMeal: addMeal,
+		updateRating : updateRating
 	};
 
 })

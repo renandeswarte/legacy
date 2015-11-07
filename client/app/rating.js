@@ -2,7 +2,7 @@
 
 var rating = angular.module('rating', []);
 
-rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Meals) {
+rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Meals, idTool) {
     $scope.starRating1 = 0;
     Meals.getMeals()
     .then(function(data) {
@@ -16,17 +16,36 @@ rating.controller('ratingController', ['$scope','$http', 'Meals', function ($sco
 
 
 
-    $scope.click1 = function (param) {
+    $scope.click1 = function (param, id) {
 
-        console.log('Click(' + param + ')');
+        // console.log('Inside Click', param, id);
         // Meals.addMeal(param)
         // .then(function(data){
         //     console.log(data);
         // })
 
+        //Assign new Rating to a Variable
+        // $scope.newRating = param;
+        // $scope.barberId = id;
+        $scope.ratingPair = {
+            rating : param,
+            id : id
+        }
+
+        console.log($scope.ratingPair);
+
+        //Call addRating function and pass in newRating and ID
+            //
+        Meals.updateRating($scope.ratingPair)
+        .then(function(data) {
+            console.log('DATA from updateRating', data);
+        }).catch(function(err) {
+            console.log(err);
+        })
+
         Meals.getMeals()
         .then(function(data) {
-            console.log('DATA from mongo', data[0].rating, data[0].ratingCount);
+            console.log('getMeals data from MongoDB for first barber', data[0].rating, data[0].ratingCount);
             $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
             $scope.data = data;
         })
@@ -69,7 +88,7 @@ rating.directive('starRating', function () {
             };
 
             $scope._rating = $scope.rating;
-            
+
             $scope.isolatedClick = function (param) {
                 if ($scope.readOnly == 'true') return;
 
