@@ -7,6 +7,7 @@ var aws = require('aws-sdk');
 module.exports = function(app, express){
 
   var userRouter = express.Router();
+  var braintreeRouter = express.Router();
   //var orderRouter = express.Router();    
 
   app.use(morgan('dev'));
@@ -15,11 +16,13 @@ module.exports = function(app, express){
   app.use(express.static(__dirname + '/../../client/app'));
 
   app.use('/api/users', userRouter);
+  app.use('/payment', braintreeRouter);
   //app.use('/api/users/customer', orderRouter)
 
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
   require('../users/userRoutes.js')(userRouter);
+  require('./braintree.js')(braintreeRouter);
   //require('../orders/orderRoutes.js')(orderRouter);
 };
