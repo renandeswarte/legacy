@@ -1,6 +1,6 @@
 angular.module('foodly.barbers', [])
 
-.controller('barberListController', function($scope, $location, $window, Meals, Order, Auth, Counter) {
+.controller('barberListController', function($scope, $location, $window, Meals, Order, Auth, Counter, idTool) {
 
 
 	$scope.data = []; //meals available for purchase
@@ -23,6 +23,7 @@ angular.module('foodly.barbers', [])
 	var order = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
 	$window.localStorage.setItem('order', order);
 	$scope.count =  Counter;
+	
 	$scope.getMeals = function() {
 		Meals.getMeals()
 			.then(function(data) {
@@ -34,10 +35,16 @@ angular.module('foodly.barbers', [])
 	};
 	$scope.getMeals(); // must be called for initial page load
 
+	$scope.setId = function(id) {
+		console.log('insetid');
+		idTool.setBarberId(id);
+		console.log('getBarberId', idTool.getBarberId());
+	}
+
 
 	$scope.addMeal = function() {
 		$scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
-		Meals.addMeal({meals: [$scope.meal], username: Auth.getUsername()})
+		Meals.addMeal({meals: [$scope.meal]})
 			.then(function() {
 				console.log($scope.meal.description, 'sent to server.');
 				$location.path('/'); //added successfully

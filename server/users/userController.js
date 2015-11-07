@@ -1,4 +1,5 @@
 var User = require('./userModel.js');
+var Barber = require('../barbers/barbersModel.js');
 var Q = require('q');
 var jwt = require('jwt-simple');
 
@@ -87,26 +88,33 @@ exports.checkAuth = function (req, res, next) {
 
 exports.meals = function(req,res,next){
   //getting all meals using aggregation pipeline
-  var aggr = Q.nbind(User.aggregate,User);
+  // var aggr = Q.nbind(Barber.aggregate,Barber);
 
-  aggr({$project:{meals:1}},{$unwind:"$meals"})
-    .then(function(meals){
-      res.json(meals)
-    })
-    .fail(function(err){
-      next(err)
+  // aggr({$project:{name:1}},{$unwind:"$name"})
+  //   .then(function(name){
+  //     res.json(name)
+  //   })
+  //   .fail(function(err){
+  //     next(err)
+  //   });
+  var findBarbers = Q.nbind(Barber.find, Barber);
+  findBarbers()
+    .then(function(barber) {
+      res.json(barber);
+    }).fail(function(err) {
+      next(err);
     });
 };
 
 exports.addMeal = function (req,res,next){
   var update;
-  if (req.body.hasOwnProperty('orders')) { 
+  if (req.body.hasOwnProperty('orders')) {
     var meal = [];
     var username = req.body.username;
     for(var i =0;i<req.body.orders.length;i++){
       title = req.body.orders[i].title,
       price = req.body.orders[0].price,
-      description = req.body.orders[i].description, 
+      description = req.body.orders[i].description,
       ingredients = req.body.orders[i].ingredients
        meal.push({
         title: title,
@@ -115,7 +123,7 @@ exports.addMeal = function (req,res,next){
         ingredients: ingredients
       });
     }
-    field = "orders" 
+    field = "orders"
    } else {
     var url = req.body.meals[0].url
     console.log('Url ' + req.body.meals[0].url);
@@ -128,17 +136,17 @@ exports.addMeal = function (req,res,next){
     ingredients = req.body.meals[0].ingredients,
     field = "meals"
   }
-  
+
   var findOne = Q.nbind(User.findOne,User);
   var findUser = Q.nbind(User.findOne, User);
-  
+
   //check if the username who submitted the request exists
   findUser({username: username})
     .then(function(user){
       if (!user){
         next(new Error('User does not exist'));
       } else {
-        
+
         //for the verified username, finf the ._id, and push in order or meal
         update = Q.nbind(User.findByIdAndUpdate, User);
 
@@ -149,15 +157,15 @@ exports.addMeal = function (req,res,next){
         ingredients: ingredients,
         url: url
       };
-    
+
       //push the meal object into the respective array
       console.log('later user',field,newMealitem)
       if (field==="meals"){
               update(user._id,
-          {$push: {"meals" : newMealitem}}) 
+          {$push: {"meals" : newMealitem}})
             } else {
                 update(user._id,
-          {orders : meal}) 
+          {orders : meal})
             }
       }
     })
@@ -168,5 +176,5 @@ exports.addMeal = function (req,res,next){
     })
     .fail(function (error) {
       next(error);
-    });  
+    });
 };

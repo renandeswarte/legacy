@@ -8,6 +8,7 @@ var BarbersSchema = new mongoose.Schema({
   email: String,
   location: String,
   rating: Number,
+  ratingCount: Number,
   bio: String,
   languages: Array,
   reviews: Array,
