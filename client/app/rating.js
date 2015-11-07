@@ -15,7 +15,7 @@ rating.controller('ratingController', ['$scope','$http', 'Meals', function ($sco
     //     console.log(err);
     // });
     $scope.Math = window.Math;
-   
+
     $scope.click1 = function (param, id) {
 
         $scope.ratingPair = {
