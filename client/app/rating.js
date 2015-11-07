@@ -6,7 +6,7 @@ rating.controller('ratingController', ['$scope','$http', 'Meals', function ($sco
     $scope.starRating1 = 0;
     Meals.getMeals()
     .then(function(data) {
-        console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
+        // console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
         $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
         $scope.data = data;
     })
@@ -32,7 +32,7 @@ rating.controller('ratingController', ['$scope','$http', 'Meals', function ($sco
             id : id
         }
 
-        console.log($scope.ratingPair);
+        // console.log($scope.ratingPair);
 
         //Call addRating function and pass in newRating and ID
             //
@@ -45,7 +45,7 @@ rating.controller('ratingController', ['$scope','$http', 'Meals', function ($sco
 
         Meals.getMeals()
         .then(function(data) {
-            console.log('getMeals data from MongoDB for first barber', data[0].rating, data[0].ratingCount);
+            // console.log('getMeals data from MongoDB for first barber', data[0].rating, data[0].ratingCount);
             $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
             $scope.data = data;
         })

@@ -114,7 +114,7 @@ exports.addRating = function(req, res, next) {
 
   findBarber({
     '_id': req.body.id
-  }, 'rating', 'ratingCount', function(err, result) {
+  }, 'rating ratingCount', function(err, result) {
     if (err) {
       res.send('barber Rating update error: ', err);
     } else {
