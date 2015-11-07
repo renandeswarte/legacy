@@ -13,8 +13,17 @@
           </div>
           <div class="ratings">
            <div class="container" ng-controller="ratingController">
+<<<<<<< HEAD
             <div star-rating rating="starRating1=meal.avgRating" read-only="true" max-rating="5">
             </div>
+=======
+            <div star-rating rating="starRating1" read-only="false" max-rating="5" click="click1(param, meal._id)"></div>
+            <div> <span class="label label-primary">Rate This Barber</span>
+              <div> <span> Avg Rating: {{meal.avgRating}}
+
+
+              </span></div>
+>>>>>>> fix:round avgRating of each barber to nearest half before storing in the db
             </div>
           </div>
         </div>

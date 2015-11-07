@@ -119,7 +119,9 @@ exports.addRating = function(req, res, next) {
     } else {
       result.rating += req.body.rating;
       result.ratingCount++;
-      result.avgRating = result.rating/result.ratingCount;
+      //round off to nearest half and store as avgRating
+      var avgRating = result.rating/result.ratingCount
+      result.avgRating = Math.round(avgRating*2)/2;
       result.save();
       res.send(result);
     }
