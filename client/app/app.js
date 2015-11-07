@@ -43,11 +43,11 @@ angular.module('foodly', [
       templateUrl: 'order/order.html',
       controller: 'OrderController'
     })
-      // .when('/addmeal', {
-      //   authenticate: true,
-      //   templateUrl: 'addMeal/addMeal.html',
-      //   controller: 'MealController'
-      // })
+      .when('/addmeal', {
+        authenticate: true,
+        templateUrl: 'addMeal/addMeal.html',
+        controller: 'MealController'
+      })
     .when('/', {
       templateUrl: 'homepage/homepage.html',
       controller: 'HomepageController'
