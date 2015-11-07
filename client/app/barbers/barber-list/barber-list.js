@@ -26,6 +26,7 @@ angular.module('foodly.barbers', [])
 	$scope.getMeals = function() {
 		Meals.getMeals()
 			.then(function(data) {
+				console.log('DATA from mongo', data);
 				$scope.data = data;
 			})
 			.catch(function(err) {
