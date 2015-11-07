@@ -4,54 +4,46 @@ var rating = angular.module('rating', []);
 
 rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Meals, idTool) {
     $scope.starRating1 = 0;
-    Meals.getMeals()
-    .then(function(data) {
-        // console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
-        $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
-        $scope.data = data;
-    })
-    .catch(function(err) {
-        console.log(err);
-    });
-
-
-
+    $scope.starRating2 = 1;
+    // Meals.getMeals()
+    // .then(function(data) {
+    //     // console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
+    //     $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
+    //     $scope.data = data;
+    // })
+    // .catch(function(err) {
+    //     console.log(err);
+    // });
+    $scope.Math = window.Math;
+   
     $scope.click1 = function (param, id) {
 
-        // console.log('Inside Click', param, id);
-        // Meals.addMeal(param)
-        // .then(function(data){
-        //     console.log(data);
-        // })
-
-        //Assign new Rating to a Variable
-        // $scope.newRating = param;
-        // $scope.barberId = id;
         $scope.ratingPair = {
             rating : param,
             id : id
         }
 
-        // console.log($scope.ratingPair);
-
-        //Call addRating function and pass in newRating and ID
-            //
         Meals.updateRating($scope.ratingPair)
         .then(function(data) {
             console.log('DATA from updateRating', data);
+            console.log("pair:",$scope.ratingPair.id);
         }).catch(function(err) {
             console.log(err);
         })
 
-        Meals.getMeals()
-        .then(function(data) {
-            // console.log('getMeals data from MongoDB for first barber', data[0].rating, data[0].ratingCount);
-            $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
-            $scope.data = data;
-        })
-        .catch(function(err) {
-            console.log(err);
-        })
+
+        // Meals.getMeals()
+        // .then(function(data) {
+        //    for(i=0;i<data.length;i++){
+        //     console.log((data[i].rating)/(data[i].ratingCount));
+        //    };
+
+        //     $scope.avgRating=[];
+        //     $scope.data = data;
+        // })
+        // .catch(function(err) {
+        //     console.log(err);
+        // })
 
     };
 

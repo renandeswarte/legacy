@@ -11,12 +11,12 @@
             <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal.name}}</a></h4>
             <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
             <p>{{meal.meals.description}}</p>
+
           </div>
           <div class="ratings">
            <div class="container" ng-controller="ratingController">
-            <div star-rating rating="starRating1" read-only="false" max-rating="5" click="click1(param, meal._id)"></div>
-            <div> <span class="label label-primary">Rate This Barber</span>
-              <div> <span> Avg Rating: {{avgRating}}/5</span></div>
+            <div star-rating rating="starRating1=meal.avgRating" read-only="true" max-rating="5">
+            </div>
             </div>
           </div>
         </div>
