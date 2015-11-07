@@ -19,7 +19,8 @@ var port = process.env.PORT || 3000;
 
 
 //---------------------------------------------------------------------
-
+var dbuser = 'admin';
+var dbpassword = 'admin';
 //set up URI connection to mongolab
 var uristring = process.env.MONGOLAB_URI || 'mongodb://' + dbuser + ':' + dbpassword + '@ds049744.mongolab.com:49744/legacy';  // our URI
 
