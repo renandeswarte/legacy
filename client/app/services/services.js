@@ -89,6 +89,22 @@ angular.module('foodly.services', [])
 
 })
 
+.factory('Barbers', function($http) {
+	var getBarbers = function(){
+		return $http({
+			method: 'GET',
+			url: '/barbers/get/barbers'
+		})
+		.then(function(resp) {
+			return resp.data;
+		});
+	};
+
+	return {
+		getBarbers : getBarbers
+	}
+})
+
 .factory('Styles', function($http) {
 	var getStyles = function() {
 		return $http({
@@ -165,10 +181,6 @@ angular.module('foodly.services', [])
 	    text: "You have received a new order for  order.orders[0].description +  for a price of + order.orders[0].price + to be delivered to + user.address"
 	  }
 	};
-
-
-
-
 
 	var submitOrder = function(mealToOrder) {
 		console.log("Meal to order: ", mealToOrder)

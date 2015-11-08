@@ -16,6 +16,16 @@ module.exports = {
         res.send(results);
       }
     });
-  }
+  },
 
+  barbersFetch: function(req, res, next) {
+    var findBarbers = Q.nbind(Barber.find, Barber);
+    findBarbers()
+      .then(function(barber) {
+        res.json(barber);
+      })
+      .fail(function(err) {
+        next(err);
+      });
+    }
 };
