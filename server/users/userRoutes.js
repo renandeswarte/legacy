@@ -7,7 +7,5 @@ module.exports = function (app) {
   app.get('/customer/get/signedin', userController.checkAuth);
   app.post('/customer/post/orders', userController.addMeal);
   app.post('/vendors/post/meal', userController.addMeal);
-
-  //handle post request for ratings
   app.post('/customer/post/ratings', userController.addRating);
 };

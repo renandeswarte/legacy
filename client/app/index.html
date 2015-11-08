@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Sexify</title>
+    <title>Instacutz</title>
     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href='assets/images/favicon.ico'/>
 
@@ -37,8 +37,9 @@
                   <a class="navbar-brand icon" href="#/">
                     <i class="icon-mustache"></i>
                   </a>
+                  <a class="navbar-brand" href="#/about">About Us</a>
                   <a class="navbar-brand" href="#/meals">Barbers</a>
-                          <a class ='navbar-brand' href="#/addmeal">Add Style</a>
+<!--                           <a class ='navbar-brand' href="#/addmeal">Add Style</a> -->
 
               </div>
                 <form class="navbar-form navbar-left" role="search">
@@ -55,7 +56,7 @@
 
                           </li>
                           <li class='nav navbar-nav' >
-                              <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
+                              <a href='javascript:void(0)'>Welcome, {{ getUsername() }}!</a>
                           </li>
                           <li>
                           <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
@@ -72,6 +73,7 @@
     <div ng-view class='main-container container'></div>
 
 
+   <!--  TODO : Allow User to Leave Review or Rating In Modal -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
