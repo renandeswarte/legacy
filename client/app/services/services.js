@@ -122,6 +122,22 @@ angular.module('foodly.services', [])
 
 })
 
+.factory('Ratings', function($http) {
+
+	var updateRating = function(ratingPair) {
+		return $http({
+			method : 'POST',
+			url : '/api/users/customer/post/ratings',
+			data : ratingPair
+		});
+	};
+
+	return {
+		updateRating : updateRating
+	};
+
+})
+
 .factory('Meals', function($http) {
 
 	var getMeals = function() {
@@ -133,14 +149,6 @@ angular.module('foodly.services', [])
 			return resp.data;
 		});
 	};
-
-	var updateRating = function(ratingPair) {
-		return $http({
-			method : 'POST',
-			url : '/api/users/customer/post/ratings',
-			data : ratingPair
-		});
-	}
 
 	var addMeal = function(meal) {
 		return $http({
@@ -160,8 +168,7 @@ angular.module('foodly.services', [])
 
 	return {
 		getMeals: getMeals,
-		addMeal: addMeal,
-		updateRating : updateRating
+		addMeal: addMeal
 	};
 
 })

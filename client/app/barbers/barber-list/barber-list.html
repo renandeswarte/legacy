@@ -15,6 +15,7 @@
           </div>
           <div class="ratings">
            <div class="container" ng-controller="ratingController">
+            Rating : {{meal.avgRating}}/5
             <div star-rating rating="starRating1=meal.avgRating" read-only="true" max-rating="5">
             </div>
             </div>
