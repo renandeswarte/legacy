@@ -1,17 +1,32 @@
 .profile-page {
-  .top-block {
+  .main-block {
     .info-container{
       .main-info-block {
         .portrait-block{
           .portrait {
             height: 300px;
             background-size: cover;
+            background-position: 50% 50%;
           }
         }
         .stats-block {
           .stats {
-            border: 1px dashed black;
             height: 300px;
+            .sub-title{
+              font-size: 14px;
+              font-weight: bold;
+            }
+            .name {
+              text-transform: capitalize;
+              font-size: 22px;
+              font-weight: bold;
+            }
+            .bio {
+              font-size: 14px;
+            }
+            .location {
+              font-size: 14px;
+            }
             .languages {
               list-style-type: none;
               padding-left: 0px;
@@ -28,30 +43,95 @@
                 }
               }
             }
+            .availability {
+              font-size: 14
+            }
           }
         }
       }
-      .description-block {
-        .description {
-          height: 200px;
-          padding: 1em;
-          width: 100%;
+    }
+  }
+
+  // Style list
+  .list-block {
+     .profile-list-container {
+      h2 {
+        font-size: 22px;
+        padding-left: 15px;
+      }
+      ul {
+        overflow: hidden;
+        list-style-type: none;
+        padding-left: 0px;
+        li {
+          display: inline-block;
+          .style-block {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            background-size: cover;
+            &:after {
+              content:"";
+              width: 100%;
+              display: block;
+              margin-top: 100%;
+            }
+          }
+          &.selected{
+            border: 2px solid #EF6447;
+          }
         }
       }
     }
-    .gallery-container {
-      .gallery {
-        border: 1px dashed black;
-        height: 400px;
+    .style-require-error {
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 0px;
+    }
+  }
+
+  // Form Submit
+  .order-block {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    .order-inner-block {
+      .button-container {
+        text-align: center;
+        button {
+          background-color: #EF6447;
+          color: #FFF;
+          width: 50%;
+          text-transform: capitalize;
+        }
       }
     }
   }
-  .profile-list-container {
-    img {
-      margin: 0 1%;
-      max-width: 22%;
+
+  // Reviews
+  .review-block {
+    h2 {
+      font-size: 22px;
+      padding-left: 15px;
+      padding-left: 0px;
+      margin-top: 0px;
+    }
+    .reviews {
+      .inner-block-reviews {
+        padding-top: 15px;
+        border-top: 1px dotted #000;
+        ul {
+          list-style-type: none;
+          padding-left: 0px;
+          li {
+            font-size: 14px;
+            padding-bottom: 10px;
+          }
+        }
+      }
     }
   }
+
 }
 
 
