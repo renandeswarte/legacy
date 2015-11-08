@@ -2,7 +2,7 @@
 
 var rating = angular.module('rating', []);
 
-rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Ratings, idTool) {
+rating.controller('ratingController', ['$scope','$http', 'Ratings', 'idTool', function ($scope, $http, Ratings, idTool) {
     $scope.Math = window.Math;
 
     $scope.click1 = function (param, id) {
