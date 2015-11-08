@@ -9,6 +9,7 @@ module.exports = function(app, express){
   var userRouter = express.Router();
   var braintreeRouter = express.Router();
   var barbersRouter = express.Router();  
+  var stylesRouter = express.Router();  
   var AWSrouter = express.Router();
   var nodemailerRouter = express.Router(); 
 
@@ -20,6 +21,7 @@ module.exports = function(app, express){
   app.use('/api/users', userRouter);
   app.use('/payment', braintreeRouter);
   app.use('/barbers', barbersRouter);
+  app.use('/hairstyles', stylesRouter);
   app.use('/sign_s3', AWSrouter);
   app.use('/send', nodemailerRouter);
 
@@ -29,6 +31,7 @@ module.exports = function(app, express){
   require('../users/userRoutes.js')(userRouter);
   require('./braintree.js')(braintreeRouter);
   require('../barbers/barbersRoutes.js')(barbersRouter);
+  require('../styles/stylesRoutes.js')(stylesRouter);
   require('./aws.js')(AWSrouter);
   require('./nodemailer.js')(nodemailerRouter);
 };

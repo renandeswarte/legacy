@@ -1,11 +1,12 @@
-var User = require('./stylesModel.js');
+var Style = require('./stylesModel.js');
 var Q = require('q');
-var jwt = require('jwt-simple');
 
-module.exports = {
-
-  /*
-  Add methods here
-  */
-
+exports.styles = function(req,res,next){
+  var findStyles = Q.nbind(Style.find, Style);
+  findStyles()
+  .then(function(style) {
+    res.json(style);
+  }).fail(function(err) {
+    next(err);
+  });
 };
