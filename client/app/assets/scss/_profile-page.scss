@@ -76,6 +76,16 @@
               display: block;
               margin-top: 100%;
             }
+            span {
+              position: relative;
+              top: 20px;
+              background-color: rgba(0,0,0,0.5);
+              color: white;
+              font-weight: bold;
+              padding: 5px 10px;
+              border-radius: 5px;
+              border: 1px solid rgba(255, 255, 255, 0.5);
+            }
           }
           &.selected{
             border: 2px solid #EF6447;
