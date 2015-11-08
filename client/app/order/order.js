@@ -1,5 +1,6 @@
 angular.module('instacutz.order', [
-  'angularPayments'
+  'angularPayments',
+  'instacutz.auth'
   ])
 
 // .config(['$window', function($window) {

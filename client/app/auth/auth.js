@@ -28,6 +28,7 @@ angular.module('instacutz.auth', [])
   };
 
   $scope.signin = function() {
+    console.log('signin is called');
     Auth.signin($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.semicolon', token);

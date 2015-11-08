@@ -40,6 +40,7 @@ angular.module('foodly.services', [])
   };
 
   var signin = function(user) {
+    console.log('in yet another signin');
     return $http({
         method: 'POST',
         url: '/api/users/customer/post/signin',

@@ -36,6 +36,67 @@
                 </div>
             </div>
         </div>
+
+        <div ng-controller="AuthController">
+          <div id="signin">
+            <h1>Please sign in:</h1>
+            <form name="signinForm" ng-submit="signin()">
+              <input type="text" ng-model="user.username">
+              <input type="password" ng-model="user.password">
+              <button>signin</button>
+            </form>
+            <p style="color:red" ng-show="failedLogin">Wrong username or password</p>
+          </div>
+
+          <div class="signup">
+          <h1>Or sign up:</h1>
+          </div>
+
+          <!-- email input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="email" name="email" type="text" placeholder="name@example.com" class="input-xlarge">
+              </div>
+          </div>
+          
+          <!-- address-line1 input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="address-line1" name="address-line1" type="text" placeholder="address line 1" class="input-xlarge" >
+              </div>
+          </div>
+          <!-- address-line2 input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="address-line2" name="address-line2" type="text" placeholder="address line 2" class="input-xlarge">
+              </div>
+          </div>
+          <!-- city input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="city" name="city" type="text" placeholder="city" class="input-xlarge" >
+                  <p class="help-block"></p>
+              </div>
+          </div>
+          <!-- region input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="region" name="region" type="text" placeholder="state / province / region" class="input-xlarge" >
+                  <p class="help-block"></p>
+              </div>
+          </div>
+          <!-- postal-code input-->
+          <div class="control-group">
+              <div class="controls">
+                  <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code" class="input-xlarge" >
+                  <p class="help-block"></p>
+              </div>
+          </div>
+        </div>
+
+
+
+
         <!-- original Foodly checkout -->
         <!-- <form id="checkout" ng-click="submitOrderOnce()">
                 <div id="dropin-container"></div>
@@ -46,6 +107,7 @@
         <script>
         Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
         </script>
+        <h1>Payment info:</h1>
         <form stripe-form="stripeCallback">
             <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
             <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
