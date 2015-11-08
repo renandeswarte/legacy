@@ -26,6 +26,55 @@ angular.module('foodly.services', [])
   };
 })
 
+.factory('Barbers', function($http) {
+  var getBarbers = function(){
+    return $http({
+      method: 'GET',
+      url: '/barbers/get/barbers'
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  return {
+    getBarbers : getBarbers
+  }
+})
+
+.factory('Styles', function($http) {
+  var getStyles = function() {
+    return $http({
+      method: 'GET',
+      url: '/hairstyles/get/styles'
+    })
+    .then(function(resp) {
+      return resp.data;
+    });
+  };
+
+  return {
+    getStyles: getStyles
+  }
+
+})
+
+.factory('Ratings', function($http) {
+
+  var updateRating = function(ratingPair) {
+    return $http({
+      method : 'POST',
+      url : '/api/users/customer/post/ratings',
+      data : ratingPair
+    });
+  };
+
+  return {
+    updateRating : updateRating
+  };
+
+})
+
 .factory('Auth', function($http, $location, $window) {
   var loginorout = "Sign in";
   var signup = function(user) {
@@ -50,58 +99,6 @@ angular.module('foodly.services', [])
         return resp.data.token;
       });
   };
-
-
-.factory('Barbers', function($http) {
-	var getBarbers = function(){
-		return $http({
-			method: 'GET',
-			url: '/barbers/get/barbers'
-		})
-		.then(function(resp) {
-			return resp.data;
-		});
-	};
-
-	return {
-		getBarbers : getBarbers
-	}
-})
-
-.factory('Styles', function($http) {
-	var getStyles = function() {
-		return $http({
-			method: 'GET',
-			url: '/hairstyles/get/styles'
-		})
-		.then(function(resp) {
-			return resp.data;
-		});
-	};
-
-	return {
-		getStyles: getStyles
-	}
-
-})
-
-.factory('Ratings', function($http) {
-
-	var updateRating = function(ratingPair) {
-		return $http({
-			method : 'POST',
-			url : '/api/users/customer/post/ratings',
-			data : ratingPair
-		});
-	};
-
-	return {
-		updateRating : updateRating
-	};
-
-})
-
-.factory('Meals', function($http) {
 
   var signout = function() {
     $window.localStorage.removeItem('com.semicolon');
@@ -171,6 +168,7 @@ angular.module('foodly.services', [])
 			url: '/api/users/customer/post/orders',
 			data: mealToOrder
 		});
+  };
 
   var addOrder = function(meal) {
     return $http({
