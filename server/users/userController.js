@@ -97,7 +97,6 @@ exports.meals = function(req,res,next){
   //   .fail(function(err){
   //     next(err)
   //   });
-
 var findBarbers = Q.nbind(Barber.find, Barber);
 findBarbers()
 .then(function(barber) {
@@ -114,12 +113,15 @@ exports.addRating = function(req, res, next) {
 
   findBarber({
     '_id': req.body.id
-  }, 'rating ratingCount', function(err, result) {
+  }, 'rating ratingCount avgRating', function(err, result) {
     if (err) {
       res.send('barber Rating update error: ', err);
     } else {
       result.rating += req.body.rating;
       result.ratingCount++;
+      //round off to nearest half and store as avgRating
+      var avgRating = result.rating/result.ratingCount
+      result.avgRating = Math.round(avgRating*2)/2;
       result.save();
       res.send(result);
     }

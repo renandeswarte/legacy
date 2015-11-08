@@ -7,6 +7,7 @@ angular.module('foodly', [
   'foodly.homepage',
   'foodly.barberProfile',
   'foodly.hairstyleProfile',
+  'foodly.about',
   'rating',
   'ngRoute'
   ])
@@ -51,6 +52,10 @@ angular.module('foodly', [
     .when('/', {
       templateUrl: 'homepage/homepage.html',
       controller: 'HomepageController'
+    })
+    .when('/about', {
+      templateUrl: 'about-us/about.html',
+      controller: 'aboutController'
     })
     .otherwise({
       redirectTo: '/'
