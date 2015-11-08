@@ -1,7 +1,7 @@
 angular.module('foodly', [
-  'foodly.order',
+  'instacutz.order',
   'foodly.services',
-  'foodly.auth',
+  'instacutz.auth',
   'foodly.barbers',
   'foodly.hairstyles',
   'foodly.homepage',
@@ -11,7 +11,6 @@ angular.module('foodly', [
   'rating',
   'ngRoute'
   ])
-
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -40,7 +39,7 @@ angular.module('foodly', [
       controller: 'hairstyleProfileController'
     })
     .when('/order', {
-      authenticate: true,
+      // authenticate: false,
       templateUrl: 'order/order.html',
       controller: 'OrderController'
     })
@@ -79,17 +78,17 @@ angular.module('foodly', [
 .run(function ($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if(next.$$route && next.$$route.templateUrl === "meals/meals.html"){
+    if (next.$$route && next.$$route.templateUrl === "meals/meals.html") {
       $rootScope.SearchBar = true;
-    }else{
+    } else {
        $rootScope.SearchBar = false;
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }
-    if(Auth.isAuth()){
-      Auth.loginorout="Logout"
-    }else{
+    if (Auth.isAuth()) {
+      Auth.loginorout = "Logout";
+    } else {
        Auth.loginorout = "Sign in";
     }
   });

@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Instacutz</title>
+    <title>InstaCutz</title>
+
     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
     <link rel="shortcut icon" href='assets/images/favicon.ico'/>
 
@@ -19,6 +20,13 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/underscore-min.js"></script>
+    <!-- use with vanilla Stripe Checkout -->
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <!-- use with custom Stripe integration -->
+    <script src="https://js.stripe.com/v2/"></script>
+    <script>
+      Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
+    </script>
 
 </head>
 
@@ -99,6 +107,8 @@
     <footer>
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-payments/lib/angular-payments.min.js"></script>
+        <!-- <script src="bower_components/braintree-web/dist/braintree.js"></script> -->
         <script src="assets/js/app.extra.js"></script>
         <script src="dist/js/app.concat.js"></script>
     </footer>
