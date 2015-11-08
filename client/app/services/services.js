@@ -205,12 +205,19 @@ angular.module('foodly.services', [])
     }
   };
 
-  var getToken = function() {
-    return $http({
-      method: 'GET',
-      url: '/payment/client_token'
+  var stripeTokenSubmit = function(token) {
+    var data = {
+      stripeToken: token
+    };
+    return new Promise(function(resolve, reject) {
+      resolve($http({
+        method: 'POST',
+        url: '/payment/charge',
+        data: data
+      }));
     });
   };
+
 
   var submitOrder = function(mealToOrder) {
     console.log("Meal to order: ", mealToOrder)
@@ -229,7 +236,8 @@ angular.module('foodly.services', [])
   return {
     cartOrder: cartOrder,
     submitOrder: submitOrder,
-    getMealOrder: getMealOrder
+    getMealOrder: getMealOrder,
+    stripeTokenSubmit: stripeTokenSubmit
   };
 
 })

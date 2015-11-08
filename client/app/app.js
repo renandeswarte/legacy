@@ -78,17 +78,17 @@ angular.module('foodly', [
 .run(function ($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if(next.$$route && next.$$route.templateUrl === "meals/meals.html"){
+    if (next.$$route && next.$$route.templateUrl === "meals/meals.html") {
       $rootScope.SearchBar = true;
-    }else{
+    } else {
        $rootScope.SearchBar = false;
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
     }
-    if(Auth.isAuth()){
-      Auth.loginorout="Logout"
-    }else{
+    if (Auth.isAuth()) {
+      Auth.loginorout = "Logout";
+    } else {
        Auth.loginorout = "Sign in";
     }
   });

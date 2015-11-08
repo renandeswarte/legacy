@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/todo",
   "dependencies": {
+    "angular": "^1.4.7",
     "angular-route": "^1.4.7",
+    "angular-stripe": "^4.2.8",
     "aws-sdk": "^2.2.12",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",

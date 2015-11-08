@@ -1,0 +1,269 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'angular-q-constructor' ]
+2 info using npm@2.14.4
+3 info using node@v4.1.2
+4 verbose install initial load of /Users/ryanjames/Dropbox/code/github/sprints/legacy/package.json
+5 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular/package.json
+6 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-route/package.json
+7 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-stripe/package.json
+8 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/aws-sdk/package.json
+9 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/bcrypt-nodejs/package.json
+10 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/body-parser/package.json
+11 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/braintree/package.json
+12 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/braintree-web/package.json
+13 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/express/package.json
+14 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt/package.json
+15 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-concat/package.json
+16 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-jshint/package.json
+17 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-sass/package.json
+18 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-uglify/package.json
+19 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-watch/package.json
+20 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-sass/package.json
+21 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-shell/package.json
+22 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/http/package.json
+23 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/jwt-simple/package.json
+24 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongodb/package.json
+25 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongodb-uri/package.json
+26 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongoose/package.json
+27 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/morgan/package.json
+28 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/nodemailer/package.json
+29 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/nodemon/package.json
+30 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/q/package.json
+31 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/querystring/package.json
+32 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/stripe/package.json
+33 verbose installManyTop reading scoped package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/twilio/package.json
+34 info package.json braintree@1.30.0 No license field.
+35 info package.json grunt@0.4.5 No license field.
+36 info package.json grunt-contrib-jshint@0.9.2 No license field.
+37 info package.json grunt-contrib-concat@0.3.0 No license field.
+38 info package.json grunt-contrib-sass@0.9.2 No license field.
+39 info package.json grunt-contrib-watch@0.6.1 No license field.
+40 info package.json grunt-contrib-uglify@0.4.1 No license field.
+41 info package.json http@0.0.0 http is also the name of a node core module.
+42 info package.json http@0.0.0 No description
+43 info package.json http@0.0.0 No repository field.
+44 info package.json http@0.0.0 No README data
+45 info package.json q@1.4.1 license should be a valid SPDX license expression
+46 info package.json bcrypt-nodejs@0.0.3 No license field.
+47 info package.json nodemailer@0.7.1 No license field.
+48 info package.json querystring@0.2.0 querystring is also the name of a node core module.
+49 info package.json querystring@0.2.0 No license field.
+50 verbose readDependencies loading dependencies from /Users/ryanjames/Dropbox/code/github/sprints/legacy/package.json
+51 silly cache add args [ 'angular-q-constructor', null ]
+52 verbose cache add spec angular-q-constructor
+53 silly cache add parsed spec Result {
+53 silly cache add   raw: 'angular-q-constructor',
+53 silly cache add   scope: null,
+53 silly cache add   name: 'angular-q-constructor',
+53 silly cache add   rawSpec: '',
+53 silly cache add   spec: '*',
+53 silly cache add   type: 'range' }
+54 silly addNamed angular-q-constructor@*
+55 verbose addNamed "*" is a valid semver range for angular-q-constructor
+56 silly addNameRange { name: 'angular-q-constructor', range: '*', hasData: false }
+57 silly mapToRegistry name angular-q-constructor
+58 silly mapToRegistry using default registry
+59 silly mapToRegistry registry https://registry.npmjs.org/
+60 silly mapToRegistry uri https://registry.npmjs.org/angular-q-constructor
+61 verbose addNameRange registry:https://registry.npmjs.org/angular-q-constructor not in flight; fetching
+62 verbose request uri https://registry.npmjs.org/angular-q-constructor
+63 verbose request no auth needed
+64 info attempt registry request try #1 at 2:32:51 PM
+65 verbose request id b521a1bf9e344b17
+66 http request GET https://registry.npmjs.org/angular-q-constructor
+67 http 200 https://registry.npmjs.org/angular-q-constructor
+68 silly get cb [ 200,
+68 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+68 silly get     etag: '"4R0K8O70WL67M3ABK6D65LYGV"',
+68 silly get     'content-type': 'application/json',
+68 silly get     'cache-control': 'max-age=60',
+68 silly get     'content-length': '3624',
+68 silly get     'accept-ranges': 'bytes',
+68 silly get     date: 'Sat, 07 Nov 2015 22:32:51 GMT',
+68 silly get     via: '1.1 varnish',
+68 silly get     age: '0',
+68 silly get     connection: 'keep-alive',
+68 silly get     'x-served-by': 'cache-lax1432-LAX',
+68 silly get     'x-cache': 'MISS',
+68 silly get     'x-cache-hits': '0',
+68 silly get     'x-timer': 'S1446935571.638489,VS0,VE59',
+68 silly get     vary: 'Accept' } ]
+69 verbose get saving angular-q-constructor to /Users/ryanjames/.npm/registry.npmjs.org/angular-q-constructor/.cache.json
+70 silly addNameRange number 2 { name: 'angular-q-constructor', range: '*', hasData: true }
+71 silly addNameRange versions [ 'angular-q-constructor', [ '1.0.0' ] ]
+72 silly addNamed angular-q-constructor@1.0.0
+73 verbose addNamed "1.0.0" is a plain semver version for angular-q-constructor
+74 silly mapToRegistry name angular-q-constructor
+75 silly mapToRegistry using default registry
+76 silly mapToRegistry registry https://registry.npmjs.org/
+77 silly mapToRegistry uri https://registry.npmjs.org/angular-q-constructor
+78 verbose addRemoteTarball https://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz not in flight; adding
+79 verbose addRemoteTarball [ 'https://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz',
+79 verbose addRemoteTarball   'e74c39c5c4d533735252f6e9ab4e2e8e26b1d3eb' ]
+80 info retry fetch attempt 1 at 2:32:51 PM
+81 info attempt registry request try #1 at 2:32:51 PM
+82 http fetch GET https://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz
+83 http fetch 200 https://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz
+84 silly fetchAndShaCheck shasum e74c39c5c4d533735252f6e9ab4e2e8e26b1d3eb
+85 verbose addTmpTarball /var/folders/_7/f92_lwsj0_d6hw4vl4dp5x100000gn/T/npm-24085-844b2a0f/registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz not in flight; adding
+86 verbose addTmpTarball already have metadata; skipping unpack for angular-q-constructor@1.0.0
+87 silly cache afterAdd angular-q-constructor@1.0.0
+88 verbose afterAdd /Users/ryanjames/.npm/angular-q-constructor/1.0.0/package/package.json not in flight; writing
+89 verbose afterAdd /Users/ryanjames/.npm/angular-q-constructor/1.0.0/package/package.json written
+90 silly install resolved [ { name: 'angular-q-constructor',
+90 silly install resolved     version: '1.0.0',
+90 silly install resolved     description: 'Add constructor support to $q in Angular <1.3',
+90 silly install resolved     main: './src',
+90 silly install resolved     scripts: { test: 'karma start --single-run' },
+90 silly install resolved     repository:
+90 silly install resolved      { type: 'git',
+90 silly install resolved        url: 'https://github.com/bendrucker/angular-q-constructor.git' },
+90 silly install resolved     keywords: [ 'angular', 'q', 'promise' ],
+90 silly install resolved     author:
+90 silly install resolved      { name: 'Ben Drucker',
+90 silly install resolved        email: 'bvdrucker@gmail.com',
+90 silly install resolved        url: 'http://www.bendrucker.me/' },
+90 silly install resolved     license: 'MIT',
+90 silly install resolved     bugs: { url: 'https://github.com/bendrucker/angular-q-constructor/issues' },
+90 silly install resolved     homepage: 'https://github.com/bendrucker/angular-q-constructor',
+90 silly install resolved     devDependencies:
+90 silly install resolved      { angular: '~1.2.28',
+90 silly install resolved        'angular-mocks': '~1.2.28',
+90 silly install resolved        babelify: '~5.0.4',
+90 silly install resolved        browserify: '~9.0.3',
+90 silly install resolved        'browserify-shim': '~3.8.3',
+90 silly install resolved        chai: '~2.1.2',
+90 silly install resolved        karma: '~0.12.31',
+90 silly install resolved        'karma-browserify': '~4.0.0',
+90 silly install resolved        'karma-cli': '0.0.4',
+90 silly install resolved        'karma-mocha': '~0.1.10',
+90 silly install resolved        'karma-phantomjs-launcher': '~0.1.4',
+90 silly install resolved        mocha: '~2.2.1' },
+90 silly install resolved     peerDependencies: { angular: '>=1 <1.3' },
+90 silly install resolved     browserify: { transform: [Object] },
+90 silly install resolved     'browserify-shim': { angular: 'global:angular' },
+90 silly install resolved     gitHead: '134602fab0cde754aa8b51dc1e9fe6ef91696db6',
+90 silly install resolved     _id: 'angular-q-constructor@1.0.0',
+90 silly install resolved     _shasum: 'e74c39c5c4d533735252f6e9ab4e2e8e26b1d3eb',
+90 silly install resolved     _from: 'angular-q-constructor@*',
+90 silly install resolved     _npmVersion: '2.7.1',
+90 silly install resolved     _nodeVersion: '1.6.2',
+90 silly install resolved     _npmUser: { name: 'bendrucker', email: 'bvdrucker@gmail.com' },
+90 silly install resolved     maintainers: [ [Object] ],
+90 silly install resolved     dist:
+90 silly install resolved      { shasum: 'e74c39c5c4d533735252f6e9ab4e2e8e26b1d3eb',
+90 silly install resolved        tarball: 'http://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz' },
+90 silly install resolved     directories: {},
+90 silly install resolved     _resolved: 'https://registry.npmjs.org/angular-q-constructor/-/angular-q-constructor-1.0.0.tgz' } ]
+91 info install angular-q-constructor@1.0.0 into /Users/ryanjames/Dropbox/code/github/sprints/legacy
+92 info installOne angular-q-constructor@1.0.0
+93 verbose installOne of angular-q-constructor to /Users/ryanjames/Dropbox/code/github/sprints/legacy not in flight; installing
+94 verbose lock using /Users/ryanjames/.npm/_locks/angular-q-constructor-c0d592b2aebaa077.lock for /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+95 silly install write writing angular-q-constructor 1.0.0 to /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+96 verbose unbuild node_modules/angular-q-constructor
+97 silly gentlyRm /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor is being purged from base /Users/ryanjames/Dropbox/code/github/sprints/legacy
+98 verbose gentlyRm don't care about contents; nuking /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+99 verbose tar unpack /Users/ryanjames/.npm/angular-q-constructor/1.0.0/package.tgz
+100 verbose tar unpacking to /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+101 silly gentlyRm /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor is being purged
+102 verbose gentlyRm don't care about contents; nuking /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+103 silly gunzTarPerm modes [ '755', '644' ]
+104 silly gunzTarPerm extractEntry package.json
+105 silly gunzTarPerm modified mode [ 'package.json', 436, 420 ]
+106 silly gunzTarPerm extractEntry .npmignore
+107 silly gunzTarPerm modified mode [ '.npmignore', 436, 420 ]
+108 silly gunzTarPerm extractEntry README.md
+109 silly gunzTarPerm modified mode [ 'README.md', 436, 420 ]
+110 silly gunzTarPerm extractEntry LICENSE
+111 silly gunzTarPerm modified mode [ 'LICENSE', 436, 420 ]
+112 silly gunzTarPerm extractEntry karma.conf.js
+113 silly gunzTarPerm modified mode [ 'karma.conf.js', 436, 420 ]
+114 silly gunzTarPerm extractEntry bower.json
+115 silly gunzTarPerm modified mode [ 'bower.json', 436, 420 ]
+116 silly gunzTarPerm extractEntry src/index.js
+117 silly gunzTarPerm modified mode [ 'src/index.js', 436, 420 ]
+118 silly gunzTarPerm extractEntry .travis.yml
+119 silly gunzTarPerm modified mode [ '.travis.yml', 436, 420 ]
+120 silly gunzTarPerm extractEntry release/angular-q-constructor.js
+121 silly gunzTarPerm modified mode [ 'release/angular-q-constructor.js', 436, 420 ]
+122 silly gunzTarPerm extractEntry test/index.js
+123 silly gunzTarPerm modified mode [ 'test/index.js', 436, 420 ]
+124 verbose write writing to /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor/package.json
+125 info preinstall angular-q-constructor@1.0.0
+126 verbose readDependencies loading dependencies from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor/package.json
+127 silly prepareForInstallMany adding angular@>=1 <1.3 from angular-q-constructor peerDependencies
+128 warn peerDependencies The peer dependency angular@>=1 <1.3 included from angular-q-constructor will no
+129 warn peerDependencies longer be automatically installed to fulfill the peerDependency
+130 warn peerDependencies in npm 3+. Your application will need to depend on it explicitly.
+131 verbose readDependencies loading dependencies from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor/package.json
+132 silly install resolved []
+133 verbose about to build /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+134 info build /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+135 info linkStuff angular-q-constructor@1.0.0
+136 silly linkStuff angular-q-constructor@1.0.0 has /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules as its parent node_modules
+137 verbose linkBins angular-q-constructor@1.0.0
+138 verbose linkMans angular-q-constructor@1.0.0
+139 verbose rebuildBundles angular-q-constructor@1.0.0
+140 info install angular-q-constructor@1.0.0
+141 info postinstall angular-q-constructor@1.0.0
+142 verbose readDependencies loading dependencies from /Users/ryanjames/Dropbox/code/github/sprints/legacy/package.json
+143 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular/package.json
+144 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor/package.json
+145 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-route/package.json
+146 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-stripe/package.json
+147 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/aws-sdk/package.json
+148 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/bcrypt-nodejs/package.json
+149 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/body-parser/package.json
+150 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/braintree/package.json
+151 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/braintree-web/package.json
+152 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/express/package.json
+153 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt/package.json
+154 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-concat/package.json
+155 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-jshint/package.json
+156 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-sass/package.json
+157 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-uglify/package.json
+158 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-contrib-watch/package.json
+159 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-sass/package.json
+160 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/grunt-shell/package.json
+161 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/http/package.json
+162 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/jwt-simple/package.json
+163 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongodb/package.json
+164 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongodb-uri/package.json
+165 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/mongoose/package.json
+166 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/morgan/package.json
+167 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/nodemailer/package.json
+168 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/nodemon/package.json
+169 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/q/package.json
+170 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/querystring/package.json
+171 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/stripe/package.json
+172 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/twilio/package.json
+173 verbose targetResolver reading package data from /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/.bin/nodemon/package.json
+174 verbose already installed skipping angular@>=1 <1.3 /Users/ryanjames/Dropbox/code/github/sprints/legacy
+175 silly install resolved []
+176 verbose unlock done using /Users/ryanjames/.npm/_locks/angular-q-constructor-c0d592b2aebaa077.lock for /Users/ryanjames/Dropbox/code/github/sprints/legacy/node_modules/angular-q-constructor
+177 verbose validateInstall loading /Users/ryanjames/Dropbox/code/github/sprints/legacy/package.json for validation
+178 verbose stack Error: The package angular@1.4.7 does not satisfy its siblings' peerDependencies requirements!
+178 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
+178 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:268:7
+178 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+178 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+178 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+178 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+178 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+178 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+178 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+178 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+179 verbose cwd /Users/ryanjames/Dropbox/code/github/sprints/legacy
+180 error Darwin 15.0.0
+181 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "--save" "angular-q-constructor"
+182 error node v4.1.2
+183 error npm  v2.14.4
+184 error code EPEERINVALID
+185 error peerinvalid The package angular@1.4.7 does not satisfy its siblings' peerDependencies requirements!
+185 error peerinvalid Peer angular-stripe@4.2.8 wants angular@>=1.3 <1.5
+185 error peerinvalid Peer angular-q-constructor@1.0.0 wants angular@>=1 <1.3
+186 verbose exit [ 1, true ]

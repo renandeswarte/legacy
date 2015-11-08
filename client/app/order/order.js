@@ -1,4 +1,10 @@
-angular.module('instacutz.order', [])
+angular.module('instacutz.order', [
+  'angularPayments'
+  ])
+
+// .config(['$window', function($window) {
+//   $window.Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
+// }])
 
 .controller('OrderController', [
   '$scope',
@@ -9,9 +15,23 @@ angular.module('instacutz.order', [])
   'Auth',
   function($scope, $window, $location, Order, Counter, Auth) {
 
-    $scope.submitOrderOnce = _.once($scope.submitOrder);
+    $scope.stripeCallback = function(code, result) {
+        if (result.error) {
+            window.alert('Payment failed. Error: ' + result.error.message);
+        } else {
+            console.log('Token success! Token: ' + result.id);
+            Order.stripeTokenSubmit(result.id)
+            .then(function(response) {
+              console.log('Payment completed successfully.', response);
+              $location.path('/');  // TODO: redirect to payment success page/modal
+            }, function(error) {
+              console.log('Failed, error: ', error);
+            });
+        }
+    };
 
     $scope.submitOrder = function() {
+      console.log('submitOrder has been called');
       var orders = $scope.orders;
       orders.username = Auth.getUsername();
 
@@ -31,7 +51,6 @@ angular.module('instacutz.order', [])
     };
 
     $scope.orders = JSON.parse($window.localStorage.getItem('order'));
-    console.log('current $scope.orders: ', $scope.orders);
 
     $scope.checkOrder = function() {  // redirect if not logged in
       if ($scope.orders.orders.length === 0) {
