@@ -89,6 +89,23 @@ angular.module('foodly.services', [])
 
 })
 
+.factory('Styles', function($http) {
+	var getStyles = function() {
+		return $http({
+			method: 'GET',
+			url: '/hairstyles/get/styles'
+		})
+		.then(function(resp) {
+			return resp.data;
+		});
+	};
+
+	return {
+		getStyles: getStyles
+	}
+
+})
+
 .factory('Meals', function($http) {
 
 	var getMeals = function() {
