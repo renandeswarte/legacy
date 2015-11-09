@@ -7,6 +7,31 @@
           background-size: cover;
           display: block;
       }
+      .barber-info {
+        .caption {
+          display: inline-block;
+          float: left;
+          height: auto;
+          a {
+            color: $mainColor;
+          }
+        }
+        .ratings {
+          display: inline-block;
+          float: right;
+          width: 120px;
+          padding-top: 16px;
+          .ratings-container {
+            .ratings-inner-container {
+              > div {
+                img {
+                  width: 20px;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }
