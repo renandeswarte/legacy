@@ -2,38 +2,23 @@
 
 var rating = angular.module('rating', []);
 
-rating.controller('ratingController', ['$scope','$http', 'Meals', function ($scope, $http, Meals) {
-    $scope.starRating1 = 0;
-    Meals.getMeals()
-    .then(function(data) {
-        console.log('DATA from mongo', data[0].rating,data[0].ratingCount);
-        $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
-        $scope.data = data;
-    })
-    .catch(function(err) {
-        console.log(err);
-    });
+rating.controller('ratingController', ['$scope','$http', 'Ratings', 'idTool', function ($scope, $http, Ratings, idTool) {
+    $scope.Math = window.Math;
 
+    $scope.click1 = function (param, id) {
 
+        $scope.ratingAndId = {
+            rating : param,
+            id : id
+        }
 
-    $scope.click1 = function (param) {
-
-        console.log('Click(' + param + ')');
-        // Meals.addMeal(param)
-        // .then(function(data){
-        //     console.log(data);
-        // })
-
-        Meals.getMeals()
+        Ratings.updateRating($scope.ratingAndId)
         .then(function(data) {
-            console.log('DATA from mongo', data[0].rating, data[0].ratingCount);
-            $scope.avgRating=(data[0].rating)/(data[0].ratingCount);
-            $scope.data = data;
-        })
-        .catch(function(err) {
+            console.log('DATA from updateRating', data);
+            console.log("pair:",$scope.ratingAndId);
+        }).catch(function(err) {
             console.log(err);
         })
-
     };
 
 }]);
@@ -69,7 +54,7 @@ rating.directive('starRating', function () {
             };
 
             $scope._rating = $scope.rating;
-            
+
             $scope.isolatedClick = function (param) {
                 if ($scope.readOnly == 'true') return;
 

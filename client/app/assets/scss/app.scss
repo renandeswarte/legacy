@@ -9,7 +9,8 @@
 @import "footer";
 @import "home";
 @import "barber-profile";
-@import "style-detail";
+@import "profile-page";
+@import "list-page";
 
 
 html {
@@ -19,6 +20,15 @@ html {
   }
 }
 
-body {
-
+// Clear Fix
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
 }

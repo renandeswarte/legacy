@@ -1,22 +1,23 @@
 
 
 <!-- List of Barbers -->
-<div id='container'>
+<div class='container list-page barbers-list-page'>
   <div class="row">
-    <div ng-repeat="meal in data | filter:search ">
-      <div class="col-sm-4 col-lg-4 col -md-4">
-        <div class="thumbnail">
-          <img id="meal_images" ng-src="{{meal.profile || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}">
-          <div class="caption">
-            <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal.name}}</a></h4>
-            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
-            <p>{{meal.meals.description}}</p>
-          </div>
-          <div class="ratings">
-           <div class="container" ng-controller="ratingController">
-            <div star-rating rating="starRating1" read-only="false" max-rating="5" click="click1(param)"></div>
-            <div> <span class="label label-primary">Rate This Barber</span>
-              <div> <span> Avg Rating: {{avgRating}}/5</span></div>
+    <div ng-repeat="meal in data | filter:search | orderBy:'-'">
+      <div class="col-sm-4 col-lg-4 col -md-4 list-element-container">
+        <div class="thumbnail list-element">
+          <a href="#/barbers/profile" ng-click="setId(meal._id)" class="picture" style="background-image:url({{meal.portrait}})"></a>
+          <div class="barber-info cf">
+            <div class="caption">
+              <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal.name}}</a></h4>
+              <!-- <p>{{meal.meals.description}}</p> -->
+            </div>
+            <div class="ratings">
+              <div class="ratings-container" ng-controller="ratingController">
+                <!-- Rating : {{meal.avgRating}}/5 -->
+                <div class="ratings-inner-container" star-rating rating="starRating1=meal.avgRating" read-only="true" max-rating="5">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -25,5 +26,4 @@
   </div>
 </div>
 </div>
-
 

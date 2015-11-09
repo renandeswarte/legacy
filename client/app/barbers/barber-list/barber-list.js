@@ -1,6 +1,6 @@
 angular.module('foodly.barbers', [])
 
-.controller('barberListController', function($scope, $location, $window, Meals, Order, Auth, Counter, idTool) {
+.controller('barberListController', function($scope, $location, $window, Barbers, Order, Auth, Counter, idTool) {
 
 
 	$scope.data = []; //meals available for purchase
@@ -23,20 +23,20 @@ angular.module('foodly.barbers', [])
 	var order = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
 	$window.localStorage.setItem('order', order);
 	$scope.count =  Counter;
-	
-	$scope.getMeals = function() {
-		Meals.getMeals()
+
+	$scope.fetchBarbers = function() {
+		Barbers.getBarbers()
 			.then(function(data) {
+				console.log('DATA from fetchBarbers', data);
 				$scope.data = data;
 			})
 			.catch(function(err) {
 				console.log(err);
 			});
 	};
-	$scope.getMeals(); // must be called for initial page load
+	$scope.fetchBarbers(); // fetch Barbers Data to populate barbers-list page
 
 	$scope.setId = function(id) {
-		console.log('insetid');
 		idTool.setBarberId(id);
 		console.log('getBarberId', idTool.getBarberId());
 	}
