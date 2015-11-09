@@ -40,9 +40,9 @@ angular.module('instacutz.order', [
             Email.successEmail(email, subject, $scope.requestStyle, $scope.requestBarber, $scope.requestPrice)
             .then(function(res) {
               console.log('data: ', res);
-              if (res.data == 'success') {
+              if (res.data === 'success') {
                 console.log('Order confirmation email has been sent.');
-              } else if (res.data == 'error') {
+              } else if (res.data === 'error') {
                 console.log('Email status: server error.');
               } else {
                 console.log('Email status: unknown error.');
