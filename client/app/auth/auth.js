@@ -24,7 +24,7 @@ angular.module('instacutz.auth', [])
         $window.localStorage.setItem('com.semicolon', token);
         $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
         $window.localStorage.setItem('com.semicolon.date', new Date());
-        $location.path('/barbers');
+        $location.path('/order');
       })
       .catch(function(err) {
         $scope.failedAttempt = true;
@@ -43,11 +43,12 @@ angular.module('instacutz.auth', [])
         $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
         $window.localStorage.setItem('com.semicolon.date', new Date());
         Auth.loginorout = "Logout"
-        $location.path('/barbers');
+        // $location.path('/order');
       })
       .catch(function(err) {
         $scope.failedLogin = true;
         console.log(err);
+
       });
   };
 
