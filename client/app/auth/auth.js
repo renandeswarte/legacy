@@ -10,9 +10,15 @@ angular.module('instacutz.auth', [])
   $scope.user = {}; //this is attached to ng-model in the view
   $scope.failedAttempt = false;
   $scope.failedLogin = false;
+  $scope.signedIn = false;
   $scope.Loginorout = Auth;
 
+  $scope.consoleTheUser = function() {
+    console.log('this is the current user: ', $scope.user);
+  };
+
   $scope.signup = function() {
+    console.log('currently signing up: ', $scope.user);
     Auth.signup($scope.user)
       .then(function(token) {
         $window.localStorage.setItem('com.semicolon', token);
@@ -23,19 +29,21 @@ angular.module('instacutz.auth', [])
       .catch(function(err) {
         $scope.failedAttempt = true;
         console.log(err);
-
       });
   };
 
   $scope.signin = function() {
     console.log('signin is called');
     Auth.signin($scope.user)
-      .then(function(token) {
-        $window.localStorage.setItem('com.semicolon', token);
+      .then(function(respData) {
+        $scope.user = respData.user;
+        $scope.signedIn = true;
+        console.log('user: ', $scope.user);
+        $window.localStorage.setItem('com.semicolon', respData.token);
         $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
         $window.localStorage.setItem('com.semicolon.date', new Date());
         Auth.loginorout = "Logout"
-        $location.path('/order');
+        // $location.path('/order');
       })
       .catch(function(err) {
         $scope.failedLogin = true;

@@ -18,7 +18,10 @@ exports.signin = function(req, res, next) {
       .then(function(foundUser) {
         if (foundUser) {
           var token = jwt.encode(user, 'secret');
-          res.json({token: token});
+          res.json({
+            token: token,
+            user: user
+          });
         } else {
           return next(new Error('No user'));
         }
@@ -31,6 +34,7 @@ exports.signin = function(req, res, next) {
 };
 
 exports.signup = function(req, res, next) {
+  console.log(req.body);
   var username  = req.body.username;
   var password  = req.body.password;
   var create;
@@ -42,15 +46,19 @@ exports.signup = function(req, res, next) {
   findOne({username: username})
   .then(function(user) {
     if (user) {
-      next(new Error('User already exist!'));
+      next(new Error('User already exists!'));
     } else {
         // make a new user if not one
         create = Q.nbind(User.create, User);
         newUser = {
           username: username,
           password: password,
-          meals: [],
-          orders: []
+          street_address: req.body.address,
+          city: req.body.city,
+          state: req.body.state,
+          zip_code: req.body.zipcode,
+          email: req.body.email,
+          phone: req.body.phone
         };
         return create(newUser);
       }

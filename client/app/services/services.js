@@ -1,4 +1,4 @@
-angular.module('foodly.services', [])
+angular.module('instacutz.services', [])
 
 .factory('idTool', function() {
   var barberId = "";
@@ -75,7 +75,11 @@ angular.module('foodly.services', [])
 
 })
 
-.factory('Auth', function($http, $location, $window) {
+.factory('Auth', [
+  '$http',
+  '$location',
+  '$window',
+  function($http, $location, $window) {
   var loginorout = "Sign in";
   var signup = function(user) {
     return $http({
@@ -89,14 +93,13 @@ angular.module('foodly.services', [])
   };
 
   var signin = function(user) {
-    console.log('in yet another signin');
     return $http({
         method: 'POST',
         url: '/api/users/customer/post/signin',
         data: user
       })
       .then(function(resp) {
-        return resp.data.token;
+        return resp.data;
       });
   };
 
@@ -138,9 +141,11 @@ angular.module('foodly.services', [])
     loginorout: loginorout
   };
 
-})
+}])
 
-.factory('Meals', function($http) {
+.factory('Meals', [
+  '$http',
+  function($http) {
 
   var getMeals = function() {
     return $http({
@@ -160,32 +165,16 @@ angular.module('foodly.services', [])
     });
   };
 
-
-	var submitOrder = function(mealToOrder) {
-		console.log("Meal to order: ", mealToOrder)
-		return $http({
-			method: 'POST',
-			url: '/api/users/customer/post/orders',
-			data: mealToOrder
-		});
-  };
-
-  var addOrder = function(meal) {
-    return $http({
-      method: 'POST',
-      url: '/api/users/customer/post/orders',
-      data: meal
-    })
-  };
-
   return {
     getMeals: getMeals,
     addMeal: addMeal
   };
 
-})
+}])
 
-.factory('Order', function($http) {
+.factory('Order', [
+  '$http',
+  function($http) {
   //This data is for experimental purposes only. Needs to be put in via meals html to work
   var mealToOrder = {
     orders: []
@@ -217,7 +206,6 @@ angular.module('foodly.services', [])
     });
   };
 
-
   var submitOrder = function(mealToOrder) {
     console.log("Meal to order: ", mealToOrder)
     return $http({
@@ -239,7 +227,7 @@ angular.module('foodly.services', [])
     stripeTokenSubmit: stripeTokenSubmit
   };
 
-})
+}])
 
 .factory('Counter', function() {
     var count = {
