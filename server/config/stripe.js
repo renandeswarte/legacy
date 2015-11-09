@@ -17,10 +17,10 @@ module.exports = function(app) {
       if (err && err.type === 'StripeCardError') {
         // The card has been declined
         console.log('Card has been declined');
-        res.send('Card has been declined');
+        res.send('declined');
       } else {
         console.log('Server submit success!');
-        res.send('Server submit success!');
+        res.send('success');
       }
     });
   });
