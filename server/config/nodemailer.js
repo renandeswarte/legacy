@@ -1,5 +1,6 @@
 var nodemailer = require('nodemailer');
 
+
 module.exports = function(app) {
 
   var smtpTransport = nodemailer.createTransport('SMTP', {

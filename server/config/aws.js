@@ -3,8 +3,7 @@ var aws = require('aws-sdk');
 
 
 module.exports = function(app) {
-  // --------------------------------------------------
-  // ***** AWS *******
+
   var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY || APIKeys.AWS_ACCESS_KEY;
   var AWS_SECRET_KEY = process.env.AWS_SECRET_KEY || APIKeys.AWS_SECRET_KEY;
   var S3_BUCKET = process.env.S3_BUCKET || APIKeys.S3_BUCKET;
@@ -33,4 +32,5 @@ module.exports = function(app) {
       }
     });
   });
+  
 };

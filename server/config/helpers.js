@@ -1,5 +1,6 @@
 var jwt  = require('jwt-simple');
 
+
 module.exports = {
 
   errorLogger: function (error, req, res, next) {

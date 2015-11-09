@@ -19,11 +19,11 @@ angular.module('instacutz.order', [
     // Parse order inside local storage first
     $scope.orderRequest = JSON.parse($window.localStorage.getItem("order"));
 
-      $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
-      $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
-      $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
-      $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
-      $scope.requestBarberPic = $scope.orderRequest.orders[0].picture;
+    $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
+    $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
+    $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
+    $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
+    $scope.requestBarberPic = $scope.orderRequest.orders[0].picture;
 
 
     $scope.stripeCallback = function(code, result) {
@@ -38,16 +38,16 @@ angular.module('instacutz.order', [
             var email = $("#email").val();
             var subject = 'Your InstaCutz Confirmation';
             Email.successEmail(email, subject, $scope.requestStyle, $scope.requestBarber, $scope.requestPrice)
-            .then(function(res) {
-              console.log('data: ', res);
-              if (res.data == 'success') {
-                console.log('Order confirmation email has been sent.');
-              } else if (res.data == 'error') {
-                console.log('Email status: server error.');
-              } else {
-                console.log('Email status: unknown error.');
-              }
-            });
+              .then(function(res) {
+                console.log('data: ', res);
+                if (res.data === 'success') {
+                  console.log('Order confirmation email has been sent.');
+                } else if (res.data === 'error') {
+                  console.log('Email status: server error.');
+                } else {
+                  console.log('Email status: unknown error.');
+                }
+              });
 
             $('#myModal').modal('toggle');
             //Reset Header Cart

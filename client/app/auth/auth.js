@@ -27,10 +27,11 @@ angular.module('instacutz.auth', [])
       console.log('currently signing up: ', $scope.user);
       Auth.signup($scope.user)
         .then(function(token) {
+          $scope.signedIn = true;
           $window.localStorage.setItem('com.semicolon', token);
           $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
           $window.localStorage.setItem('com.semicolon.date', new Date());
-          $location.path('/order');
+          // $location.path('/order');
         })
         .catch(function(err) {
           $scope.failedAttempt = true;
@@ -68,8 +69,7 @@ angular.module('instacutz.auth', [])
       return Auth.getUsername();
     };
 
-  }
-])
+}])
 
 // get meals db.users.find()
 // users.insert({username:'bob',password:'hashword',salt:'NaCl',meals:[{title:'phad thai',price:'12'},{title:'chicken rice',price:'10’},{title:'chicken rice',price:'10’},{title:'chicken rice',price:'10'}],orders:{}})

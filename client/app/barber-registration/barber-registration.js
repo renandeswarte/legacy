@@ -1,5 +1,6 @@
-angular.module('foodly.barberRegistration', [])
+angular.module('instacutz.barberRegistration', [])
 
-.controller('barberRegistrationController', function($scope) {
+.controller('barberRegistrationController', [
+  function($scope) {
 
-})
+}])

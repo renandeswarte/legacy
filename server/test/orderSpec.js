@@ -1,11 +1,10 @@
-var request = require('supertest')
-  , express = require('express');
-  		app = require('../server')
-
+var request = require('supertest');
+var express = require('express');
+var app = require('../server');
 
 
 //Test whether orders API is sending data
-setTimeout(function(){
+setTimeout(function() {
 	request(app)
 	.get('/api/users/customer/get/meals')
 	.end(function(err, res) {
@@ -16,5 +15,3 @@ setTimeout(function(){
 
 	});
 },6000);
-
-
