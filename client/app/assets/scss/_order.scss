@@ -1,0 +1,52 @@
+.order-page {
+  padding-bottom: 20px;
+  h2 {
+    text-align: center;
+  }
+  .panel-primary {
+    border-color: $mainColor;
+    .panel-body {
+      table {
+        .btn{
+          background-color: $mainColor;
+          color: #FFF;
+        }
+      }
+    }
+  }
+  .order-forms {
+    text-align: center;
+    #signin {
+      padding-bottom: 50px;
+    }
+    .form-group {
+      margin-bottom: 10px;
+    }
+    .btn {
+      background-color: $mainColor;
+      color: #FFF;
+    }
+  }
+  .user-info-recap {
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    .user-info-recap-details {
+      font-weight: normal;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dotted #CCC;
+      .title {
+        font-weight: bold;
+      }
+    }
+    .payement-form {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      h1 {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
