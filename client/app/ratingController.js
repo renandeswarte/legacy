@@ -8,7 +8,7 @@ angular.module('rating', [])
   'idTool',
   function($scope, $http, $window, Ratings, idTool) {
     $scope.Math = $window.Math;
-
+    $scope.starRating1 = 0;
     $scope.rate = function (param) {
         //Pass in Current Order's Barber Id
         $scope.ratingAndId = {
