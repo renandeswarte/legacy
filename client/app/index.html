@@ -60,28 +60,28 @@
         <ul class="nav navbar-nav navbar-right" style='float:right' ng-show="headerCart.display">
           <li class='nav navbar-nav'>
             <a>
-               Your selection :
-            </a>
-          </li>
-          <li class='nav navbar-nav'>
-              <a>
-              <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].stylePicture}}')"></span>
-              {{headerCart.cart.orders[0].styleName}}
-            </a>
-          </li>
-          <li class='nav navbar-nav'>
-            <a class="spliter">
-               |
-            </a>
-          </li>
-          <li  class='nav navbar-nav'>
-            <a>
-              <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].picture}}')"></span>
-              {{headerCart.cart.orders[0].barberName}}
+             Your selection :
            </a>
          </li>
-        </ul>
-      </div>
+         <li class='nav navbar-nav'>
+          <a>
+            <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].stylePicture}}')"></span>
+            {{headerCart.cart.orders[0].styleName}}
+          </a>
+        </li>
+        <li class='nav navbar-nav'>
+          <a class="spliter">
+           |
+         </a>
+       </li>
+       <li  class='nav navbar-nav'>
+        <a>
+          <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].picture}}')"></span>
+          {{headerCart.cart.orders[0].barberName}}
+        </a>
+      </li>
+    </ul>
+  </div>
 
    <!--     <div id="navbar" class="collapse navbar-collapse" >
         <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
@@ -116,23 +116,26 @@
         <h4 class="modal-title" id="myModalLabel">
           Order Confirmed!
         </h4>
-         <p>Stylist : {{headerCart.cart.orders[0].barberName}}</p>
-          <p>Style : <img ng-src="{{headerCart.cart.orders[0].stylePicture}}" id="order_thumbnail" alt="image"> {{headerCart.cart.orders[0].styleName}} </p>
-          <p>Total Charged : $30 </p>
+        <hr>
+        <p><strong>Stylist </strong>: {{headerCart.cart.orders[0].barberName}}</p>
+        <p><strong>Style </strong>: <img ng-src="{{headerCart.cart.orders[0].stylePicture}}" id="order_thumbnail" alt="image"> {{headerCart.cart.orders[0].styleName}} </p>
+        <p><strong>Total Charged </strong>: $30 </p>
       </div>
+
       <div class="modal-body">
-        Thank you for your purchase
-                  <!-- User can leave rating -->
-          <div class="ratings">
-            <div class="container" ng-controller="ratingController">
-            <div star-rating rating="starRating1" read-only="false" max-rating="5" click="rate(param)"></div>
-              <div> <span class="label label-primary">Please rate your stylist after your haircut!</span>
-              </div>
-            </div>
-      </div>
-    </div>
-  </div>
-</div>
+        <span>Thank you for your purchase!</span>
+        <!-- User can leave rating -->
+        <br>
+        <div class="container" ng-controller="ratingController" style="padding-left:0">
+         <div star-rating rating="starRating1" read-only="false" max-rating="5" click="rate(param)"></div>
+         <div> <span class="label label-primary">Please rate your stylist after your haircut!</span>
+         </div>
+         <br>
+         <span><a href="#/"><button type="button" class="btn btn-success btn-md" id="closeModal">Close</button></a></span>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
 
    <!--  <div id="container">
@@ -159,7 +162,12 @@
     </div>
 
   </div>
-
+  <script>
+    //Close Modal on click
+    $('#closeModal').click(function(){
+      $('#myModal').modal('toggle');
+    });
+  </script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-payments/lib/angular-payments.min.js"></script>
