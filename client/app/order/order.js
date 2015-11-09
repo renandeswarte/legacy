@@ -16,6 +16,8 @@ angular.module('instacutz.order', [
   'Auth',
   function($scope, $window, $location, Order, Counter, Auth) {
 
+
+
     $scope.stripeCallback = function(code, result) {
         if (result.error) {
             window.alert('Payment failed. Error: ' + result.error.message);
@@ -29,6 +31,10 @@ angular.module('instacutz.order', [
               console.log('Failed, error: ', error);
             });
         }
+    };
+
+    $scope.captureSignUpDetails = function() {
+      console.log($scope.user);
     };
 
     $scope.submitOrder = function() {

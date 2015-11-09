@@ -1,6 +1,6 @@
 angular.module('foodly', [
   'instacutz.order',
-  'foodly.services',
+  'instacutz.services',
   'instacutz.auth',
   'foodly.barbers',
   'foodly.hairstyles',
