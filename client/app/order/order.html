@@ -7,26 +7,27 @@
                     <table class="table table-striped table-hover">
                         <thead>
                             <tr>
-                                <th>Barber</th>
                                 <th>Style</th>
+                                <th>Barber</th>
                             </tr>
                         </thead>
                         <tbody>
                             <!-- TODO: replace these with the selected barber and style -->
-                            <tr ng-repeat="order in orders.orders">
-                                <td> <img ng-src="{{order.url || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}" id="order_thumbnail" alt="image">
+                            <tr>
+                                <td> <img ng-src="{{requestStylePic}}" id="order_thumbnail" alt="image">
+                                {{requestStyle}}
                                 </td>
-                                <td id="title">{{order.title}}</td>
-                                <td>{{order.price | currency}}</td>
-                                <td>{{order.description}}</td>
+                                <td id="title">{{requestBarber}}</td>
+                                <td>${{requestPrice}}</td>
+                                <td>You requested {{requestStyle}} style with {{requestBarber}}!</td>
                                 <td>
-                                    <button class="btn btn-primary" type="button" ng-click="RemoveItem(orders.orders,$index)">remove item</button>
+                                    <button class="btn btn-primary" type="button" ng-click="RemoveItem(orders.orders,$index)">Remove Booking</button>
                                 </td>
                             </tr>
                             <tfoot>
                                 <td></td>
                                 <td><strong>Total:</strong></td>
-                                <td><strong id="total">{{getTotal() | currency}}</strong></td>
+                                <td><strong id="total">${{requestPrice}}</strong></td>
                                 <td id="cartContents" style="display: none">{{getCartContents()}}</strong>
                                 </td>
                                 <td></td>
@@ -36,6 +37,65 @@
                 </div>
             </div>
         </div>
+        <div ng-controller="AuthController" ng-show="!SignedIn">
+            <div id="signin">
+                <h1>Please sign in:</h1>
+                <form name="signinForm" ng-submit="signin()">
+                    <input type="text" placeholder="username" ng-model="user.username">
+                    <input type="password" placeholder="password" ng-model="user.password">
+                    <button>signin</button>
+                </form>
+                <p style="color:red" ng-show="failedLogin">Invalid username or password. Please try again, or sign up for a new account below.</p>
+            </div>
+            <div class="signup">
+                <h1>Or sign up:</h1>
+                <form ng-submit="signup()">
+                    <!-- username/password input-->
+                    <input type="text" placeholder="username" ng-model="user.username">
+                    <input type="password" placeholder="password" ng-model="user.password">
+                    <!-- email input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="email" name="email" type="text" placeholder="email address" ng-model="user.email" class="input-xlarge">
+                        </div>
+                    </div>
+                    <!-- address-line1 input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="phone" name="phone" type="text" placeholder="phone number" ng-model="user.phone" class="input-xlarge">
+                        </div>
+                    </div>
+                    <!-- address-line2 input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="address" name="address" type="text" placeholder="street address" ng-model="user.address" class="input-xlarge">
+                        </div>
+                    </div>
+                    <!-- city input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="city" name="city" type="text" placeholder="city" ng-model="user.city" class="input-xlarge">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- region input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="region" name="region" type="text" placeholder="state / province" ng-model="user.state" class="input-xlarge">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <!-- postal-code input-->
+                    <div class="control-group">
+                        <div class="controls">
+                            <input id="postal-code" name="postal-code" type="text" placeholder="zip / postal code" ng-model="user.zipcode" class="input-xlarge">
+                            <p class="help-block"></p>
+                        </div>
+                    </div>
+                    <button type="submit">signup</button>
+                    <p style="color:red" ng-show="failedAttempt">Sorry, that username already exists. Please choose another, or sign in above.</p>
+                </form>
+            </div>
 
         <div ng-controller="AuthController">
           <div id="signin">
@@ -58,7 +118,7 @@
                   <input id="email" name="email" type="text" placeholder="name@example.com" class="input-xlarge">
               </div>
           </div>
-          
+
           <!-- address-line1 input-->
           <div class="control-group">
               <div class="controls">
@@ -93,12 +153,8 @@
               </div>
           </div>
         </div>
-
-
-
-
         <!-- original Foodly checkout -->
-        <!-- <form id="checkout" ng-click="submitOrderOnce()">
+        <!-- <form id="checkout" ng-click="submitOrder()">
                 <div id="dropin-container"></div>
                 <button class="btn btn-primary address_submit" id="send_email" data-toggle="modal">submit
                 </button>
@@ -107,13 +163,27 @@
         <script>
         Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
         </script>
-        <h1>Payment info:</h1>
-        <form stripe-form="stripeCallback">
-            <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
-            <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
-            <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
-            <button type="submit">Submit</button>
-        </form>
+        <div ng-show="SignedIn" ng-controller="AuthController">
+            Welcome, {{ user.name }}! Please double-check your info and fill in your payment info:
+            <div>
+            {{ user.name }}
+            {{ user.email }}
+            {{ user.phone }}
+            {{ user.street_address }}
+            {{ user.city }}
+            {{ user.state }}
+            {{ user.zip_code }}
+            </div>
+            <h1>Payment info:</h1>
+            <div ng-controller="OrderController">
+              <form stripe-form="stripeCallback">
+                  <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
+                  <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
+                  <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
+                  <button type="submit">Submit</button>
+              </form>
+            </div>
+        </div>
         <!-- Standard Stripe Checkout -->
         <!-- <form action="/payment/charge" method="POST">
               <script

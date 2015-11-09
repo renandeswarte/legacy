@@ -15,6 +15,13 @@ angular.module('instacutz.order', [
   'Counter',
   'Auth',
   function($scope, $window, $location, Order, Counter, Auth) {
+      //Parse order inside local storage first
+      $scope.orderRequest = JSON.parse($window.localStorage.getItem("order"));
+
+      $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
+      $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
+      $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
+      $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
 
     $scope.stripeCallback = function(code, result) {
         if (result.error) {
@@ -29,6 +36,10 @@ angular.module('instacutz.order', [
               console.log('Failed, error: ', error);
             });
         }
+    };
+
+    $scope.captureSignUpDetails = function() {
+      console.log($scope.user);
     };
 
     $scope.submitOrder = function() {
@@ -60,6 +71,7 @@ angular.module('instacutz.order', [
     };
 
     $scope.getTotal = function() {
+      //TODO : Add Tip Functionality on this
       var total = 0;
       for (var i = 0; i < $scope.orders.orders.length; i++) {
         if ($scope.orders.orders[i].price) {

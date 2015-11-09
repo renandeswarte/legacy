@@ -34,8 +34,8 @@
         <h2>This barber's style</h2>
         <ul class="styles">
         <li class="col-xs-6 col-sm-3 style-select {{style}}" ng-repeat="style in barberInfos.styles" ng-click="styleSelection(style)">
-            <div class="style-block" style="background-image:url('https://s3-us-west-1.amazonaws.com/haircut-on-demand/{{style}}.png')">
-            <button type="button" class="maximize" data-toggle="modal" data-target="#pictureModal" ng-click="maximize('https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/{{style}}.jpg', style)">
+            <div class="style-block" style="background-image:url('https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/{{style}}.jpg')">
+            <button type="button" class="maximize" data-toggle="modal" data-target="#pictureModal" ng-click="maximize('https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/' + style + '.jpg', style)">
               <i class="fa fa-search"></i>
             </button>
               <span class="style-title">{{ style }}</span>
