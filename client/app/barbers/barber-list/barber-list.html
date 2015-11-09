@@ -3,19 +3,19 @@
 <!-- List of Barbers -->
 <div class='container list-page barbers-list-page'>
   <div class="row">
-    <div ng-repeat="meal in data | filter:search | orderBy:'-'">
+    <div ng-repeat="barber in data | filter:search | orderBy:'-'">
       <div class="col-sm-4 col-lg-4 col -md-4 list-element-container">
         <div class="thumbnail list-element">
-          <a href="#/barbers/profile" ng-click="setId(meal._id)" class="picture" style="background-image:url({{meal.portrait}})"></a>
+          <a href="#/barbers/profile" ng-click="setId(barber._id)" class="picture" style="background-image:url({{barber.portrait}})"></a>
           <div class="barber-info cf">
             <div class="caption">
-              <h4><a href="#/barbers/profile" ng-click="setId(meal._id)">{{meal.name}}</a></h4>
-              <!-- <p>{{meal.meals.description}}</p> -->
+              <h4><a href="#/barbers/profile" ng-click="setId(barber._id)">{{barber.name}}</a></h4>
+              <!-- <p>{{barber.barbers.description}}</p> -->
             </div>
             <div class="ratings">
               <div class="ratings-container" ng-controller="ratingController">
-                <!-- Rating : {{meal.avgRating}}/5 -->
-                <div class="ratings-inner-container" star-rating rating="starRating1=meal.avgRating" read-only="true" max-rating="5">
+                <!-- Rating : {{barber.avgRating}}/5 -->
+                <div class="ratings-inner-container" star-rating rating="starRating1=barber.avgRating" read-only="true" max-rating="5">
                 </div>
               </div>
             </div>
