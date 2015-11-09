@@ -8,6 +8,7 @@ angular.module('foodly.barberProfile', [])
   $scope.count = Counter;
   $scope.styleSelected = undefined;
   $scope.orderRequire = false;
+  $scope.maximizePicture = {};
 
   var order = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
   $window.localStorage.setItem('order', order);
@@ -72,5 +73,10 @@ angular.module('foodly.barberProfile', [])
       $location.path('/order');
     }
   };
+
+  $scope.maximize = function(picture, name) {
+    $scope.maximizePicture.picture = picture;
+    $scope.maximizePicture.name = name;
+  }
 
 })

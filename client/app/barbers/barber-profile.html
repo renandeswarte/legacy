@@ -35,7 +35,12 @@
         <ul class="styles">
         <li class="col-xs-6 col-sm-3 style-select {{style}}" ng-repeat="style in barberInfos.styles" ng-click="styleSelection(style)">
             <div class="style-block" style="background-image:url('https://s3-us-west-1.amazonaws.com/haircut-on-demand/{{style}}.png')">
-              <span>{{ style }}</span>
+            <button type="button" class="maximize" data-toggle="modal" data-target="#pictureModal" ng-click="maximize('https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/{{style}}.jpg', style)">
+              <i class="fa fa-search"></i>
+            </button>
+              <span class="style-title">{{ style }}</span>
+              <!-- Do not remove this -->
+              <span class="size-fix">fix</span>
             </div>
           </li>
         </ul>
@@ -61,6 +66,24 @@
             {{ review }}
           </li>
         </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Maximized Picture Modal -->
+<div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{maximizePicture.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <img ng-src="{{maximizePicture.picture}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
