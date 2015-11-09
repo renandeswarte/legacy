@@ -98,7 +98,7 @@ angular.module('instacutz.order', [
       order.orders.splice(index, 1);
       $window.localStorage.setItem("order", JSON.stringify(order));
       if (order.orders.length === 0) {
-        $location.path('/')
+        $location.path('/barbers')
       }
       Counter.number--
     }
