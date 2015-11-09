@@ -1,14 +1,20 @@
-angular.module('foodly.header', [])
+angular.module('instacutz.header', [])
 
-.controller('headerController', function($scope, $window, $location, Order, Counter) {
+.controller('headerController', [
+  '$scope',
+  '$window',
+  '$location',
+  'Order',
+  'Counter',
+  function($scope, $window, $location, Order, Counter) {
 
-  $scope.init = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
+    $scope.init = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
 
-  $window.localStorage.setItem('order', $scope.init);
+    $window.localStorage.setItem('order', $scope.init);
 
-  $scope.headerCart = {
-    'display': false
-  }
-  $scope.headerCart.cart;
+    $scope.headerCart = {
+      'display': false
+    }
+    $scope.headerCart.cart;
 
-});
+}]);

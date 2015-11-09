@@ -1,5 +1,6 @@
-angular.module('foodly.about', [])
+angular.module('instacutz.about', [])
 
-.controller('aboutController', function($scope) {
+.controller('aboutController', [
+  function($scope) {
 
-})
+}])

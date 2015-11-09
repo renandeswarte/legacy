@@ -32,18 +32,18 @@ angular.module('instacutz.services', [])
   '$http',
   function($http) {
 
-    var getBarbers = function(){
+    var getBarbers = function() {
       return $http({
-        method: 'GET',
-        url: '/barbers/get/barbers'
-      })
-      .then(function(resp) {
-        return resp.data;
-      });
+          method: 'GET',
+          url: '/barbers/get/barbers'
+        })
+        .then(function(resp) {
+          return resp.data;
+        });
     };
 
     return {
-      getBarbers : getBarbers
+      getBarbers: getBarbers
     }
 
 }])
@@ -54,12 +54,12 @@ angular.module('instacutz.services', [])
 
     var getStyles = function() {
       return $http({
-        method: 'GET',
-        url: '/hairstyles/get/styles'
-      })
-      .then(function(resp) {
-        return resp.data;
-      });
+          method: 'GET',
+          url: '/hairstyles/get/styles'
+        })
+        .then(function(resp) {
+          return resp.data;
+        });
     };
 
     return {
@@ -74,14 +74,14 @@ angular.module('instacutz.services', [])
 
     var updateRating = function(ratingPair) {
       return $http({
-        method : 'POST',
-        url : '/api/users/customer/post/ratings',
-        data : ratingPair
+        method: 'POST',
+        url: '/api/users/customer/post/ratings',
+        data: ratingPair
       });
     };
 
     return {
-      updateRating : updateRating
+      updateRating: updateRating
     };
 
 }])
@@ -99,9 +99,7 @@ angular.module('instacutz.services', [])
         data: {
           to: email,
           subject: subject,
-          text: 'This is your InstaCutz confirmation. \n You have an appointment with ' + barber
-                + ' for a ' + style + ' haircut. \n Your total is $' + price
-                + '.\n \n Thank you for using InstaCutz!'
+          text: 'This is your InstaCutz confirmation. \n You have an appointment with ' + barber + ' for a ' + style + ' haircut. \n Your total is $' + price + '.\n \n Thank you for using InstaCutz!'
         }
       });
     };
