@@ -20,8 +20,8 @@
                 {{ language }}
               </li>
             </ul>
+            <p> <strong>Avg Rating : </strong>{{barberInfos.avgRating}}/5 </p>
 
-          </div>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
   <div class="row review-block">
     <div class="col-xs-12 reviews">
       <div class="col-xs-12 inner-block-reviews">
-        <h2>Customers review</h2>
+        <h2>Customer Reviews</h2>
         <ul>
           <li ng-repeat="review in barberInfos.reviews">
             {{ review }}
