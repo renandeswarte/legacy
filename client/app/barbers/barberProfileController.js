@@ -17,8 +17,6 @@ angular.module('foodly.barberProfile', [])
   // Get user Id from the factory
   // var barberId = '563d6f8c7761a384e4dd9602';
   var barberId = idTool.getBarberId();
-  console.log("barberId Profile: ", barberId);
-
 
   var barberInfo = function() {
     $http({
@@ -26,7 +24,7 @@ angular.module('foodly.barberProfile', [])
       url: '/barbers/barberid?barberid=' + barberId
       })
       .then(function(data) {
-        console.log('DATA from mongo barber profile', data);
+        // console.log('DATA from mongo barber profile', data);
         $scope.barberInfos = data.data;
       })
       .catch(function(err) {
