@@ -1,33 +1,30 @@
 var nodemailer = require('nodemailer');
 
 module.exports = function(app) {
-  // ----------------------------------------------------
-  // ********* NODEMAILER ***********
 
-  // sends email notification from foodlymailer@gmail to vendor whenever customer places an order
-  var smtpTransport = nodemailer.createTransport("SMTP", {
-    service: "Gmail",
+  var smtpTransport = nodemailer.createTransport('SMTP', {
+    service: 'Gmail',
     auth: {
-      user: "foodlymailer@gmail.com",
-      pass: "foodly123"
+      user: 'foodlymailer@gmail.com',
+      pass: 'foodly123'
     }
   });
 
-
-  app.get('/send', function(req, res) {
+  // sends confirmation email from foodlymailer@gmail to customer when order complete
+  app.post('/', function(req, res) {
     var mailOptions = {
-      to: req.query.to,
-      subject: req.query.subject,
-      text: req.query.text
+      to: req.body.to,
+      subject: req.body.subject,
+      text: req.body.text
     };
-    console.log(mailOptions);
+    
     smtpTransport.sendMail(mailOptions, function(error, response) {
       if (error) {
-        console.log(error);
-        res.end("error");
+        console.log('Email error: ', error);
+        res.end('error');
       } else {
-        console.log("Message sent: " + response.message);
-        res.end("sent");
+        console.log('Message sent: ' + response.message);
+        res.end('success');
       }
     });
   });

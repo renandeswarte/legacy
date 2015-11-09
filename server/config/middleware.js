@@ -29,7 +29,6 @@ module.exports = function(app, express){
   app.use(helpers.errorHandler);
 
   require('../users/userRoutes.js')(userRouter);
-  // require('./braintree.js')(paymentRouter);
   require('./stripe.js')(paymentRouter);
   require('../barbers/barbersRoutes.js')(barbersRouter);
   require('../styles/stylesRoutes.js')(stylesRouter);

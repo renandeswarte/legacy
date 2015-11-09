@@ -4,8 +4,6 @@ var querystring = require('querystring');
 
 
 module.exports = function(app) {
-// -------------------------------------------------
-// ******** VENMO *********
 
 // THIS IS NOT CURRENTLY WORKING
   // the request is made, response is 301

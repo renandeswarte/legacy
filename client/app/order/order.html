@@ -16,7 +16,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <!-- TODO: replace these with the selected barber and style -->
+                            
                             <tr>
                                 <td> <img ng-src="{{requestStylePic}}" id="order_thumbnail" alt="image"> {{requestStyle}}
                                 </td>
@@ -110,26 +110,27 @@
             <div ng-show="signedIn">
                 Welcome, {{ user.username }}! Please double-check your info and fill in your payment details:
                 <div>
-                    <p>Name: {{ user.username }}</p>
-                    <p>Email: {{ user.email }}</p>
-                    <p>Phone: {{ user.phone }}</p>
+                    <p class="user-username">Name: {{ user.username }}</p>
+                    <p class="user-email">Email: {{ user.email }}</p>
+                    <p class="user-phone">Phone: {{ user.phone }}</p>
                     <p>Address:</p>
-                    <p>{{ user.street_address }}</p>
-                    <p>{{ user.city }}</p>
-                    <p>{{ user.state }}</p>
-                    <p>{{ user.zip_code }}</p>
+                    <p class="user-street-address">{{ user.street_address }}</p>
+                    <p class="user-city">{{ user.city }}</p>
+                    <p class="user-state">{{ user.state }}</p>
+                    <p class="user-zip">{{ user.zip_code }}</p>
                 </div>
                 <h1>Payment details:</h1>
-                <div>
-                    <form stripe-form="stripeCallback" ng-controller="OrderController">
+                <div ng-controller="OrderController">
+                    <form stripe-form="stripeCallback">
                         <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
                         <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
                         <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
-                        <button type="submit">Submit</button>
+                        <button type="submit" class="send_email">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
+
         <!-- Standard Stripe Checkout -->
         <!-- <form action="/payment/charge" method="POST">
               <script
@@ -141,22 +142,9 @@
                 data-locale="auto">
               </script>
             </form> -->
-        <!-- Braintree init -->
-        <!-- <script>
-              // var token = 'eyJ2ZXJzaW9uIjoyLCJhdXRob3JpemF0aW9uRmluZ2VycHJpbnQiOiI5YmU0NGVhMTM3MTEwYThmNmYyYTMyNWQ1NWRkMDlkYTljNDMzYjY4NDIxMGY2YWI2ZTJhOTFiMTEwOTQ4OGFkfGNyZWF0ZWRfYXQ9MjAxNS0xMS0wNlQyMzoxODo1Ny43NTQ0NTUzOTMrMDAwMFx1MDAyNm1lcmNoYW50X2lkPTM0OHBrOWNnZjNiZ3l3MmJcdTAwMjZwdWJsaWNfa2V5PTJuMjQ3ZHY4OWJxOXZtcHIiLCJjb25maWdVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi9jbGllbnRfYXBpL3YxL2NvbmZpZ3VyYXRpb24iLCJjaGFsbGVuZ2VzIjpbXSwiZW52aXJvbm1lbnQiOiJzYW5kYm94IiwiY2xpZW50QXBpVXJsIjoiaHR0cHM6Ly9hcGkuc2FuZGJveC5icmFpbnRyZWVnYXRld2F5LmNvbTo0NDMvbWVyY2hhbnRzLzM0OHBrOWNnZjNiZ3l3MmIvY2xpZW50X2FwaSIsImFzc2V0c1VybCI6Imh0dHBzOi8vYXNzZXRzLmJyYWludHJlZWdhdGV3YXkuY29tIiwiYXV0aFVybCI6Imh0dHBzOi8vYXV0aC52ZW5tby5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIiwiYW5hbHl0aWNzIjp7InVybCI6Imh0dHBzOi8vY2xpZW50LWFuYWx5dGljcy5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tIn0sInRocmVlRFNlY3VyZUVuYWJsZWQiOnRydWUsInRocmVlRFNlY3VyZSI6eyJsb29rdXBVcmwiOiJodHRwczovL2FwaS5zYW5kYm94LmJyYWludHJlZWdhdGV3YXkuY29tOjQ0My9tZXJjaGFudHMvMzQ4cGs5Y2dmM2JneXcyYi90aHJlZV9kX3NlY3VyZS9sb29rdXAifSwicGF5cGFsRW5hYmxlZCI6dHJ1ZSwicGF5cGFsIjp7ImRpc3BsYXlOYW1lIjoiQWNtZSBXaWRnZXRzLCBMdGQuIChTYW5kYm94KSIsImNsaWVudElkIjpudWxsLCJwcml2YWN5VXJsIjoiaHR0cDovL2V4YW1wbGUuY29tL3BwIiwidXNlckFncmVlbWVudFVybCI6Imh0dHA6Ly9leGFtcGxlLmNvbS90b3MiLCJiYXNlVXJsIjoiaHR0cHM6Ly9hc3NldHMuYnJhaW50cmVlZ2F0ZXdheS5jb20iLCJhc3NldHNVcmwiOiJodHRwczovL2NoZWNrb3V0LnBheXBhbC5jb20iLCJkaXJlY3RCYXNlVXJsIjpudWxsLCJhbGxvd0h0dHAiOnRydWUsImVudmlyb25tZW50Tm9OZXR3b3JrIjp0cnVlLCJlbnZpcm9ubWVudCI6Im9mZmxpbmUiLCJ1bnZldHRlZE1lcmNoYW50IjpmYWxzZSwiYnJhaW50cmVlQ2xpZW50SWQiOiJtYXN0ZXJjbGllbnQzIiwiYmlsbGluZ0FncmVlbWVudHNFbmFibGVkIjp0cnVlLCJtZXJjaGFudEFjY291bnRJZCI6ImFjbWV3aWRnZXRzbHRkc2FuZGJveCIsImN1cnJlbmN5SXNvQ29kZSI6IlVTRCJ9LCJjb2luYmFzZUVuYWJsZWQiOmZhbHNlLCJtZXJjaGFudElkIjoiMzQ4cGs5Y2dmM2JneXcyYiIsInZlbm1vIjoib2ZmIn0=';
-
-              // braintree.setup(token, "dropin", {
-              //   container: "dropin-container",
-              //   form: "#checkout",
-              //   paypal: {
-              //     singleUse: true,
-              //     amount: 30.00,
-              //     currency: 'USD'
-              //   }
-              // });
-            </script>  -->
+        
         <!-- begin Node.JS Email application -->
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
         $(document).ready(function() {
             var from, to, subject, text;
             $("#send_email").click(function() {
@@ -173,6 +161,6 @@
                 });
             });
         });
-        </script>
+        </script> -->
         <!-- End Node.JS Email application -->
     </div>

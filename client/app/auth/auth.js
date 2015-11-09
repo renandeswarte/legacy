@@ -5,29 +5,14 @@ angular.module('instacutz.auth', [])
   '$window',
   '$location',
   'Auth',
-  'Order',
-  function($scope, $window, $location, Auth, Order) {
+  function($scope, $window, $location, Auth) {
 
-    $scope.user = {}; //this is attached to ng-model in the view
+    $scope.user = {};
     $scope.failedAttempt = false;
     $scope.failedLogin = false;
     $scope.signedIn = false;
     $scope.Loginorout = Auth;
 
-    // $scope.stripeCallback = function(code, result) {
-    //   if (result.error) {
-    //     window.alert('Payment failed. Error: ' + result.error.message);
-    //   } else {
-    //     console.log('Token success! Token: ' + result.id);
-    //     Order.stripeTokenSubmit(result.id)
-    //       .then(function(response) {
-    //         console.log('Payment completed successfully.', response);
-    //         $location.path('/'); // TODO: redirect to payment success page/modal
-    //       }, function(error) {
-    //         console.log('Failed, error: ', error);
-    //       });
-    //   }
-    // };
 
     $scope.consoleTheUser = function() {
       console.log('this is the current user: ', $scope.user);
@@ -59,13 +44,10 @@ angular.module('instacutz.auth', [])
         .then(function(respData) {
           $scope.user = respData.user;
           $scope.signedIn = true;
-          console.log('user: ', $scope.user);
-          console.log('signedIn: ', $scope.signedIn);
           $window.localStorage.setItem('com.semicolon', respData.token);
           $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
           $window.localStorage.setItem('com.semicolon.date', new Date());
           Auth.loginorout = "Logout";
-            // $location.path('/order');
         })
         .catch(function(err) {
           $scope.failedLogin = true;
