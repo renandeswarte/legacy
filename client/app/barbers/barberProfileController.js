@@ -59,15 +59,15 @@ angular.module('foodly.barberProfile', [])
 
     var order = JSON.parse($window.localStorage.getItem("order"));
     console.log(barber);
-    order.orders.push(barber);
+    order.orders[0] = barber;
     $window.localStorage.setItem('order',JSON.stringify(order));
-    Counter.number++;
+    Counter.number = 1;
   };
 
   $scope.checkOut = function(){
     if(Counter.number === 0){
       alert("Please order something before checking out")
-    }else{
+    } else{
       $location.path('/order');
     }
   };

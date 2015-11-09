@@ -22,7 +22,6 @@ angular.module('instacutz.order', [
       $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
       $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
       $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
-      // {"orders":[{"barberId":"564002d9e4b0ecb0579dfca1","barberName":"Katherine","picture":"https://s3-us-west-1.amazonaws.com/haircut-on-demand/barbers/Katherine.jpg","styleName":"dandycut","stylePicture":"https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/dandycut.jpg","stylePrice":30}]}
 
     $scope.stripeCallback = function(code, result) {
         if (result.error) {
@@ -72,6 +71,7 @@ angular.module('instacutz.order', [
     };
 
     $scope.getTotal = function() {
+      //TODO : Add Tip Functionality on this
       var total = 0;
       for (var i = 0; i < $scope.orders.orders.length; i++) {
         if ($scope.orders.orders[i].price) {
