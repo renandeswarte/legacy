@@ -31,7 +31,7 @@
 
 </head>
 
-<body>
+<body ng-controller="headerController">
   <header>
     <!-- Navbar that stays on the top of every page -->
     <nav class="navbar header-navbar navbar-inverse navbar-fixed-top">
@@ -55,22 +55,49 @@
            <input type="text" class="form-control search" placeholder="Search"  ng-model="search">
          </div>
        </form>
-       <div id="navbar" class="collapse navbar-collapse" >
+
+       <div id="navbar" class="collapse navbar-collapse header-order-info"  >
+        <ul class="nav navbar-nav navbar-right" style='float:right' ng-show="headerCart.display">
+          <li class='nav navbar-nav'>
+            <a>
+               Your selection : 
+            </a>
+          </li>
+          <li class='nav navbar-nav'>
+              <a>
+              <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].stylePicture}}')"></span>
+              {{headerCart.cart.orders[0].styleName}}
+            </a>
+          </li>
+          <li class='nav navbar-nav'>
+            <a class="spliter">
+               |
+            </a>
+          </li>
+          <li  class='nav navbar-nav'>
+            <a>
+              <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].picture}}')"></span>
+              {{headerCart.cart.orders[0].barberName}}
+           </a>
+         </li>
+        </ul>
+      </div>
+
+   <!--     <div id="navbar" class="collapse navbar-collapse" >
         <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
           <li ng-controller="barberProfileController" class='nav navbar-nav'>
-            <!-- <a ng-click="checkOut()">Checkout
+            <a ng-click="checkOut()">Checkout
              <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}
            </a>
- -->
          </li>
-       <!--     <li class='nav navbar-nav' >
+       <li class='nav navbar-nav' >
             <a href='javascript:void(0)'>Welcome, {{ getUsername() }}!</a>
           </li>
           <li>
             <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
-          </li> -->
+          </li>
       </ul>
-    </div>
+    </div> -->
 
   </div>
 </div>

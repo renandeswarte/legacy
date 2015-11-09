@@ -77,4 +77,26 @@ header {
       }
     }
   }
+  .header-order-info {
+    ul {
+      li {
+        a {
+          min-width: 30px;
+          position: relative;
+          padding-left: 30px;
+          &.spliter {
+            padding-left: 5px;
+          }
+          .order-pic {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background-size: cover;
+            position: absolute;
+            left: 0px;
+          }
+        }
+      }
+    }
+  }
 }
