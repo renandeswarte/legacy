@@ -56,7 +56,7 @@ angular.module('foodly.barberProfile', [])
     barber.barberName = $scope.barberInfos.name;
     barber.picture = $scope.barberInfos.portrait;
     barber.styleName = $scope.styleSelected;
-    barber.stylePicture = "https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/" + $scope.styleSelected + ".png";
+    barber.stylePicture = "https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/" + $scope.styleSelected + ".jpg";
     barber.stylePrice = 30;
 
     var order = JSON.parse($window.localStorage.getItem("order"));
