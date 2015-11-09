@@ -15,8 +15,14 @@ angular.module('instacutz.order', [
   'Counter',
   'Auth',
   function($scope, $window, $location, Order, Counter, Auth) {
+      //Parse order inside local storage first
+      $scope.orderRequest = JSON.parse($window.localStorage.getItem("order"));
 
-
+      $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
+      $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
+      $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
+      $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
+      // {"orders":[{"barberId":"564002d9e4b0ecb0579dfca1","barberName":"Katherine","picture":"https://s3-us-west-1.amazonaws.com/haircut-on-demand/barbers/Katherine.jpg","styleName":"dandycut","stylePicture":"https://s3-us-west-1.amazonaws.com/haircut-on-demand/styles/dandycut.jpg","stylePrice":30}]}
 
     $scope.stripeCallback = function(code, result) {
         if (result.error) {
