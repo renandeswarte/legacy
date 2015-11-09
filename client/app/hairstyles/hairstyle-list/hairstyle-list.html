@@ -6,6 +6,9 @@
     <div ng-repeat="meal in data | filter:search | orderBy:'-'">
       <div class="col-sm-4 col-lg-4 col -md-4 list-element-container">
         <div class="thumbnail list-element">
+          <button type="button" class="maximize" data-toggle="modal" data-target="#pictureModal" ng-click="maximize(meal.image, meal.title)">
+            <i class="fa fa-search"></i>
+          </button>
           <a href="#/barbers" ng-click="setId(meal._id)" class="picture" style="background-image:url({{meal.image}})"></a>
           <div class="caption">
             <h4><a href="#/barbers" ng-click="setId(meal._id)">{{meal.title}}</a></h4>
@@ -16,6 +19,24 @@
     </div>
   </div>
 </div>
+
+
+<!-- Maximized Picture Modal -->
+<div class="modal fade" id="pictureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{maximizePicture.name}}</h4>
+      </div>
+      <div class="modal-body">
+        <img ng-src="{{maximizePicture.picture}}">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
