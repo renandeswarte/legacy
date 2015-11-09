@@ -4,9 +4,7 @@ var stripe = require('stripe')(APIKeys.testSecretKey);
 
 module.exports = function(app) {
 
-// "Standard" Stripe implementation...doesn't seem to be working?
   app.post('/charge', function(req, res) {
-    console.log('req: ', req.body);
     // Get the token submitted by the form
     var stripeToken = req.body.stripeToken;
 
