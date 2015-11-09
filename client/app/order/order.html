@@ -1,3 +1,7 @@
+<script>
+  Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
+</script>
+
 <div class="container" ng-app="foodly">
     <div class="row">
         <div class="container" style="margin-top: 60px">
@@ -14,8 +18,7 @@
                         <tbody>
                             <!-- TODO: replace these with the selected barber and style -->
                             <tr>
-                                <td> <img ng-src="{{requestStylePic}}" id="order_thumbnail" alt="image">
-                                {{requestStyle}}
+                                <td> <img ng-src="{{requestStylePic}}" id="order_thumbnail" alt="image"> {{requestStyle}}
                                 </td>
                                 <td id="title">{{requestBarber}}</td>
                                 <td>${{requestPrice}}</td>
@@ -37,8 +40,8 @@
                 </div>
             </div>
         </div>
-        <div ng-controller="AuthController" ng-show="!SignedIn">
-            <div id="signin">
+        <div ng-controller="AuthController">
+            <div id="signin" ng-show="!signedIn">
                 <h1>Please sign in:</h1>
                 <form name="signinForm" ng-submit="signin()">
                     <input type="text" placeholder="username" ng-model="user.username">
@@ -47,7 +50,7 @@
                 </form>
                 <p style="color:red" ng-show="failedLogin">Invalid username or password. Please try again, or sign up for a new account below.</p>
             </div>
-            <div class="signup">
+            <div class="signup" ng-show="!signedIn">
                 <h1>Or sign up:</h1>
                 <form ng-submit="signup()">
                     <!-- username/password input-->
@@ -96,92 +99,35 @@
                     <p style="color:red" ng-show="failedAttempt">Sorry, that username already exists. Please choose another, or sign in above.</p>
                 </form>
             </div>
-
-        <div ng-controller="AuthController">
-          <div id="signin">
-            <h1>Please sign in:</h1>
-            <form name="signinForm" ng-submit="signin()">
-              <input type="text" ng-model="user.username">
-              <input type="password" ng-model="user.password">
-              <button>signin</button>
-            </form>
-            <p style="color:red" ng-show="failedLogin">Wrong username or password</p>
-          </div>
-
-          <div class="signup">
-          <h1>Or sign up:</h1>
-          </div>
-
-          <!-- email input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="email" name="email" type="text" placeholder="name@example.com" class="input-xlarge">
-              </div>
-          </div>
-
-          <!-- address-line1 input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="address-line1" name="address-line1" type="text" placeholder="address line 1" class="input-xlarge" >
-              </div>
-          </div>
-          <!-- address-line2 input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="address-line2" name="address-line2" type="text" placeholder="address line 2" class="input-xlarge">
-              </div>
-          </div>
-          <!-- city input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="city" name="city" type="text" placeholder="city" class="input-xlarge" >
-                  <p class="help-block"></p>
-              </div>
-          </div>
-          <!-- region input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="region" name="region" type="text" placeholder="state / province / region" class="input-xlarge" >
-                  <p class="help-block"></p>
-              </div>
-          </div>
-          <!-- postal-code input-->
-          <div class="control-group">
-              <div class="controls">
-                  <input id="postal-code" name="postal-code" type="text" placeholder="zip or postal code" class="input-xlarge" >
-                  <p class="help-block"></p>
-              </div>
-          </div>
-        </div>
-        <!-- original Foodly checkout -->
-        <!-- <form id="checkout" ng-click="submitOrder()">
+            <!-- original Foodly checkout -->
+            <!-- <form id="checkout" ng-click="submitOrder()">
                 <div id="dropin-container"></div>
                 <button class="btn btn-primary address_submit" id="send_email" data-toggle="modal">submit
                 </button>
             </form> -->
-        <!-- custom Stripe integration -->
-        <script>
-        Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
-        </script>
-        <div ng-show="SignedIn" ng-controller="AuthController">
-            Welcome, {{ user.name }}! Please double-check your info and fill in your payment info:
-            <div>
-            {{ user.name }}
-            {{ user.email }}
-            {{ user.phone }}
-            {{ user.street_address }}
-            {{ user.city }}
-            {{ user.state }}
-            {{ user.zip_code }}
-            </div>
-            <h1>Payment info:</h1>
-            <div ng-controller="OrderController">
-              <form stripe-form="stripeCallback">
-                  <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
-                  <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
-                  <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
-                  <button type="submit">Submit</button>
-              </form>
+            <!-- custom Stripe integration -->
+           
+            <div ng-show="signedIn">
+                Welcome, {{ user.username }}! Please double-check your info and fill in your payment details:
+                <div>
+                    <p>Name: {{ user.username }}</p>
+                    <p>Email: {{ user.email }}</p>
+                    <p>Phone: {{ user.phone }}</p>
+                    <p>Address:</p>
+                    <p>{{ user.street_address }}</p>
+                    <p>{{ user.city }}</p>
+                    <p>{{ user.state }}</p>
+                    <p>{{ user.zip_code }}</p>
+                </div>
+                <h1>Payment details:</h1>
+                <div>
+                    <form stripe-form="stripeCallback" ng-controller="OrderController">
+                        <input ng-model="number" placeholder="Card Number" payments-format="card" payments-validate="card" />
+                        <input ng-model="expiry" placeholder="Expiration" payments-format="expiry" payments-validate="expiry" />
+                        <input ng-model="cvc" placeholder="CVC" payments-format="cvc" payments-validate="cvc" />
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
         <!-- Standard Stripe Checkout -->
