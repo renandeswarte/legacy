@@ -62,6 +62,9 @@ angular.module('foodly.barberProfile', [])
     order.orders[0] = barber;
     $window.localStorage.setItem('order',JSON.stringify(order));
     Counter.number = 1;
+
+    //Redirect to order page
+    $location.path('/order');
   };
 
   $scope.checkOut = function(){
