@@ -9,6 +9,7 @@ angular.module('foodly', [
   'foodly.hairstyleProfile',
   'foodly.about',
   'foodly.barberRegistration',
+  'foodly.header',
   'rating',
   'ngRoute'
   ])

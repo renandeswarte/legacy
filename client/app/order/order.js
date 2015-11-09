@@ -19,10 +19,12 @@ angular.module('instacutz.order', [
     // Parse order inside local storage first
     $scope.orderRequest = JSON.parse($window.localStorage.getItem("order"));
 
-    $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
-    $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
-    $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
-    $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
+      $scope.requestStyle = $scope.orderRequest.orders[0].styleName;
+      $scope.requestStylePic = $scope.orderRequest.orders[0].stylePicture
+      $scope.requestPrice = $scope.orderRequest.orders[0].stylePrice;
+      $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
+      $scope.requestBarberPic = $scope.orderRequest.orders[0].picture;
+
 
     $scope.stripeCallback = function(code, result) {
       if (result.error) {

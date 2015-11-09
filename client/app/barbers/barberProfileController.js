@@ -61,6 +61,9 @@ angular.module('foodly.barberProfile', [])
     console.log(barber);
     order.orders[0] = barber;
     $window.localStorage.setItem('order',JSON.stringify(order));
+    $scope.headerCart.display = true;
+    $scope.headerCart.cart = order;
+
     Counter.number = 1;
 
     //Redirect to order page
