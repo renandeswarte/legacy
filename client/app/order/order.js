@@ -50,6 +50,9 @@ angular.module('instacutz.order', [
             });
 
             $('#myModal').modal('toggle');
+            //Reset Header Cart
+            $scope.headerCart.display = false;
+            // $scope.headerCart.cart = JSON.stringify({orders: []});
             // $location.path('/'); // TODO: redirect to payment success page/modal
           }, function(error) {
             console.log('Failed, error: ', error);

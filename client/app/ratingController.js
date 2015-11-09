@@ -5,11 +5,12 @@ var rating = angular.module('rating', []);
 rating.controller('ratingController', ['$scope','$http', 'Ratings', 'idTool', function ($scope, $http, Ratings, idTool) {
     $scope.Math = window.Math;
 
-    $scope.click1 = function (param, id) {
+    $scope.rate = function (param) {
 
+        //Pass in Current Order's Barber Id
         $scope.ratingAndId = {
             rating : param,
-            id : id
+            id : $scope.headerCart.cart.orders[0].barberId
         }
 
         Ratings.updateRating($scope.ratingAndId)

@@ -60,7 +60,7 @@
         <ul class="nav navbar-nav navbar-right" style='float:right' ng-show="headerCart.display">
           <li class='nav navbar-nav'>
             <a>
-               Your selection : 
+               Your selection :
             </a>
           </li>
           <li class='nav navbar-nav'>
@@ -116,9 +116,19 @@
         <h4 class="modal-title" id="myModalLabel">
           Order Confirmed!
         </h4>
+         <p>Stylist : {{headerCart.cart.orders[0].barberName}}</p>
+          <p>Style : <img ng-src="{{headerCart.cart.orders[0].stylePicture}}" id="order_thumbnail" alt="image"> {{headerCart.cart.orders[0].styleName}} </p>
+          <p>Total Charged : $30 </p>
       </div>
       <div class="modal-body">
         Thank you for your purchase
+                  <!-- User can leave rating -->
+          <div class="ratings">
+            <div class="container" ng-controller="ratingController">
+            <div star-rating rating="starRating1" read-only="false" max-rating="5" click="rate(param)"></div>
+              <div> <span class="label label-primary">Please rate your stylist after your haircut!</span>
+              </div>
+            </div>
       </div>
     </div>
   </div>
