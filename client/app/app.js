@@ -8,6 +8,7 @@ angular.module('foodly', [
   'foodly.barberProfile',
   'foodly.hairstyleProfile',
   'foodly.about',
+  'foodly.barberRegistration',
   'rating',
   'ngRoute'
   ])
@@ -43,11 +44,11 @@ angular.module('foodly', [
       templateUrl: 'order/order.html',
       controller: 'OrderController'
     })
-      .when('/addmeal', {
-        authenticate: true,
-        templateUrl: 'addMeal/addMeal.html',
-        controller: 'MealController'
-      })
+    .when('/addmeal', {
+      authenticate: true,
+      templateUrl: 'addMeal/addMeal.html',
+      controller: 'MealController'
+    })
     .when('/', {
       templateUrl: 'homepage/homepage.html',
       controller: 'HomepageController'
@@ -55,6 +56,10 @@ angular.module('foodly', [
     .when('/about', {
       templateUrl: 'about-us/about.html',
       controller: 'aboutController'
+    })
+    .when('/barber-registration', {
+      templateUrl: 'barber-registration/barber-registration.html',
+      controller: 'barberRegistrationController'
     })
     .otherwise({
       redirectTo: '/'
