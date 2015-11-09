@@ -25,6 +25,7 @@ angular.module('instacutz.order', [
       $scope.requestBarber = $scope.orderRequest.orders[0].barberName;
       $scope.requestBarberPic = $scope.orderRequest.orders[0].picture;
 
+
     $scope.stripeCallback = function(code, result) {
       if (result.error) {
         window.alert('Payment failed. Error: ' + result.error.message);
