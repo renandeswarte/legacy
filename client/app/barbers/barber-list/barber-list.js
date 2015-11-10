@@ -18,6 +18,9 @@ angular.module('instacutz.barbers', [])
     };
     $scope.count = Counter;
 
+    // style selected on style list page
+    $scope.hairstyleName = idTool.getHairstyleName();
+
     //this code block is used to generate random reviews for our product demo -
     //unfortunately, more intuitive implementations will cause a digest overflow.
     $scope.randReviews = [];

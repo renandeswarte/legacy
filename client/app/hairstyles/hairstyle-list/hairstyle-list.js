@@ -22,6 +22,10 @@ angular.module('instacutz.hairstyles', [])
     };
     $scope.getStyles(); // must be called for initial page load
 
+    $scope.setHairstyleName = function(name) {
+      idTool.setHairstyleName(name);
+    }
+
     $scope.maximize = function(picture, name) {
       $scope.maximizePicture.picture = picture;
       $scope.maximizePicture.name = name;
