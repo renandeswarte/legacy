@@ -1,5 +1,14 @@
 header {
   nav.header-navbar {
+    .instacutz-logo {
+      position: absolute;
+      top: 11px;
+      left: 50%;
+      margin-left: -60px;
+      img {
+        width: 120px;
+      }
+    }
     .navbar-header {
       height: 50px;
       .navbar-brand {
