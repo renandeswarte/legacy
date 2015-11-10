@@ -1,150 +1,100 @@
-# API DOCUMENTATION FOR DUDE’S WHERE MY SEMICOLON
+# API DOCUMENTATION FOR INSTACUTZ
 
 ## Table of Contents:
-Quicksheet-Server routes
+* Quicksheet - Server routes
+* Testing
+* Client Overview
+* Server Overview 
 
-Expected request from client and response from server
-
-Database Schema
-
-Client - what’s contained in each folder: client requests, and html templates
-
-Server - Routing 
-
-Testing
 
 ## QuickSheet - Server routes. 
 
- a) /customer/post/signup - Store user and password in database
- 
- b) /customer/get/signin - Finds username and password from database and logs them in
- 
- c) /customer/get/meals - Returns all the meals in the database
- 
- d) /customer/post/orders - Stores customers orders in the database 
- 
- e) /vendors/post/meal -  Stores vendor orders in the database
+* Users - /api/users
+    - /customer/post/signin - sign in current user.
+    - /customer/post/signup - sign up new user.
+    - /customer/get/meals - deprecated.
+    - /customer/get/signedin - check auth.
+    - /customer/post/orders - deprecated.
+    - /vendors/post/meal - deprecated.
+    - /customer/post/ratings - user rates barber.
 
-## Expected request from client and response from server 
+* Styles - /hairstyles
+    - /get/styles - fetch available styles.
 
-a)
+* Barbers - /barbers
+    - /barberid - fetch barber id.
+    - /get/barbers - fetch available barbers.
 
-**url:** /api/users/customer/post/signup
-
-**type:** POST
-
-**request data(e.g.):** {username: username, password : password}
-
-**response data:** {token: token} (if unique username)
-
-**description:** Send this request so that the client will receive an authorization token response from the server. It will also store the username and password in the database. Authorization needed in order to checkout or add a meal.⋅⋅⋅
-***
-
-b)
-
-**url:** /api/users/customer/post/signedin
-
-**type:** POST
-
-**request data:** {username: username, password: password}
-
-**response_data:** {token: token} (if user alread exists)
-
-**description:**  Send this request so that the client will receive an authorization token response from the server. Authorization is needed in order to checkout or add a meal.
-***
-
-c)
-
-**url:** /api/users/customer/get/meals
-
-**type:** GET			
-
-**request data:** N/A
-
-**response data:** 
-
-{meals:[
-{title:”title”,
-price:7.50,
-ingredients: [sugar, spice],
-username: “hello”
-},
-…….
-]
-}
-
-**description:** Send this request if you want to see all the meals in the database. Includes information about the meals ingredients, username, title and description.
-***
-
-d)
-
-**url:** /api/users/customers/post/orders
-
-**type:** POST
-
-**request data (e.g):** {orders: [_id: “52”, description: “This is food”, price: 10, title: “Pizza”],
-[_id: “53”, description: “This is ice cream”, price: 7, title: “Ice cream”], username: “hello”}
-
-**response data:** N/A
-
-**description:** Send this request to store customers orders in the database 
-***
-
-e)
-
-**url:**  /vendors/post/meal 
-
-**type:** POST
-
-**request_data(e.g.):** {meals: [title: “Pizza”, ingredients: [tomatoes, cheese], description: “This is pizza”, price: 10], username: “hello”}
-
-**response data:** N/A
-
-**description:** Send this request to add a meal to the database.
-
-
-## Database Schema:
-Database uses Mongodb, a JSON like object
-{
-username: {String, location: [long,lat]},
-password: String,
-salt: String
-meals: [{title: String, price: number, description: String, ingredients: [string,string...]},{....},{....}],
-orders: [{title: String, price: number, description: String, ingredients: [string,string...]},{....},{....}]
-}
+* Misc
+    - /payment/charge - charge credit card via Stripe.
+    - /sign_s3/sign_s3 - add image asset to AWS S3.
+    - /send - email user confirmation via nodemailer.
 
 
 ## Testing
 
-Testing can be located in sever/test. Testing uses supertest to test whether incoming client requests will receive a response
+Testing can be located in server/test. Testing uses supertest to test whether incoming client requests will receive a response.
+
 
 ## Client
 
-Built with Angular. 
+Built with Angular.
 
-Folders used:
+**about-us** - The About page, describing the team.
 
-**auth** - For displaying pages for signing in and signing up users and authorizing them
+**addMeal** - deprecated.
 
-**meals** - contains the logic for sending requests to add or get meals from the database. Also contains the logic for adding orders ready for checkout. Also displays the homepage which contains all the meals and the form for adding a meal
-Responses sent to server: 
-->/customer/get/meals
-->/vendors/post/meal 
+**assets** - Various web assets not on AWS.
 
-**order** - Contains the page for submitting the final order to a client and sending an email to the vendor.
-Responses sent to server:
-	>/customer/post/signup
-	>/customer/post/signin
+**auth** - Authentication pages. html is deprecated, js still in use.
 
-**app.js** - For routing on the client side and controlling logic using rootscope. Authorization, displaying the search bar, and banner. Toggles sign-in and logout.
+**barber-registration** - Future home of pages related to signing up new barbers.
+
+**barbers** - Barbers and Barber Detail pages.
+
+**hairstyles** - Style and Style Detail pages.
+
+**homepage** - Landing page with photo carousel.
+
+**order** - Checkout page, including authentication and payment.
+
+*app.js* - Main app file. Routing, some authentication.
+
+
 ## Server:
 
-**userRoutes** - contains all the routes for the server
+Built with Node, Express, MongoDB.
 
-**userModel** - contains the entire database schema
+**barbers**
+    * controller: methods for fetching ids and barbers.
+    * model: database schema.
+    * routes: routing from /barbers.
 
-**userController** - contains the logic for handing requests from the client
+**config**
+    * APIKeys: not provided. Add your file here (gitignored).
+    * aws: routes and methods for AWS S3 connection.
+    * braintree: deprecated.
+    * helpers: helper methods.
+    * middleware: routing for all paths.
+    * nodemailer: routes and methods for emailing user confirmation.
+    * stripe: routes and methods for Stripe payment charging.
+    * twilio: deprecated.
+    * venmo: deprecated.
 
-**helpers** - handles the authorization token from the client
+**styles**
+    * controller: methods for fetching styles.
+    * model: database schema.
+    * routes: routing from /hairstyles.
 
-**server** - connects to amazon web services, mongodb, and creates a server
+**test**
+    * testing.
+
+**users**
+    * controller: methods for authentication, rating, deprecated other functions.
+    * model: database schema.
+    * routes: routing from /api/users.
+
+*server.js* - Server init, MongoDB connect, routing to middleware.js.
+
+
+
