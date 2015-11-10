@@ -8,7 +8,7 @@
     </form>
   </div>
   <div class="row">
-    <div ng-repeat="barber in data | filter: hairstyleSearch">
+    <div ng-repeat="barber in data | filter: hairstyleSearch | filter: hairstyleName">
       <div class="col-sm-4 col-lg-4 col -md-4 list-element-container">
         <div class="thumbnail list-element">
           <a href="#/barbers/profile" ng-click="setId(barber._id)" class="picture" style="background-image:url({{barber.portrait}})"></a>

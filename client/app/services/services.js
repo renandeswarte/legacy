@@ -3,27 +3,29 @@ angular.module('instacutz.services', [])
 .factory('idTool', [
   function() {
     var barberId = "";
-    var styleId = "";
+    var hairstyleName = "";
 
     // Barber and Style Id setters
     var setBarberId = function(id) {
       barberId = id;
     };
-    var setStyleId = function(id) {
-      styleId = id;
-    };
+    var setHairstyleName = function(name) {
+      hairstyleName = name;
+    }
 
     // Barber and Style Id getters
     var getBarberId = function() {
       return barberId;
     };
-    var getStyleId = function() {
-      return styleId;
+    var getHairstyleName = function() {
+      return hairstyleName;
     };
 
     return {
       setBarberId: setBarberId,
-      getBarberId: getBarberId
+      setHairstyleName: setHairstyleName,
+      getBarberId: getBarberId,
+      getHairstyleName: getHairstyleName
     };
 
 }])
