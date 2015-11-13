@@ -5,49 +5,54 @@ var jwt = require('jwt-simple');
 
 
 exports.signin = function(req, res, next) {
+
   var username = req.body.username;
   var password = req.body.password;
 
   var findUser = Q.nbind(User.findOne, User);
-  findUser({username: username})
-  .then(function (user) {
-    if (!user) {
-      next(new Error('User does not exist'));
-    } else {
-      return user.comparePasswords(password)
-      .then(function(foundUser) {
-        if (foundUser) {
-          var token = jwt.encode(user, 'secret');
-          res.json({
-            token: token,
-            user: user
+  findUser({
+      username: username
+    })
+    .then(function(user) {
+      if (!user) {
+        next(new Error('User does not exist'));
+      } else {
+        return user.comparePasswords(password)
+          .then(function(foundUser) {
+            if (foundUser) {
+              var token = jwt.encode(user, 'secret');
+              res.json({
+                token: token,
+                user: user
+              });
+            } else {
+              return next(new Error('No user'));
+            }
           });
-        } else {
-          return next(new Error('No user'));
-        }
-      });
-    }
-  })
-  .fail(function (error) {
-    next(error);
-  });
+      }
+    })
+    .fail(function(error) {
+      next(error);
+    });
 };
 
 exports.signup = function(req, res, next) {
-  console.log(req.body);
-  var username  = req.body.username;
-  var password  = req.body.password;
+
+  var username = req.body.username;
+  var password = req.body.password;
   var create;
   var newUser;
 
   var findOne = Q.nbind(User.findOne, User);
 
   // check to see if user already exists
-  findOne({username: username})
-  .then(function(user) {
-    if (user) {
-      next(new Error('User already exists!'));
-    } else {
+  findOne({
+      username: username
+    })
+    .then(function(user) {
+      if (user) {
+        next(new Error('User already exists!'));
+      } else {
         // make a new user if not one
         create = Q.nbind(User.create, User);
         newUser = {
@@ -63,38 +68,42 @@ exports.signup = function(req, res, next) {
         return create(newUser);
       }
     })
-  .then(function (user) {
+    .then(function(user) {
       // create token to send back for auth
       var token = jwt.encode(user, 'secret');
-      res.json({token: token});
+      res.json({
+        token: token
+      });
     })
-  .fail(function (error) {
-    next(error);
-  });
+    .fail(function(error) {
+      next(error);
+    });
 };
 
-exports.checkAuth = function (req, res, next) {
+exports.checkAuth = function(req, res, next) {
   var token = req.headers['x-access-token'];
   if (!token) {
     next(new Error('No token'));
   } else {
     var user = jwt.decode(token, 'secret');
     var findUser = Q.nbind(User.findOne, User);
-    findUser({username: user.username})
-    .then(function (foundUser) {
-      if (foundUser) {
-        res.status(200).send();
-      } else {
-        res.status(401).send();
-      }
-    })
-    .fail(function (error) {
-      next(error);
-    });
+    findUser({
+        username: user.username
+      })
+      .then(function(foundUser) {
+        if (foundUser) {
+          res.status(200).send();
+        } else {
+          res.status(401).send();
+        }
+      })
+      .fail(function(error) {
+        next(error);
+      });
   }
 };
 
-exports.meals = function(req,res,next){
+exports.meals = function(req, res, next) {
   //getting all meals using aggregation pipeline
   // var aggr = Q.nbind(Barber.aggregate,Barber);
 
@@ -105,19 +114,21 @@ exports.meals = function(req,res,next){
   //   .fail(function(err){
   //     next(err)
   //   });
-var findBarbers = Q.nbind(Barber.find, Barber);
-findBarbers()
-.then(function(barber) {
-  res.json(barber);
-}).fail(function(err) {
-  next(err);
-});
+  var findBarbers = Q.nbind(Barber.find, Barber);
+
+  findBarbers()
+    .then(function(barber) {
+      res.json(barber);
+    })
+    .fail(function(err) {
+      next(err);
+    });
+
 };
 
 exports.addRating = function(req, res, next) {
 
-  var findBarber =
-  Q.nbind(Barber.findOne, Barber);
+  var findBarber = Q.nbind(Barber.findOne, Barber);
 
   findBarber({
     '_id': req.body.id
@@ -128,26 +139,27 @@ exports.addRating = function(req, res, next) {
       result.rating += req.body.rating;
       result.ratingCount++;
       //round off to nearest half and store as avgRating
-      var avgRating = result.rating/result.ratingCount
-      result.avgRating = Math.round(avgRating*2)/2;
+      var avgRating = result.rating / result.ratingCount
+      result.avgRating = Math.round(avgRating * 2) / 2;
       result.save();
       res.send(result);
     }
-  }
-  );
+  });
 
-}
+};
 
-exports.addMeal = function (req,res,next){
+exports.addMeal = function(req, res, next) {
+
   var update;
+
   if (req.body.hasOwnProperty('orders')) {
     var meal = [];
     var username = req.body.username;
-    for(var i =0;i<req.body.orders.length;i++){
+    for (var i = 0; i < req.body.orders.length; i++) {
       title = req.body.orders[i].title,
-      price = req.body.orders[0].price,
-      description = req.body.orders[i].description,
-      ingredients = req.body.orders[i].ingredients
+        price = req.body.orders[0].price,
+        description = req.body.orders[i].description,
+        ingredients = req.body.orders[i].ingredients
       meal.push({
         title: title,
         price: price,
@@ -155,29 +167,29 @@ exports.addMeal = function (req,res,next){
         ingredients: ingredients
       });
     }
-    field = "orders"
+    field = "orders";
   } else {
-    var url = req.body.meals[0].url
-    console.log('Url ' + req.body.meals[0].url);
+    var url = req.body.meals[0].url;
     //then we have a meal (vendor)
-    console.log("I'm a vendor meal")
     var username = req.body.username;
-    var title = req.body.meals[0].title,
-    price = req.body.meals[0].price,
-    description = req.body.meals[0].description,
-    ingredients = req.body.meals[0].ingredients,
-    field = "meals"
+    var title = req.body.meals[0].title;
+    var price = req.body.meals[0].price;
+    var description = req.body.meals[0].description;
+    var ingredients = req.body.meals[0].ingredients;
+    field = "meals";
   }
 
-  var findOne = Q.nbind(User.findOne,User);
+  var findOne = Q.nbind(User.findOne, User);
   var findUser = Q.nbind(User.findOne, User);
 
   //check if the username who submitted the request exists
-  findUser({username: username})
-  .then(function(user){
-    if (!user){
-      next(new Error('User does not exist'));
-    } else {
+  findUser({
+      username: username
+    })
+    .then(function(user) {
+      if (!user) {
+        next(new Error('User does not exist'));
+      } else {
 
         //for the verified username, finf the ._id, and push in order or meal
         update = Q.nbind(User.findByIdAndUpdate, User);
@@ -190,23 +202,25 @@ exports.addMeal = function (req,res,next){
           url: url
         };
 
-      //push the meal object into the respective array
-      console.log('later user',field,newMealitem)
-      if (field==="meals"){
-        update(user._id,
-          {$push: {"meals" : newMealitem}})
-      } else {
-        update(user._id,
-          {orders : meal})
+        //push the meal object into the respective array
+        console.log('later user', field, newMealitem)
+        if (field === "meals") {
+          update(user._id, {
+            $push: {
+              "meals": newMealitem
+            }
+          });
+        } else {
+          update(user._id, {
+            orders: meal
+          });
+        }
       }
-    }
-  })
-  .then(function(user){
-    console.log('has it been updated',user)
-    res.json(user)
-
-  })
-  .fail(function (error) {
-    next(error);
-  });
+    })
+    .then(function(user) {
+      res.json(user);
+    })
+    .fail(function(error) {
+      next(error);
+    });
 };

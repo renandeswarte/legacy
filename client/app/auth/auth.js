@@ -7,62 +7,67 @@ angular.module('instacutz.auth', [])
   'Auth',
   function($scope, $window, $location, Auth) {
 
-  $scope.user = {}; //this is attached to ng-model in the view
-  $scope.failedAttempt = false;
-  $scope.failedLogin = false;
-  $scope.signedIn = false;
-  $scope.Loginorout = Auth;
+    $scope.user = {};
+    $scope.failedAttempt = false;
+    $scope.failedLogin = false;
+    $scope.signedIn = false;
+    $scope.Loginorout = Auth;
 
-  $scope.consoleTheUser = function() {
-    console.log('this is the current user: ', $scope.user);
-  };
 
-  $scope.signup = function() {
-    console.log('currently signing up: ', $scope.user);
-    Auth.signup($scope.user)
-      .then(function(token) {
-        $window.localStorage.setItem('com.semicolon', token);
-        $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-        $window.localStorage.setItem('com.semicolon.date', new Date());
-        $location.path('/order');
-      })
-      .catch(function(err) {
-        $scope.failedAttempt = true;
-        console.log(err);
-      });
-  };
+    $scope.consoleTheUser = function() {
+      console.log('this is the current user: ', $scope.user);
+    };
 
-  $scope.signin = function() {
-    console.log('signin is called');
-    Auth.signin($scope.user)
-      .then(function(respData) {
-        $scope.user = respData.user;
-        $scope.signedIn = true;
-        console.log('user: ', $scope.user);
-        $window.localStorage.setItem('com.semicolon', respData.token);
-        $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-        $window.localStorage.setItem('com.semicolon.date', new Date());
-        Auth.loginorout = "Logout"
-        // $location.path('/order');
-      })
-      .catch(function(err) {
-        $scope.failedLogin = true;
-        console.log(err);
+    $scope.returnSignin = function() {
+      $scope.$apply();
+      return $scope.signedIn;
+    };
 
-      });
-  };
+    $scope.signup = function() {
+      console.log('currently signing up: ', $scope.user);
+      Auth.signup($scope.user)
+        .then(function(token) {
+          $scope.signedIn = true;
+          $window.localStorage.setItem('com.semicolon', token);
+          $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
+          $window.localStorage.setItem('com.semicolon.date', new Date());
+          // $location.path('/order');
+        })
+        .catch(function(err) {
+          $scope.failedAttempt = true;
+          console.log(err);
+        });
+    };
 
-  $scope.signout = function() {
-    if (Auth.loginorout === "Logout") {
-      Auth.signout();
-    } else {
-      $location.path("/signin");
-    }
-  };
+    $scope.signin = function() {
+      console.log('signin is called');
+      Auth.signin($scope.user)
+        .then(function(respData) {
+          $scope.user = respData.user;
+          $scope.signedIn = true;
+          $window.localStorage.setItem('com.semicolon', respData.token);
+          $window.localStorage.setItem('com.semicolon.name', $scope.user.username);
+          $window.localStorage.setItem('com.semicolon.date', new Date());
+          Auth.loginorout = "Logout";
+        })
+        .catch(function(err) {
+          $scope.failedLogin = true;
+          console.log(err);
 
-  $scope.getUsername = function() {
-    return Auth.getUsername();
-  };
+        });
+    };
+
+    $scope.signout = function() {
+      if (Auth.loginorout === "Logout") {
+        Auth.signout();
+      } else {
+        $location.path("/signin");
+      }
+    };
+
+    $scope.getUsername = function() {
+      return Auth.getUsername();
+    };
 
 }])
 

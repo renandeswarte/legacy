@@ -1,16 +1,18 @@
-angular.module('foodly', [
+angular.module('instacutz', [
   'instacutz.order',
   'instacutz.services',
   'instacutz.auth',
-  'foodly.barbers',
-  'foodly.hairstyles',
-  'foodly.homepage',
-  'foodly.barberProfile',
-  'foodly.hairstyleProfile',
-  'foodly.about',
+  'instacutz.barbers',
+  'instacutz.hairstyles',
+  'instacutz.homepage',
+  'instacutz.barberProfile',
+  'instacutz.hairstyleProfile',
+  'instacutz.about',
+  'instacutz.barberRegistration',
+  'instacutz.header',
   'rating',
   'ngRoute'
-  ])
+])
 
 .config(function($routeProvider, $httpProvider) {
   $routeProvider
@@ -43,11 +45,11 @@ angular.module('foodly', [
       templateUrl: 'order/order.html',
       controller: 'OrderController'
     })
-      .when('/addmeal', {
-        authenticate: true,
-        templateUrl: 'addMeal/addMeal.html',
-        controller: 'MealController'
-      })
+    .when('/addmeal', {
+      authenticate: true,
+      templateUrl: 'addMeal/addMeal.html',
+      controller: 'MealController'
+    })
     .when('/', {
       templateUrl: 'homepage/homepage.html',
       controller: 'HomepageController'
@@ -56,32 +58,36 @@ angular.module('foodly', [
       templateUrl: 'about-us/about.html',
       controller: 'aboutController'
     })
+    .when('/barber-registration', {
+      templateUrl: 'barber-registration/barber-registration.html',
+      controller: 'barberRegistrationController'
+    })
     .otherwise({
       redirectTo: '/'
     });
 
-//     //additional routes here
+  //     //additional routes here
   $httpProvider.interceptors.push(function($window) {
     return {
-      request: function (config) {
-            var jwt = $window.localStorage.getItem('com.semicolon');
-            if (jwt) {
-              config.headers['x-access-token'] = jwt;
-            }
-            config.headers['Allow-Control-Allow-Origin'] = '*';
-            return config;
-          }
-        };
-    });
+      request: function(config) {
+        var jwt = $window.localStorage.getItem('com.semicolon');
+        if (jwt) {
+          config.headers['x-access-token'] = jwt;
+        }
+        config.headers['Allow-Control-Allow-Origin'] = '*';
+        return config;
+      }
+    };
+  });
 })
 
-.run(function ($rootScope, $location, Auth) {
+.run(function($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
-  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+  $rootScope.$on('$routeChangeStart', function(evt, next, current) {
     if (next.$$route && next.$$route.templateUrl === "meals/meals.html") {
       $rootScope.SearchBar = true;
     } else {
-       $rootScope.SearchBar = false;
+      $rootScope.SearchBar = false;
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
       $location.path('/signin');
@@ -89,7 +95,7 @@ angular.module('foodly', [
     if (Auth.isAuth()) {
       Auth.loginorout = "Logout";
     } else {
-       Auth.loginorout = "Sign in";
+      Auth.loginorout = "Sign in";
     }
   });
 });

@@ -1,14 +1,15 @@
 <!doctype html>
-<html lang="en" ng-app="foodly">
+<html lang="en" ng-app="instacutz">
 
 <head>
-    <meta charset="utf-8">
-    <title>InstaCutz</title>
+  <meta charset="utf-8">
+  <title>InstaCutz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Titan+One' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href='assets/images/favicon.ico'/>
 
-    <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
-    <link rel="shortcut icon" href='assets/images/favicon.ico'/>
-
-    <link rel="stylesheet" href="dist/css/app.css" />
+  <link rel="stylesheet" href="dist/css/app.css" />
     <!-- jQuery (for Bootstrap's JavaScript plugins)
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
 <!--
@@ -16,102 +17,166 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Optional bootstrap theme
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-     -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/underscore-min.js"></script>
-    <!-- use with vanilla Stripe Checkout -->
-    <script src="https://checkout.stripe.com/checkout.js"></script>
-    <!-- use with custom Stripe integration -->
-    <script src="https://js.stripe.com/v2/"></script>
-    <script>
-      Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
-    </script>
+  -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/bootstrap.min.js"></script>
+  <script src="assets/js/underscore-min.js"></script>
+  <!-- use with vanilla Stripe Checkout -->
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <!-- use with custom Stripe integration -->
+  <script src="https://js.stripe.com/v2/"></script>
+  <script>
+    Stripe.setPublishableKey('pk_test_kL2LKwSIme8Q6KzTiLQ2ZPHz');
+  </script>
 
 </head>
 
-<body>
-    <header>
-      <!-- Navbar that stays on the top of every page -->
-      <nav class="navbar header-navbar navbar-inverse navbar-fixed-top">
-          <div class="container">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand icon" href="#/">
-                    <i class="icon-mustache"></i>
-                  </a>
-                  <a class="navbar-brand" href="#/about">About</a>
-                  <a class="navbar-brand" href="#/barbers">Barbers</a>
-                  <a class="navbar-brand" href="#/hairstyles">Styles</a>
-
-              </div>
-                <form class="navbar-form navbar-left" role="search">
-                  <div class="form-group" ng-show="SearchBar" >
-                     <input type="text" class="form-control search" placeholder="Search"  ng-model="search">
-                  </div>
-                </form>
-              <div id="navbar" class="collapse navbar-collapse" >
-                  <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
-                          <li ng-controller="barberProfileController" class='nav navbar-nav'>
-                              <a ng-click="checkOut()">Checkout
-                             <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}
-                              </a>
-
-                          </li>
-                          <li class='nav navbar-nav' >
-                              <a href='javascript:void(0)'>Welcome, {{ getUsername() }}!</a>
-                          </li>
-                          <li>
-                          <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
-
-                          </li>
-                        </ul>
-              </div>
-
-          </div>
-          </div>
-      </nav>
-    </header>
-    <!-- Main content that changes based on route -->
-    <div ng-view class='main-container container'></div>
-
-
-   <!--  TODO : Allow User to Leave Review or Rating In Modal -->
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                    Order Confirmed!
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    Thank you for your purchase
-                </div>
-            </div>
+<body ng-controller="headerController">
+  <header>
+    <!-- Navbar that stays on the top of every page -->
+    <nav class="navbar header-navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="instacutz-logo">
+          <a href="#/"><img ng-src="assets/images/logo-white.png"></a>
         </div>
-    </div>
-    </div>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand icon" href="#/">
+            <i class="icon-mustache"></i>
+          </a>
+          <a class="navbar-brand" href="#/barbers">Barbers</a>
+          <a class="navbar-brand" href="#/hairstyles">Styles</a>
 
-   <!--  <div id="container">
+        </div>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group" ng-show="SearchBar" >
+           <input type="text" class="form-control search" placeholder="Search"  ng-model="search">
+         </div>
+       </form>
+
+       <div id="navbar" class="collapse navbar-collapse header-order-info"  >
+        <ul class="nav navbar-nav navbar-right" style='float:right' ng-show="headerCart.display">
+          <li class='nav navbar-nav'>
+            <a>
+             Your selection :
+           </a>
+         </li>
+         <li class='nav navbar-nav'>
+          <a>
+            <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].stylePicture}}')"></span>
+            {{headerCart.cart.orders[0].styleName}}
+          </a>
+        </li>
+        <li class='nav navbar-nav'>
+          <a class="spliter">
+           |
+         </a>
+       </li>
+       <li  class='nav navbar-nav'>
+        <a>
+          <span class="order-pic order-pic-style" style="background-image:url('{{headerCart.cart.orders[0].picture}}')"></span>
+          {{headerCart.cart.orders[0].barberName}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+   <!--     <div id="navbar" class="collapse navbar-collapse" >
+        <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
+          <li ng-controller="barberProfileController" class='nav navbar-nav'>
+            <a ng-click="checkOut()">Checkout
+             <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}
+           </a>
+         </li>
+       <li class='nav navbar-nav' >
+            <a href='javascript:void(0)'>Welcome, {{ getUsername() }}!</a>
+          </li>
+          <li>
+            <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
+          </li>
+      </ul>
     </div> -->
 
+  </div>
+</div>
+</nav>
+</header>
+<!-- Main content that changes based on route -->
+<div ng-view class='main-container container'></div>
 
 
-    <footer>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-payments/lib/angular-payments.min.js"></script>
-        <!-- <script src="bower_components/braintree-web/dist/braintree.js"></script> -->
-        <script src="assets/js/app.extra.js"></script>
-        <script src="dist/js/app.concat.js"></script>
-    </footer>
+<!--  TODO : Allow User to Leave Review or Rating In Modal -->
+<!-- Modal -->
+<div class="modal fade order-recap-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">
+          Order Confirmed!
+        </h4>
+        <hr>
+        <p><strong>Stylist </strong>: {{headerCart.cart.orders[0].barberName}}</p>
+        <p><strong>Style </strong>: <img ng-src="{{headerCart.cart.orders[0].stylePicture}}" id="order_thumbnail" alt="image"> {{headerCart.cart.orders[0].styleName}} </p>
+        <p><strong>Total Charged </strong>: $30 </p>
+      </div>
+
+      <div class="modal-body">
+        <span>Thank you for your purchase!</span>
+        <!-- User can leave rating -->
+        <br>
+        <div class="container" ng-controller="ratingController" style="padding-left:0">
+         <div star-rating rating="starRating1" read-only="false" max-rating="5" click="rate(param)"></div>
+         <div> <span class="label label-primary">Please rate your stylist after your haircut!</span>
+         </div>
+         <br>
+         <span><a href="#/"><button type="button" class="btn btn-md" id="closeModal">Close</button></a></span>
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+
+   <!--  <div id="container">
+ </div> -->
+
+
+
+ <footer class="container">
+
+  <div class="row">
+    <div class="col-xs-12">
+      <p>Copyright &copy; InstaCutz 2015</p>
+      <div class="footer-menu">
+        <ul>
+          <li>
+            <a href="#/about">About</a>
+          </li>
+          <li class="spliter">|</li>
+          <li>
+            <a href='#/barber-registration'>Barber?</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <script>
+    //Close Modal on click
+    $('#closeModal').click(function(){
+      $('#myModal').modal('toggle');
+    });
+  </script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-payments/lib/angular-payments.min.js"></script>
+  <script src="assets/js/app.extra.js"></script>
+  <script src="dist/js/app.concat.js"></script>
+</footer>
 </body>
 
 </html>

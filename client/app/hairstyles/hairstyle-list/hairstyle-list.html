@@ -1,6 +1,6 @@
 
 
-<!-- List of Barbers -->
+<!-- List of Hairstyles -->
 <div class='container list-page styles-list-page'>
   <div class="row">
     <div ng-repeat="meal in data | filter:search | orderBy:'-'">
@@ -9,9 +9,9 @@
           <button type="button" class="maximize" data-toggle="modal" data-target="#pictureModal" ng-click="maximize(meal.image, meal.title)">
             <i class="fa fa-search"></i>
           </button>
-          <a href="#/barbers" ng-click="setId(meal._id)" class="picture" style="background-image:url({{meal.image}})"></a>
+          <a href="#/barbers" ng-click="setHairstyleName(meal.title)" class="picture" style="background-image:url({{meal.image}})"></a>
           <div class="caption">
-            <h4><a href="#/barbers" ng-click="setId(meal._id)">{{meal.title}}</a></h4>
+            <h4><a href="#/barbers" ng-click="setHairstyleName(meal.title)">{{meal.title}}</a></h4>
             <p>{{meal.description}}</p>
           </div>
         </div>

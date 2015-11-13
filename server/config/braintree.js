@@ -3,8 +3,6 @@ var APIKeys = require('./APIKeys.js');
 
 
 module.exports = function(app) {
-  // -------------------------------------------------
-  // ******** BRAINTREE *********
 
   // API keys
   var merchantId = process.env.merchantId || APIKeys.merchantId;

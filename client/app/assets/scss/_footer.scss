@@ -1,0 +1,26 @@
+footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  border-top: 1px dotted #333;
+  p {
+    display: inline-block;
+  }
+  .footer-menu {
+    float: right;
+    display: inline-block;
+    ul {
+      padding: 0px;
+      list-style-type: none;
+      li {
+        display: inline-block;
+        font-weight: bold;
+        a {
+          color: #000;
+        }
+        &.spliter {
+          padding: 0px 10px;
+        }
+      }
+    }
+  }
+}

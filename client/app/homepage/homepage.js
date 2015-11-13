@@ -1,5 +1,6 @@
-angular.module('foodly.homepage', [])
+angular.module('instacutz.homepage', [])
 
-.controller('HomepageController', function($scope) {
+.controller('HomepageController', [
+  function($scope) {
 
-})
+}])

@@ -5,12 +5,12 @@ var SALT_WORK_FACTOR = 10;
 
 
 var UserSchema = new mongoose.Schema({
-	username: {
+  username: {
     type: String,
     // location: {type: [Number]}, // [Long, Lat]
     required: true,
     unique: true
-  }, 
+  },
   password: {
     type: String,
     required: true
@@ -27,10 +27,10 @@ var UserSchema = new mongoose.Schema({
 //index the schema in 2dsphere format (for running a proximity search)
 // UserSchema.index({location:'2dsphere'})
 
-UserSchema.methods.comparePasswords = function (candidatePassword) {
+UserSchema.methods.comparePasswords = function(candidatePassword) {
   var defer = Q.defer();
   var savedPassword = this.password;
-  bcrypt.compare(candidatePassword, savedPassword, function (err, isMatch) {
+  bcrypt.compare(candidatePassword, savedPassword, function(err, isMatch) {
     if (err) {
       defer.reject(err);
     } else {
@@ -40,7 +40,7 @@ UserSchema.methods.comparePasswords = function (candidatePassword) {
   return defer.promise;
 };
 
-UserSchema.pre('save', function (next) {
+UserSchema.pre('save', function(next) {
   var user = this;
 
   // only hash the password if it has been modified (or is new)

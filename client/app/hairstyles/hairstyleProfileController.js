@@ -1,5 +1,6 @@
-angular.module('foodly.hairstyleProfile', [])
+angular.module('instacutz.hairstyleProfile', [])
 
-.controller('hairstyleProfileController', function($scope) {
+.controller('hairstyleProfileController', [
+  function($scope) {
 
-})
+}])

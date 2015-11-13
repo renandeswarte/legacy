@@ -1,7 +1,7 @@
 {
-  "name": "todo",
+  "name": "InstaCutz",
   "version": "0.0.0",
-  "description": "",
+  "description": "On-demand haircut platform connecting barbers and users.",
   "main": "server/server.js",
   "scripts": {
     "postinstall": "bower install && ./node_modules/grunt-cli/bin/grunt build",
@@ -11,12 +11,12 @@
     "type": "git",
     "url": "https://github.com/todo.git"
   },
-  "author": "",
+  "author": "Aaron Spafford, Alex Kim, Kevin Aujla, Renan Deswarte, Ryan James",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Dtodo/issues"
+    "url": "https://github.com/TODO/issues"
   },
-  "homepage": "https://github.com/todo",
+  "homepage": "https://github.com/TODO",
   "dependencies": {
     "angular": "^1.4.7",
     "angular-route": "^1.4.7",
